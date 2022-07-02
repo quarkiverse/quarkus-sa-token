@@ -11,7 +11,7 @@ import io.quarkus.runtime.annotations.ConfigRoot;
  *
  * @author kong
  */
-@ConfigRoot(prefix = "sa-token", name = "oauth2", phase = ConfigPhase.RUN_TIME)
+@ConfigRoot(prefix = "sa-token", name = "oauth2", phase = ConfigPhase.BUILD_AND_RUN_TIME_FIXED)
 public class SaOAuth2ConfigForQuarkus implements Serializable {
 
     private static final long serialVersionUID = -6541180061782004705L;

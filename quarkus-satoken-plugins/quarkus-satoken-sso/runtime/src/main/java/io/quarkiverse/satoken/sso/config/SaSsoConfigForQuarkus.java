@@ -13,7 +13,7 @@ import io.quarkus.runtime.annotations.ConfigRoot;
  * @author nayan
  * @date 2022/4/6 6:27 PM
  */
-@ConfigRoot(prefix = "sa-token", name = "sso", phase = ConfigPhase.RUN_TIME)
+@ConfigRoot(prefix = "sa-token", name = "sso", phase = ConfigPhase.BUILD_AND_RUN_TIME_FIXED)
 public class SaSsoConfigForQuarkus implements Serializable {
 
     private static final long serialVersionUID = -6541180061782004705L;
