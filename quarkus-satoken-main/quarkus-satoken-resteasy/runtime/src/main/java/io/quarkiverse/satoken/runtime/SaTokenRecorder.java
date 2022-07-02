@@ -1,7 +1,10 @@
 package io.quarkiverse.satoken.runtime;
 
+import java.util.function.Consumer;
+
+import javax.enterprise.inject.spi.CDI;
+
 import cn.dev33.satoken.SaManager;
-import cn.dev33.satoken.action.SaTokenAction;
 import cn.dev33.satoken.basic.SaBasicTemplate;
 import cn.dev33.satoken.basic.SaBasicUtil;
 import cn.dev33.satoken.config.SaTokenConfig;
@@ -10,18 +13,15 @@ import cn.dev33.satoken.context.second.SaTokenSecondContextCreator;
 import cn.dev33.satoken.dao.SaTokenDao;
 import cn.dev33.satoken.id.SaIdTemplate;
 import cn.dev33.satoken.id.SaIdUtil;
+import cn.dev33.satoken.json.SaJsonTemplate;
 import cn.dev33.satoken.listener.SaTokenListener;
-import cn.dev33.satoken.sso.SaSsoTemplate;
-import cn.dev33.satoken.sso.SaSsoUtil;
+import cn.dev33.satoken.sign.SaSignTemplate;
 import cn.dev33.satoken.stp.StpInterface;
 import cn.dev33.satoken.stp.StpLogic;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.temp.SaTempInterface;
 import io.quarkus.arc.Arc;
 import io.quarkus.runtime.annotations.Recorder;
-
-import javax.enterprise.inject.spi.CDI;
-import java.util.function.Consumer;
 
 /**
  * SaTokenRecorder
@@ -37,15 +37,15 @@ public class SaTokenRecorder {
         setConfig();
         setSaTokenDao();
         setStpInterface();
-        setSaTokenAction();
         setSaTokenContext();
         setSaTokenSecondContext();
         setSaTokenListener();
         setSaTemp();
         setSaIdTemplate();
-        setSaSsoBasicTemplate();
-        setSaSsoTemplate();
+        setSaBasicTemplate();
+        setSaJsonTemplate();
         setStpLogic();
+        setSaSignTemplate();
     }
 
     /**
@@ -73,15 +73,6 @@ public class SaTokenRecorder {
      */
     public void setStpInterface() {
         injectbean(StpInterface.class, SaManager::setStpInterface);
-    }
-
-    /**
-     * 注入框架行为Bean
-     *
-     * @param saTokenAction SaTokenAction对象
-     */
-    public void setSaTokenAction() {
-        injectbean(SaTokenAction.class, SaManager::setSaTokenAction);
     }
 
     /**
@@ -134,17 +125,26 @@ public class SaTokenRecorder {
      *
      * @param saBasicTemplate saBasicTemplate对象
      */
-    public void setSaSsoBasicTemplate() {
+    public void setSaBasicTemplate() {
         injectbean(SaBasicTemplate.class, template -> SaBasicUtil.saBasicTemplate = template);
     }
 
     /**
-     * 注入 Sa-Token-SSO 单点登录模块 Bean
+     * 注入自定义的 JSON 转换器 Bean
      *
-     * @param saSsoTemplate saSsoTemplate对象
+     * @param saJsonTemplate JSON 转换器
      */
-    public void setSaSsoTemplate() {
-        injectbean(SaSsoTemplate.class, template -> SaSsoUtil.saSsoTemplate = template);
+    public void setSaJsonTemplate() {
+        injectbean(SaJsonTemplate.class, SaManager::setSaJsonTemplate);
+    }
+
+    /**
+     * 注入自定义的 参数签名 Bean
+     *
+     * @param saSignTemplate 参数签名 Bean
+     */
+    public void setSaSignTemplate() {
+        injectbean(SaSignTemplate.class, SaManager::setSaSignTemplate);
     }
 
     /**

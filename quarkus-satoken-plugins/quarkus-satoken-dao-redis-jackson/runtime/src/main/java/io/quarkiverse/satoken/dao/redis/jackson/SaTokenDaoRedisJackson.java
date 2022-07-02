@@ -1,18 +1,21 @@
 package io.quarkiverse.satoken.dao.redis.jackson;
 
-import cn.dev33.satoken.dao.SaTokenDao;
-import cn.dev33.satoken.strategy.SaStrategy;
-import cn.dev33.satoken.util.SaFoxUtil;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.redisson.api.RBucket;
-import org.redisson.api.RedissonClient;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+
+import org.redisson.api.RBucket;
+import org.redisson.api.RedissonClient;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import cn.dev33.satoken.dao.SaTokenDao;
+import cn.dev33.satoken.strategy.SaStrategy;
+import cn.dev33.satoken.util.SaFoxUtil;
 
 /**
  * Sa-Token持久层接口 [Redis版] (使用 jackson 序列化方式)

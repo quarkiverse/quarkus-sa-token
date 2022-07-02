@@ -1,17 +1,19 @@
 package io.quarkiverse.satoken.dao.redis.jackson.it.utils;
 
-import io.quarkus.test.junit.QuarkusTest;
-import io.restassured.response.ValidatableResponse;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Map;
+
+import javax.ws.rs.core.MediaType;
+
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.junit.jupiter.api.Test;
 
-import javax.ws.rs.core.MediaType;
-import java.util.Map;
-
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.jupiter.api.Assertions.*;
+import io.quarkus.test.junit.QuarkusTest;
+import io.restassured.response.ValidatableResponse;
 
 /**
  * SaTokenResourceTest

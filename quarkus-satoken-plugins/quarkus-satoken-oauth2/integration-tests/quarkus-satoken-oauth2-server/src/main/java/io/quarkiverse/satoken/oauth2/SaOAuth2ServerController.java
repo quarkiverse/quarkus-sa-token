@@ -1,16 +1,17 @@
 package io.quarkiverse.satoken.oauth2;
 
-import cn.dev33.satoken.context.SaHolder;
-import cn.dev33.satoken.oauth2.logic.SaOAuth2Handle;
-import cn.dev33.satoken.oauth2.logic.SaOAuth2Util;
-import cn.dev33.satoken.util.SaResult;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import java.util.LinkedHashMap;
-import java.util.Map;
+
+import cn.dev33.satoken.context.SaHolder;
+import cn.dev33.satoken.oauth2.logic.SaOAuth2Handle;
+import cn.dev33.satoken.oauth2.logic.SaOAuth2Util;
+import cn.dev33.satoken.util.SaResult;
 
 /**
  * Sa-OAuth2 Server端 控制器

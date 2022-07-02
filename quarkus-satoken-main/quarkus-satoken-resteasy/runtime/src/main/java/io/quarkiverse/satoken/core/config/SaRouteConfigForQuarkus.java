@@ -1,10 +1,10 @@
 package io.quarkiverse.satoken.core.config;
 
-import io.quarkus.runtime.annotations.ConfigGroup;
-import io.quarkus.runtime.annotations.ConfigItem;
-
 import java.util.List;
 import java.util.Optional;
+
+import io.quarkus.runtime.annotations.ConfigGroup;
+import io.quarkus.runtime.annotations.ConfigItem;
 
 /**
  * SaRouteConfigForQuarkus

@@ -15,7 +15,6 @@ public class SaTokenConfigAdapter extends SaTokenConfig {
 
     public SaTokenConfigAdapter(SaTokenConfigForQuarkus config) {
         this.config = config;
-        this.sso = new SaSsoConfigAdapter(config.sso);
         this.cookie = new SaCookieConfigAdapter(config.cookie);
     }
 

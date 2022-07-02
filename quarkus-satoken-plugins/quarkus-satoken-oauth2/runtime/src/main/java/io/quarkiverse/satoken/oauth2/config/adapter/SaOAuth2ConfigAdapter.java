@@ -1,9 +1,9 @@
 package io.quarkiverse.satoken.oauth2.config.adapter;
 
+import java.util.Objects;
+
 import cn.dev33.satoken.oauth2.config.SaOAuth2Config;
 import io.quarkiverse.satoken.oauth2.config.SaOAuth2ConfigForQuarkus;
-
-import java.util.Objects;
 
 /**
  * SaAuthConfigAdapter

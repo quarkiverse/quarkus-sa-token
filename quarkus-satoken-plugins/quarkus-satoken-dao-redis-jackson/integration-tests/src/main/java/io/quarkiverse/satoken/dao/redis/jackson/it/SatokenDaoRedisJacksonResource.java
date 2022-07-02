@@ -16,13 +16,13 @@
  */
 package io.quarkiverse.satoken.dao.redis.jackson.it;
 
-import cn.dev33.satoken.stp.StpUtil;
-import cn.dev33.satoken.util.SaResult;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
+
+import cn.dev33.satoken.stp.StpUtil;
+import cn.dev33.satoken.util.SaResult;
 
 @Path("/acc/")
 @ApplicationScoped

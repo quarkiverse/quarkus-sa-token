@@ -1,10 +1,11 @@
-package io.quarkiverse.satoken.core.config;
-
-import io.quarkus.runtime.annotations.ConfigGroup;
-import io.quarkus.runtime.annotations.ConfigItem;
+package io.quarkiverse.satoken.sso.config;
 
 import java.io.Serializable;
 import java.util.Optional;
+
+import io.quarkus.runtime.annotations.ConfigItem;
+import io.quarkus.runtime.annotations.ConfigPhase;
+import io.quarkus.runtime.annotations.ConfigRoot;
 
 /**
  * Sa-Token SSO 单点登录模块 配置类 Model
@@ -12,7 +13,7 @@ import java.util.Optional;
  * @author nayan
  * @date 2022/4/6 6:27 PM
  */
-@ConfigGroup
+@ConfigRoot(prefix = "sa-token", name = "sso", phase = ConfigPhase.RUN_TIME)
 public class SaSsoConfigForQuarkus implements Serializable {
 
     private static final long serialVersionUID = -6541180061782004705L;
@@ -75,6 +76,11 @@ public class SaSsoConfigForQuarkus implements Serializable {
      */
     public Optional<String> ssoLogoutCall;
 
-    // -------------------- SaSsoHandle 所有回调函数 -------------------- 
+    // -------------------- 其他 --------------------
 
+    /**
+     * 接口调用时的时间戳允许的差距（单位：ms），-1代表不校验差距
+     */
+    @ConfigItem(defaultValue = "600000")
+    public long timestampDisparity;
 }

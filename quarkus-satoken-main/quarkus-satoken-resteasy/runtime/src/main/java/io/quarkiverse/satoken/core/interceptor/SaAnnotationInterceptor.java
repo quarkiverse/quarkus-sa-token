@@ -1,14 +1,15 @@
 package io.quarkiverse.satoken.core.interceptor;
 
-import cn.dev33.satoken.annotation.*;
-import cn.dev33.satoken.strategy.SaStrategy;
-import cn.dev33.satoken.util.SaTokenConsts;
-import io.quarkus.arc.Priority;
+import java.lang.reflect.Method;
 
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
-import java.lang.reflect.Method;
+
+import cn.dev33.satoken.annotation.*;
+import cn.dev33.satoken.strategy.SaStrategy;
+import cn.dev33.satoken.util.SaTokenConsts;
+import io.quarkus.arc.Priority;
 
 /**
  * 注解式鉴权 - 拦截器

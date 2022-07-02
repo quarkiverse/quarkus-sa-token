@@ -1,11 +1,11 @@
 package io.quarkiverse.satoken.core.config;
 
+import java.io.Serializable;
+import java.util.Optional;
+
 import io.quarkus.runtime.annotations.ConfigItem;
 import io.quarkus.runtime.annotations.ConfigPhase;
 import io.quarkus.runtime.annotations.ConfigRoot;
-
-import java.io.Serializable;
-import java.util.Optional;
 
 /**
  * Sa-Token 配置类 Model
@@ -141,11 +141,6 @@ public class SaTokenConfigForQuarkus implements Serializable {
      * Cookie配置对象
      */
     public SaCookieConfigForQuarkus cookie;
-
-    /**
-     * SSO单点登录配置对象
-     */
-    public SaSsoConfigForQuarkus sso;
 
     /**
      * 路由拦截配置

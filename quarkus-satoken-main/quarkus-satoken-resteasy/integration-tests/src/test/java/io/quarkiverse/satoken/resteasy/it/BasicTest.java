@@ -1,5 +1,12 @@
 package io.quarkiverse.satoken.resteasy.it;
 
+import java.util.List;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
 import cn.dev33.satoken.SaManager;
 import cn.dev33.satoken.dao.SaTokenDao;
 import cn.dev33.satoken.exception.DisableLoginException;
@@ -10,12 +17,6 @@ import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.temp.SaTempUtil;
 import cn.dev33.satoken.util.SaTokenConsts;
 import io.quarkus.test.junit.QuarkusTest;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 @QuarkusTest
 public class BasicTest {

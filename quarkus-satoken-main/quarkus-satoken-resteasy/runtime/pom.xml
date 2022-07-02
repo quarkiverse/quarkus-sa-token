@@ -16,9 +16,13 @@
             <artifactId>quarkus-arc</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.quarkiverse.sa-token</groupId>
-            <artifactId>sa-token-vertx</artifactId>
+            <groupId>io.quarkiverse.satoken</groupId>
+            <artifactId>quarkus-satoken-vertx</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-jackson</artifactId>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>

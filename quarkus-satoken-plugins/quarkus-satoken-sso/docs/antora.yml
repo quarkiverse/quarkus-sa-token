@@ -1,0 +1,5 @@
+name: quarkus-satoken-sso
+title: Quarkus - Satoken Sso
+version: dev
+nav:
+  - modules/ROOT/nav.adoc

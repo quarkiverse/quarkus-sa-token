@@ -1,10 +1,10 @@
 package io.quarkiverse.satoken.vertx;
 
+import java.util.Optional;
+
 import cn.dev33.satoken.context.model.SaRequest;
 import io.vertx.core.http.Cookie;
 import io.vertx.core.http.HttpServerRequest;
-
-import java.util.Optional;
 
 /**
  * SaRequestForVertx

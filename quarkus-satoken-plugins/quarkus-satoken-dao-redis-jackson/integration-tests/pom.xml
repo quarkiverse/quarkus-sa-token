@@ -20,8 +20,8 @@
             <artifactId>quarkus-resteasy-jackson</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.quarkiverse.sa-token</groupId>
-            <artifactId>quarkus-sa-token</artifactId>
+            <groupId>io.quarkiverse.satoken</groupId>
+            <artifactId>quarkus-satoken-resteasy</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

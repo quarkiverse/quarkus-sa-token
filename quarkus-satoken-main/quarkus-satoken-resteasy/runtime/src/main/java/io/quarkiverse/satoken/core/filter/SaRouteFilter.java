@@ -1,13 +1,6 @@
 package io.quarkiverse.satoken.core.filter;
 
-import cn.dev33.satoken.context.SaHolder;
-import cn.dev33.satoken.exception.BackResultException;
-import cn.dev33.satoken.exception.StopMatchException;
-import cn.dev33.satoken.router.SaRouteFunction;
-import cn.dev33.satoken.router.SaRouter;
-import cn.dev33.satoken.stp.StpUtil;
-import io.quarkiverse.satoken.core.config.SaRouteConfigForQuarkus;
-import io.quarkiverse.satoken.core.config.SaTokenConfigForQuarkus;
+import java.io.IOException;
 
 import javax.annotation.Priority;
 import javax.enterprise.inject.spi.CDI;
@@ -18,7 +11,15 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.io.IOException;
+
+import cn.dev33.satoken.context.SaHolder;
+import cn.dev33.satoken.exception.BackResultException;
+import cn.dev33.satoken.exception.StopMatchException;
+import cn.dev33.satoken.router.SaRouteFunction;
+import cn.dev33.satoken.router.SaRouter;
+import cn.dev33.satoken.stp.StpUtil;
+import io.quarkiverse.satoken.core.config.SaRouteConfigForQuarkus;
+import io.quarkiverse.satoken.core.config.SaTokenConfigForQuarkus;
 
 /**
  * SaRouteFilter

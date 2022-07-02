@@ -25,8 +25,8 @@
             <artifactId>quarkus-resteasy-qute</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.quarkiverse.sa-token</groupId>
-            <artifactId>quarkus-sa-token-oauth2</artifactId>
+            <groupId>io.quarkiverse.satoken</groupId>
+            <artifactId>quarkus-satoken-oauth2</artifactId>
             <version>${project.version}</version>
         </dependency>
 

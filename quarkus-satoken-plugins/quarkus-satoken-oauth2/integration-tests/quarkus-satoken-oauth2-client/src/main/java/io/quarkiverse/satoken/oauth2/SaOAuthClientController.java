@@ -1,15 +1,16 @@
 package io.quarkiverse.satoken.oauth2;
 
-import cn.dev33.satoken.stp.StpUtil;
-import cn.dev33.satoken.util.SaResult;
-import com.ejlchina.okhttps.OkHttps;
-import io.quarkus.qute.Template;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
+
+import com.ejlchina.okhttps.OkHttps;
+
+import cn.dev33.satoken.stp.StpUtil;
+import cn.dev33.satoken.util.SaResult;
+import io.quarkus.qute.Template;
 
 /**
  * Sa-OAuth2 Client端 控制器

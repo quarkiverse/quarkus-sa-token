@@ -1,7 +1,8 @@
 package io.quarkiverse.satoken.dao.redis.jackson;
 
-import cn.dev33.satoken.session.SaSession;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import cn.dev33.satoken.session.SaSession;
 
 /**
  * Jackson定制版SaSession，忽略 timeout 属性的序列化

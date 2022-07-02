@@ -1,12 +1,13 @@
 package io.quarkiverse.satoken.dao.redis.jackson.it;
 
+import java.util.Arrays;
+import java.util.List;
+
+import javax.enterprise.context.ApplicationScoped;
+
 import cn.dev33.satoken.stp.StpInterface;
 import io.quarkus.arc.DefaultBean;
 import io.quarkus.arc.Unremovable;
-
-import javax.enterprise.context.ApplicationScoped;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * StpInterfaceImpl

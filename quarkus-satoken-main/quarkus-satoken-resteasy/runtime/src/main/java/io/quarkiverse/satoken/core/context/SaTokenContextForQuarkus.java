@@ -1,14 +1,28 @@
 package io.quarkiverse.satoken.core.context;
 
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
+import javax.enterprise.inject.spi.CDI;
+import javax.net.ssl.SSLPeerUnverifiedException;
+import javax.security.cert.X509Certificate;
+import javax.ws.rs.core.MultivaluedMap;
+
+import org.jboss.resteasy.core.ResteasyContext;
+import org.jboss.resteasy.spi.HttpRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import cn.dev33.satoken.context.SaTokenContext;
 import cn.dev33.satoken.context.model.SaRequest;
 import cn.dev33.satoken.context.model.SaResponse;
 import cn.dev33.satoken.context.model.SaStorage;
-import cn.dev33.satoken.vertx.SaRequestForVertx;
-import cn.dev33.satoken.vertx.SaResponseForVertx;
-import cn.dev33.satoken.vertx.SaStorageForVertx;
 import io.netty.handler.codec.DecoderResult;
 import io.quarkiverse.satoken.core.utils.AntPathMatcher;
+import io.quarkiverse.satoken.vertx.SaRequestForVertx;
+import io.quarkiverse.satoken.vertx.SaResponseForVertx;
+import io.quarkiverse.satoken.vertx.SaStorageForVertx;
 import io.quarkus.vertx.http.runtime.CurrentVertxRequest;
 import io.vertx.codegen.annotations.Nullable;
 import io.vertx.core.AsyncResult;
@@ -19,18 +33,6 @@ import io.vertx.core.buffer.Buffer;
 import io.vertx.core.http.*;
 import io.vertx.core.net.NetSocket;
 import io.vertx.ext.web.RoutingContext;
-import org.jboss.resteasy.core.ResteasyContext;
-import org.jboss.resteasy.spi.HttpRequest;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.enterprise.inject.spi.CDI;
-import javax.net.ssl.SSLPeerUnverifiedException;
-import javax.security.cert.X509Certificate;
-import javax.ws.rs.core.MultivaluedMap;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
 
 /**
  * SaTokenContextForQuarkus
@@ -512,7 +514,7 @@ public class SaTokenContextForQuarkus implements SaTokenContext {
 
         @Override
         public HttpServerResponse sendFile(String filename, long offset, long length,
-                                           Handler<AsyncResult<Void>> resultHandler) {
+                Handler<AsyncResult<Void>> resultHandler) {
             return this;
         }
 

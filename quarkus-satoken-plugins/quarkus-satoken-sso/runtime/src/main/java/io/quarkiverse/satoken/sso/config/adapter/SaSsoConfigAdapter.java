@@ -1,9 +1,9 @@
-package io.quarkiverse.satoken.core.config.adapter;
-
-import cn.dev33.satoken.config.SaSsoConfig;
-import io.quarkiverse.satoken.core.config.SaSsoConfigForQuarkus;
+package io.quarkiverse.satoken.sso.config.adapter;
 
 import java.util.Objects;
+
+import cn.dev33.satoken.config.SaSsoConfig;
+import io.quarkiverse.satoken.sso.config.SaSsoConfigForQuarkus;
 
 /**
  * SaSsoConfigAdapter
@@ -67,4 +67,10 @@ public class SaSsoConfigAdapter extends SaSsoConfig {
     public String getSsoLogoutCall() {
         return Objects.nonNull(config) ? config.ssoLogoutCall.orElse(null) : super.getSsoLogoutCall();
     }
+
+    @Override
+    public long getTimestampDisparity() {
+        return Objects.nonNull(config) ? config.timestampDisparity : super.getTimestampDisparity();
+    }
+
 }

@@ -1,5 +1,12 @@
 package io.quarkiverse.satoken.resteasy.it;
 
+import java.util.List;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
 import cn.dev33.satoken.SaManager;
 import cn.dev33.satoken.config.SaTokenConfig;
 import cn.dev33.satoken.dao.SaTokenDao;
@@ -7,12 +14,6 @@ import cn.dev33.satoken.session.TokenSign;
 import cn.dev33.satoken.stp.StpLogic;
 import cn.dev33.satoken.stp.StpUtil;
 import io.quarkus.test.junit.QuarkusTest;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-
-import java.util.List;
 
 /**
  * ManyLoginTest

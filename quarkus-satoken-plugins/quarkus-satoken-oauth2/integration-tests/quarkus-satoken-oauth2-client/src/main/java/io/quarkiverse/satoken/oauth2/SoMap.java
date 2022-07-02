@@ -1,13 +1,13 @@
 package io.quarkiverse.satoken.oauth2;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.regex.Pattern;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * Map< String, Object> 是最常用的一种Map类型，但是它写着麻烦
@@ -28,7 +28,7 @@ public class SoMap extends LinkedHashMap<String, Object> {
     /**
      * 以下元素会在isNull函数中被判定为Null，
      */
-    public static final Object[] NULL_ELEMENT_ARRAY = {null, ""};
+    public static final Object[] NULL_ELEMENT_ARRAY = { null, "" };
     public static final List<Object> NULL_ELEMENT_LIST;
 
     static {
@@ -164,7 +164,7 @@ public class SoMap extends LinkedHashMap<String, Object> {
     /**
      * 转为Map并返回
      */
-    @SuppressWarnings({"unchecked", "rawtypes"})
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     public SoMap getMap(String key) {
         Object value = get(key);
         if (value == null) {
@@ -688,9 +688,9 @@ public class SoMap extends LinkedHashMap<String, Object> {
     /**
      * 将一个一维集合转换为树形集合
      *
-     * @param list         集合
-     * @param idKey        id标识key
-     * @param parentIdKey  父id标识key
+     * @param list 集合
+     * @param idKey id标识key
+     * @param parentIdKey 父id标识key
      * @param childListKey 子节点标识key
      * @return 转换后的tree集合
      */

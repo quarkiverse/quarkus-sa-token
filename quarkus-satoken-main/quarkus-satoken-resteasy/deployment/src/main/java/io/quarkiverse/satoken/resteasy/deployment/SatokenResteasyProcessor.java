@@ -1,5 +1,9 @@
 package io.quarkiverse.satoken.resteasy.deployment;
 
+import java.util.List;
+import java.util.Vector;
+import java.util.concurrent.ConcurrentHashMap;
+
 import cn.dev33.satoken.annotation.*;
 import cn.dev33.satoken.session.SaSession;
 import cn.dev33.satoken.session.TokenSign;
@@ -18,10 +22,6 @@ import io.quarkus.deployment.annotations.Record;
 import io.quarkus.deployment.builditem.FeatureBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.ReflectiveClassBuildItem;
 import io.quarkus.resteasy.common.spi.ResteasyJaxrsProviderBuildItem;
-
-import java.util.List;
-import java.util.Vector;
-import java.util.concurrent.ConcurrentHashMap;
 
 class SatokenResteasyProcessor {
 
@@ -49,7 +49,7 @@ class SatokenResteasyProcessor {
 
     @BuildStep
     void addFilter(final SaTokenConfigForQuarkus satokenConfig,
-                   BuildProducer<ResteasyJaxrsProviderBuildItem> resteasyProducer) {
+            BuildProducer<ResteasyJaxrsProviderBuildItem> resteasyProducer) {
         if (satokenConfig.route.interceptor) {
             resteasyProducer.produce(new ResteasyJaxrsProviderBuildItem(SaRouteFilter.class.getName()));
         }
@@ -57,8 +57,8 @@ class SatokenResteasyProcessor {
 
     @BuildStep
     void addAnnotationInterceptor(final SaTokenConfigForQuarkus satokenConfig,
-                                  BuildProducer<InterceptorBindingRegistrarBuildItem> interceptorRegister,
-                                  BuildProducer<AdditionalBeanBuildItem> additionalBeans) {
+            BuildProducer<InterceptorBindingRegistrarBuildItem> interceptorRegister,
+            BuildProducer<AdditionalBeanBuildItem> additionalBeans) {
         if (satokenConfig.annotationInterceptedEnabled) {
             interceptorRegister.produce(new InterceptorBindingRegistrarBuildItem(
                     new InterceptorBindingRegistrar() {

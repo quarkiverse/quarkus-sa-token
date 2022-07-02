@@ -1,17 +1,17 @@
 package io.quarkiverse.satoken.core.utils;
 
-import io.vertx.codegen.annotations.Nullable;
-
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import io.vertx.codegen.annotations.Nullable;
+
 public class AntPathMatcher {
     public static final String DEFAULT_PATH_SEPARATOR = "/";
     private static final int CACHE_TURNOFF_THRESHOLD = 65536;
     private static final Pattern VARIABLE_PATTERN = Pattern.compile("\\{[^/]+?}");
-    private static final char[] WILDCARD_CHARS = new char[]{'*', '?', '{'};
+    private static final char[] WILDCARD_CHARS = new char[] { '*', '?', '{' };
     public static final String[] EMPTY_STRING_ARRAY = new String[0];
     private String pathSeparator;
     private PathSeparatorPatternCache pathSeparatorPatternCache;
@@ -87,7 +87,7 @@ public class AntPathMatcher {
     }
 
     protected boolean doMatch(String pattern, @Nullable String path, boolean fullMatch,
-                              @Nullable Map<String, String> uriTemplateVariables) {
+            @Nullable Map<String, String> uriTemplateVariables) {
         if (path != null && path.startsWith(this.pathSeparator) == pattern.startsWith(this.pathSeparator)) {
             String[] pattDirs = this.tokenizePattern(pattern);
             if (fullMatch && this.caseSensitive && !this.isPotentialMatch(path, pattDirs)) {
@@ -179,8 +179,7 @@ public class AntPathMatcher {
                                 int foundIdx = -1;
                                 int i = 0;
 
-                                label144:
-                                while (i <= strLength - patLength) {
+                                label144: while (i <= strLength - patLength) {
                                     for (int j = 0; j < patLength; ++j) {
                                         String subPat = pattDirs[pattIdxStart + j + 1];
                                         String subStr = pathDirs[pathIdxStart + i + j];
@@ -311,7 +310,7 @@ public class AntPathMatcher {
     }
 
     public static String[] tokenizeToStringArray(@Nullable String str, String delimiters, boolean trimTokens,
-                                                 boolean ignoreEmptyTokens) {
+            boolean ignoreEmptyTokens) {
         if (str == null) {
             return EMPTY_STRING_ARRAY;
         } else {

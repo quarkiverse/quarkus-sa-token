@@ -1,9 +1,9 @@
 package io.quarkiverse.satoken.core.config;
 
+import java.util.Optional;
+
 import io.quarkus.runtime.annotations.ConfigGroup;
 import io.quarkus.runtime.annotations.ConfigItem;
-
-import java.util.Optional;
 
 /**
  * Sa-Token Cookie写入 相关配置
