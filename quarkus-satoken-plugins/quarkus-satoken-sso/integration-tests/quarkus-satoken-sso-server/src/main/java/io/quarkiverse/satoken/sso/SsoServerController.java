@@ -8,12 +8,12 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 
-import cn.dev33.satoken.context.SaHolder;
-import cn.dev33.satoken.sso.SaSsoUtil;
 import com.ejlchina.okhttps.OkHttps;
 
 import cn.dev33.satoken.config.SaSsoConfig;
+import cn.dev33.satoken.context.SaHolder;
 import cn.dev33.satoken.sso.SaSsoHandle;
+import cn.dev33.satoken.sso.SaSsoUtil;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.util.SaResult;
 import io.quarkus.qute.Template;
@@ -51,9 +51,9 @@ public class SsoServerController {
         return SaSsoHandle.serverRequest();
     }
 
-
     /**
      * 自定义接口：获取userinfo, 供模式三使用
+     * 
      * @param loginId
      * @return
      */

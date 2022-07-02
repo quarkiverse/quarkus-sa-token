@@ -45,6 +45,7 @@ public class SsoClientController {
     public Object get() {
         return SaSsoHandle.clientRequest();
     }
+
     @POST
     @Path("/sso/{var:.*}")
     public Object post() {

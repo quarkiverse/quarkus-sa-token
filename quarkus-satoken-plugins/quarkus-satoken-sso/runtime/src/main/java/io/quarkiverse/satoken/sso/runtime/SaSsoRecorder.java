@@ -4,8 +4,6 @@ import java.util.function.Consumer;
 
 import javax.enterprise.inject.spi.CDI;
 
-import cn.dev33.satoken.basic.SaBasicTemplate;
-import cn.dev33.satoken.basic.SaBasicUtil;
 import cn.dev33.satoken.config.SaSsoConfig;
 import cn.dev33.satoken.sso.SaSsoManager;
 import cn.dev33.satoken.sso.SaSsoTemplate;
@@ -36,7 +34,6 @@ public class SaSsoRecorder {
     public void setSaSsoConfig() {
         injectbean(SaSsoConfig.class, SaSsoManager::setConfig);
     }
-
 
     /**
      * 注入 Sa-Token-SSO 单点登录模块 Bean
