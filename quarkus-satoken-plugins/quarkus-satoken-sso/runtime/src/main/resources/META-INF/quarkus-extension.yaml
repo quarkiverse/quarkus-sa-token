@@ -1,9 +1,10 @@
 name: Satoken Sso
-#description: Satoken Sso ...
+description: Satoken Sso Plugin Of Quarkus Satoken
 metadata:
-#  keywords:
-#    - satoken-sso
+  keywords:
+    - satoken
+    - sso
 #  guide: ...
-#  categories:
-#    - "miscellaneous"
-#  status: "preview"
+  categories:
+    - "miscellaneous"
+  status: "preview"

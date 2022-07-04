@@ -1,9 +1,10 @@
 name: Satoken Resteasy
-#description: Satoken Resteasy ...
+description: Satoken Resteasy ...
 metadata:
-#  keywords:
-#    - satoken-resteasy
+  keywords:
+    - satoken
+    - authentication
 #  guide: ...
-#  categories:
-#    - "miscellaneous"
-#  status: "preview"
+  categories:
+    - "miscellaneous"
+  status: "preview"

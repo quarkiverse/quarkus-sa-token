@@ -1,9 +1,10 @@
 name: Satoken Context Dubbo
-#description: Satoken Context Dubbo ...
+description: Satoken Context Dubbo Plugin Of Quarkus Satoken
 metadata:
-#  keywords:
-#    - satoken-context-dubbo
+  keywords:
+    - satoken
+    - satoken-context-dubbo
 #  guide: ...
-#  categories:
-#    - "miscellaneous"
-#  status: "preview"
+  categories:
+    - "miscellaneous"
+  status: "preview"

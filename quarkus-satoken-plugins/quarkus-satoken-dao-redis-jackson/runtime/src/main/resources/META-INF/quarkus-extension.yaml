@@ -1,9 +1,10 @@
 name: Satoken Dao Redis Jackson
-#description: Satoken Dao Redis Jackson ...
+description: Satoken Dao Redis Jackson Plugin Of Quarkus Satoken
 metadata:
-#  keywords:
-#    - satoken-dao-redis-jackson
+  keywords:
+    - satoken
+    - satoken-dao-redis-jackson
 #  guide: ...
-#  categories:
-#    - "miscellaneous"
-#  status: "preview"
+  categories:
+    - "miscellaneous"
+  status: "preview"
