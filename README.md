@@ -1,6 +1,6 @@
 # Quarkus - Satoken
-[![Build](https://github.com/quarkiverse/quarkus-dapr/workflows/Build/badge.svg?branch=main)](https://github.com/quarkiverse/quarkus-sa-token/actions?query=workflow%3ABuild)
-[![License](https://img.shields.io/github/license/quarkiverse/quarkus-dapr)](http://www.apache.org/licenses/LICENSE-2.0)
+[![Build](https://github.com/quarkiverse/quarkus-sa-token/workflows/Build/badge.svg?branch=main)](https://github.com/quarkiverse/quarkus-sa-token/actions?query=workflow%3ABuild)
+[![License](https://img.shields.io/github/license/quarkiverse/quarkus-sa-token)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Central](https://img.shields.io/maven-central/v/io.quarkiverse.satoken/quarkus-sa-token-parent?color=green)](https://search.maven.org/search?q=g:io.quarkiverse.satoken%20AND%20a:quarkus-satoken-parent)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
@@ -77,3 +77,24 @@ It has not been tested in native mode yet.
 - [ ] quarkus-satoken-dialect-thymeleaf
 - [ ] quarkus-satoken-jwt
 - [ ] quarkus-satoken-quick-login
+
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://www.naah69.com"><img src="https://avatars.githubusercontent.com/u/25682169?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Naah</b></sub></a><br /><a href="https://github.com/quarkiverse/quarkus-sa-token/commits?author=naah69" title="Code">💻</a> <a href="#maintenance-naah69" title="Maintenance">🚧</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
