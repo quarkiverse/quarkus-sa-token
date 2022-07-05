@@ -3,7 +3,7 @@
     <parent>
         <artifactId>quarkus-satoken-main</artifactId>
         <groupId>io.quarkiverse.satoken</groupId>
-        <version>1.0.1</version>
+        <version>1.0.2-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 

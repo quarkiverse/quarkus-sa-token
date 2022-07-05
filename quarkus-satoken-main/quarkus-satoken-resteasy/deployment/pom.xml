@@ -4,7 +4,7 @@
     <parent>
         <groupId>io.quarkiverse.satoken</groupId>
         <artifactId>quarkus-satoken-resteasy-parent</artifactId>
-        <version>1.0.1</version>
+        <version>1.0.2-SNAPSHOT</version>
     </parent>
     <artifactId>quarkus-satoken-resteasy-deployment</artifactId>
     <name>Quarkus - Satoken Resteasy - Deployment</name>
