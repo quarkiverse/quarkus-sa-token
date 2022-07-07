@@ -9,7 +9,7 @@
 
     <groupId>io.quarkiverse.satoken</groupId>
     <artifactId>quarkus-satoken-parent</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>999-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Quarkus - Satoken - Parent</name>
 
