@@ -18,7 +18,7 @@ public class SaSsoConfigForQuarkus implements Serializable {
 
     private static final long serialVersionUID = -6541180061782004705L;
 
-    // ----------------- Server端相关配置 
+    // ----------------- Server端相关配置
 
     /**
      * Ticket有效期 (单位: 秒) ,默认5分钟
@@ -49,7 +49,7 @@ public class SaSsoConfigForQuarkus implements Serializable {
      */
     public Optional<String> secretkey;
 
-    // ----------------- Client端相关配置 
+    // ----------------- Client端相关配置
 
     /**
      * 配置 Server 端单点登录授权地址

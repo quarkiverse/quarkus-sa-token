@@ -10,7 +10,7 @@ import cn.dev33.satoken.json.SaJsonTemplate;
 
 /**
  * JSON 转换器， Jackson 版实现
- * 
+ *
  * @author kong
  * @since: 2022-4-26
  */
@@ -27,7 +27,7 @@ public class SaJsonTemplateForJackson implements SaJsonTemplate {
 
     /**
      * 将任意对象转换为 json 字符串
-     * 
+     *
      * @param obj 对象
      * @return 转换后的 json 字符串
      */

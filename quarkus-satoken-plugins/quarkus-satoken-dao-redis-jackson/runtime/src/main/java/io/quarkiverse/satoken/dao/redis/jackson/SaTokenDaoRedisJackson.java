@@ -45,13 +45,13 @@ public class SaTokenDaoRedisJackson implements SaTokenDao {
         // 通过反射获取Mapper对象, 增加一些配置, 增强兼容性
         try {
 
-            // 重写Session生成策略 
+            // 重写Session生成策略
             SaStrategy.me.createSession = (sessionId) -> new SaSessionForJacksonCustomized(sessionId);
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
 
-        // 开始初始化相关组件 
+        // 开始初始化相关组件
         if (this.isInit == false) {
             this.isInit = true;
         }
@@ -89,7 +89,7 @@ public class SaTokenDaoRedisJackson implements SaTokenDao {
     @Override
     public void update(String key, String value) {
         long expire = getTimeout(key);
-        // -2 = 无此键 
+        // -2 = 无此键
         if (expire == SaTokenDao.NOT_VALUE_EXPIRE) {
             return;
         }
@@ -121,7 +121,7 @@ public class SaTokenDaoRedisJackson implements SaTokenDao {
         if (timeout == SaTokenDao.NEVER_EXPIRE) {
             long expire = getTimeout(key);
             if (expire == SaTokenDao.NEVER_EXPIRE) {
-                // 如果其已经被设置为永久，则不作任何处理 
+                // 如果其已经被设置为永久，则不作任何处理
             } else {
                 // 如果尚未被设置为永久，那么再次set一次
                 this.set(key, this.get(key), timeout);
@@ -147,7 +147,7 @@ public class SaTokenDaoRedisJackson implements SaTokenDao {
         if (timeout == 0 || timeout <= SaTokenDao.NOT_VALUE_EXPIRE) {
             return;
         }
-        // 判断是否为永不过期 
+        // 判断是否为永不过期
         RBucket<Object> bucket = redissonClient.getBucket(key);
         if (timeout == SaTokenDao.NEVER_EXPIRE) {
             bucket.set(object);
@@ -162,7 +162,7 @@ public class SaTokenDaoRedisJackson implements SaTokenDao {
     @Override
     public void updateObject(String key, Object object) {
         long expire = getObjectTimeout(key);
-        // -2 = 无此键 
+        // -2 = 无此键
         if (expire == SaTokenDao.NOT_VALUE_EXPIRE) {
             return;
         }
@@ -194,7 +194,7 @@ public class SaTokenDaoRedisJackson implements SaTokenDao {
         if (timeout == SaTokenDao.NEVER_EXPIRE) {
             long expire = getObjectTimeout(key);
             if (expire == SaTokenDao.NEVER_EXPIRE) {
-                // 如果其已经被设置为永久，则不作任何处理 
+                // 如果其已经被设置为永久，则不作任何处理
             } else {
                 // 如果尚未被设置为永久，那么再次set一次
                 this.setObject(key, this.getObject(key), timeout);

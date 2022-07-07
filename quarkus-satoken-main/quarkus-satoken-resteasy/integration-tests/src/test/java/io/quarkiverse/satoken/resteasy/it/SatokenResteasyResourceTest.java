@@ -100,6 +100,8 @@ public class SatokenResteasyResourceTest {
         return given()
                 .when()
                 .queryParams(params)
+                .params(params)
+                .formParams(params)
                 .accept(MediaType.APPLICATION_JSON)
                 .post(path)
                 .then()

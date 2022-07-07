@@ -21,7 +21,7 @@ import io.quarkus.deployment.annotations.ExecutionTime;
 import io.quarkus.deployment.annotations.Record;
 import io.quarkus.deployment.builditem.FeatureBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.ReflectiveClassBuildItem;
-import io.quarkus.resteasy.common.spi.ResteasyJaxrsProviderBuildItem;
+import io.quarkus.resteasy.reactive.spi.CustomContainerRequestFilterBuildItem;
 
 class SatokenResteasyProcessor {
 
@@ -49,9 +49,9 @@ class SatokenResteasyProcessor {
 
     @BuildStep
     void addFilter(final SaTokenConfigForQuarkus satokenConfig,
-            BuildProducer<ResteasyJaxrsProviderBuildItem> resteasyProducer) {
+            BuildProducer<CustomContainerRequestFilterBuildItem> resteasyProducer) {
         if (satokenConfig.route.interceptor) {
-            resteasyProducer.produce(new ResteasyJaxrsProviderBuildItem(SaRouteFilter.class.getName()));
+            resteasyProducer.produce(new CustomContainerRequestFilterBuildItem(SaRouteFilter.class.getName()));
         }
     }
 

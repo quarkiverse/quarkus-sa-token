@@ -227,12 +227,12 @@ public class SoMap extends LinkedHashMap<String, Object> {
      * 从map中取值，塞到一个对象中
      */
     public <T> T getModelByObject(T obj) {
-        // 获取类型 
+        // 获取类型
         Class<?> cs = obj.getClass();
-        // 循环复制  
+        // 循环复制
         for (Field field : cs.getDeclaredFields()) {
             try {
-                // 获取对象 
+                // 获取对象
                 Object value = this.get(field.getName());
                 if (value == null) {
                     continue;
@@ -296,7 +296,7 @@ public class SoMap extends LinkedHashMap<String, Object> {
      * set一个值，连缀风格
      */
     public SoMap set(String key, Object value) {
-        // 防止敏感key 
+        // 防止敏感key
         if (key.toLowerCase().equals("this")) {
             return this;
         }
@@ -418,7 +418,7 @@ public class SoMap extends LinkedHashMap<String, Object> {
         return this;
     }
 
-    // ============================= 快速构建 ============================= 
+    // ============================= 快速构建 =============================
 
     /**
      * 构建一个SoMap并返回
@@ -621,11 +621,11 @@ public class SoMap extends LinkedHashMap<String, Object> {
     }
     //
     //	/**
-    //	 * 转为JSON字符串, 带格式的 
+    //	 * 转为JSON字符串, 带格式的
     //	 */
     //	public String toJsonFormatString() {
     //		try {
-    //			return JSON.toJSONString(this, true); 
+    //			return JSON.toJSONString(this, true);
     //		} catch (Exception e) {
     //			throw new RuntimeException(e);
     //		}
@@ -698,11 +698,11 @@ public class SoMap extends LinkedHashMap<String, Object> {
      * @return 转换后的tree集合
      */
     public static List<SoMap> listToTree(List<SoMap> list, String idKey, String parentIdKey, String childListKey) {
-        // 声明新的集合，存储tree形数据 
+        // 声明新的集合，存储tree形数据
         List<SoMap> newTreeList = new ArrayList<SoMap>();
-        // 声明hash-Map，方便查找数据 
+        // 声明hash-Map，方便查找数据
         SoMap hash = new SoMap();
-        // 将数组转为Object的形式，key为数组中的id 
+        // 将数组转为Object的形式，key为数组中的id
         for (int i = 0; i < list.size(); i++) {
             SoMap json = (SoMap) list.get(i);
             hash.put(json.getString(idKey), json);
@@ -715,7 +715,7 @@ public class SoMap extends LinkedHashMap<String, Object> {
             SoMap hashVp = (SoMap) hash.get(aVal.get(parentIdKey, "").toString());
             // 如果记录的pid存在，则说明它有父节点，将她添加到孩子节点的集合中
             if (hashVp != null) {
-                // 检查是否有child属性，有则添加，没有则新建 
+                // 检查是否有child属性，有则添加，没有则新建
                 if (hashVp.get(childListKey) != null) {
                     @SuppressWarnings("unchecked")
                     List<SoMap> ch = (List<SoMap>) hashVp.get(childListKey);

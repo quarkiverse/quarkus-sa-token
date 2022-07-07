@@ -1,16 +1,18 @@
 package io.quarkiverse.satoken.core.context;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
+import javax.enterprise.inject.IllegalProductException;
 import javax.enterprise.inject.spi.CDI;
 import javax.net.ssl.SSLPeerUnverifiedException;
 import javax.security.cert.X509Certificate;
-import javax.ws.rs.core.MultivaluedMap;
 
-import org.jboss.resteasy.core.ResteasyContext;
-import org.jboss.resteasy.spi.HttpRequest;
+import org.jboss.resteasy.reactive.server.core.CurrentRequestManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,7 +32,17 @@ import io.vertx.core.Future;
 import io.vertx.core.Handler;
 import io.vertx.core.MultiMap;
 import io.vertx.core.buffer.Buffer;
-import io.vertx.core.http.*;
+import io.vertx.core.http.Cookie;
+import io.vertx.core.http.HttpConnection;
+import io.vertx.core.http.HttpFrame;
+import io.vertx.core.http.HttpHeaders;
+import io.vertx.core.http.HttpMethod;
+import io.vertx.core.http.HttpServerFileUpload;
+import io.vertx.core.http.HttpServerRequest;
+import io.vertx.core.http.HttpServerResponse;
+import io.vertx.core.http.HttpVersion;
+import io.vertx.core.http.ServerWebSocket;
+import io.vertx.core.http.StreamPriority;
 import io.vertx.core.net.NetSocket;
 import io.vertx.ext.web.RoutingContext;
 
@@ -74,39 +86,50 @@ public class SaTokenContextForQuarkus implements SaTokenContext {
     }
 
     private HttpServerRequest getHttpServerRequest() {
-        HttpServerRequest request = ResteasyContext.getContextData(HttpServerRequest.class);
-        if (Objects.isNull(request)) {
+
+        HttpServerRequest request = null;
+        try {
+            request = getRoutingContext().request();
+            String contextType = request.getHeader(HttpHeaders.CONTENT_TYPE);
+            //如果是APPLICATION_X_WWW_FORM_URLENCODED类型，将参数加入vertx-request
+            if (Objects.nonNull(contextType) && contextType.toLowerCase().indexOf(FORM) != -1) {
+                MultiMap params = request.params();
+                MultiMap forms = request.formAttributes();
+                Optional.ofNullable(CurrentRequestManager.get().getFormData()).ifPresent(formParameters -> {
+                    formParameters.forEach((k) -> {
+                        List<String> collect = formParameters.get(k).stream().map(vl -> vl.getValue())
+                                .collect(Collectors.toList());
+                        if (!forms.contains(k)) {
+                            forms.add(k, collect);
+                        }
+                        if (!params.contains(k)) {
+                            params.add(k, collect);
+                        }
+                    });
+                });
+            }
+        } catch (IllegalProductException e) {
             log.warn("request is null,will create mock response");
             request = requestTl.get();
             if (Objects.isNull(request)) {
                 request = new MockHttpServerRequest();
                 requestTl.set(request);
             }
-        } else {
-            HttpRequest resteasyRequest = ResteasyContext.getContextData(HttpRequest.class);
-            String contextType = request.getHeader(HttpHeaders.CONTENT_TYPE);
-            //如果是APPLICATION_X_WWW_FORM_URLENCODED类型，将参数加入vertx-request
-            if (Objects.nonNull(contextType) && contextType.toLowerCase().indexOf(FORM) != -1) {
-                MultivaluedMap<String, String> formParameters = resteasyRequest.getDecodedFormParameters();
-                MultiMap params = request.params();
-                MultiMap forms = request.formAttributes();
-                formParameters.forEach((k, vl) -> {
-                    if (!forms.contains(k)) {
-                        forms.add(k, vl);
-                    }
-                    if (!params.contains(k)) {
-                        params.add(k, vl);
-                    }
-
-                });
-            }
         }
+
         return request;
     }
 
+    private RoutingContext getRoutingContext() {
+        return CDI.current().select(RoutingContext.class).get();
+    }
+
     private HttpServerResponse getHttpServerResponse() {
-        HttpServerResponse response = ResteasyContext.getContextData(HttpServerResponse.class);
-        if (Objects.isNull(response)) {
+
+        HttpServerResponse response = null;
+        try {
+            response = getRoutingContext().response();
+        } catch (IllegalProductException e) {
             log.warn("response is null,will use mock request");
             response = responseTl.get();
             if (Objects.isNull(response)) {

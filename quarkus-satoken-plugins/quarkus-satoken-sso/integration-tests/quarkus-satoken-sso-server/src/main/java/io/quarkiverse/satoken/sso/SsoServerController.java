@@ -53,7 +53,7 @@ public class SsoServerController {
 
     /**
      * 自定义接口：获取userinfo, 供模式三使用
-     * 
+     *
      * @param loginId
      * @return
      */
