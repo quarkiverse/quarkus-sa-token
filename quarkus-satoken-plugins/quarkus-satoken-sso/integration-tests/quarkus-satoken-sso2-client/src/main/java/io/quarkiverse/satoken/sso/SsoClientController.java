@@ -2,6 +2,7 @@ package io.quarkiverse.satoken.sso;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 
 import cn.dev33.satoken.sso.SaSsoHandle;
@@ -38,7 +39,7 @@ public class SsoClientController {
         return SaSsoHandle.clientRequest();
     }
 
-    @GET
+    @POST
     @Path("sso/{var:.*}")
     public Object post() {
         return SaSsoHandle.clientRequest();

@@ -21,10 +21,10 @@ import io.quarkus.qute.Template;
 @ApplicationScoped
 public class SaOAuthClientController {
 
-    // 相关参数配置 
-    private String clientId = "1001"; // 应用id 
-    private String clientSecret = "aaaa-bbbb-cccc-dddd-eeee"; // 应用秘钥 
-    private String serverUrl = "http://sa-oauth-server.com:8001"; // 服务端接口 
+    // 相关参数配置
+    private String clientId = "1001"; // 应用id
+    private String clientSecret = "aaaa-bbbb-cccc-dddd-eeee"; // 应用秘钥
+    private String serverUrl = "http://sa-oauth-server.com:8001"; // 服务端接口
 
     @Inject
     Template index;
@@ -39,7 +39,7 @@ public class SaOAuthClientController {
     @GET
     @Path("codeLogin")
     public SaResult codeLogin(@QueryParam("code") String code) {
-        // 调用Server端接口，获取 Access-Token 以及其他信息 
+        // 调用Server端接口，获取 Access-Token 以及其他信息
         String str = OkHttps.sync(serverUrl + "/oauth2/token")
                 .addBodyPara("grant_type", "authorization_code")
                 .addBodyPara("code", code)
@@ -51,17 +51,17 @@ public class SaOAuthClientController {
         SoMap so = SoMap.getSoMap().setJsonString(str);
         System.out.println("返回结果: " + so);
 
-        // code不等于200  代表请求失败 
+        // code不等于200  代表请求失败
         if (so.getInt("code") != 200) {
             return SaResult.error(so.getString("msg"));
         }
 
-        // 根据openid获取其对应的userId  
+        // 根据openid获取其对应的userId
         SoMap data = so.getMap("data");
         long uid = getUserIdByOpenid(data.getString("openid"));
         data.set("uid", uid);
 
-        // 返回相关参数 
+        // 返回相关参数
         StpUtil.login(uid);
         return SaResult.data(data);
     }
@@ -70,7 +70,7 @@ public class SaOAuthClientController {
     @GET
     @Path("refresh")
     public SaResult refresh(@QueryParam("refreshToken") String refreshToken) {
-        // 调用Server端接口，通过 Refresh-Token 刷新出一个新的 Access-Token 
+        // 调用Server端接口，通过 Refresh-Token 刷新出一个新的 Access-Token
         String str = OkHttps.sync(serverUrl + "/oauth2/refresh")
                 .addBodyPara("grant_type", "refresh_token")
                 .addBodyPara("client_id", clientId)
@@ -82,7 +82,7 @@ public class SaOAuthClientController {
         SoMap so = SoMap.getSoMap().setJsonString(str);
         System.out.println("返回结果: " + so);
 
-        // code不等于200  代表请求失败 
+        // code不等于200  代表请求失败
         if (so.getInt("code") != 200) {
             return SaResult.error(so.getString("msg"));
         }
@@ -108,17 +108,17 @@ public class SaOAuthClientController {
         SoMap so = SoMap.getSoMap().setJsonString(str);
         System.out.println("返回结果: " + so);
 
-        // code不等于200  代表请求失败 
+        // code不等于200  代表请求失败
         if (so.getInt("code") != 200) {
             return SaResult.error(so.getString("msg"));
         }
 
-        // 根据openid获取其对应的userId  
+        // 根据openid获取其对应的userId
         SoMap data = so.getMap("data");
         long uid = getUserIdByOpenid(data.getString("openid"));
         data.set("uid", uid);
 
-        // 返回相关参数 
+        // 返回相关参数
         StpUtil.login(uid);
         return SaResult.data(data);
     }
@@ -138,12 +138,12 @@ public class SaOAuthClientController {
         SoMap so = SoMap.getSoMap().setJsonString(str);
         System.out.println("返回结果: " + so);
 
-        // code不等于200  代表请求失败 
+        // code不等于200  代表请求失败
         if (so.getInt("code") != 200) {
             return SaResult.error(so.getString("msg"));
         }
 
-        // 返回相关参数 (data=新的Client-Token ) 
+        // 返回相关参数 (data=新的Client-Token )
         SoMap data = so.getMap("data");
         return SaResult.data(data);
     }
@@ -160,7 +160,7 @@ public class SaOAuthClientController {
     @GET
     @Path("getUserinfo")
     public SaResult getUserinfo(@QueryParam("accessToken") String accessToken) {
-        // 调用Server端接口，查询开放的资源 
+        // 调用Server端接口，查询开放的资源
         String str = OkHttps.sync(serverUrl + "/oauth2/userinfo")
                 .addBodyPara("access_token", accessToken)
                 .post()
@@ -169,18 +169,18 @@ public class SaOAuthClientController {
         SoMap so = SoMap.getSoMap().setJsonString(str);
         System.out.println("返回结果: " + so);
 
-        // code不等于200  代表请求失败 
+        // code不等于200  代表请求失败
         if (so.getInt("code") != 200) {
             return SaResult.error(so.getString("msg"));
         }
 
-        // 返回相关参数 (data=获取到的资源 ) 
+        // 返回相关参数 (data=获取到的资源 )
         SoMap data = so.getMap("data");
         return SaResult.data(data);
     }
 
-    // ------------ 模拟方法 ------------------ 
-    // 模拟方法：根据openid获取userId 
+    // ------------ 模拟方法 ------------------
+    // 模拟方法：根据openid获取userId
     private long getUserIdByOpenid(String openid) {
         // 此方法仅做模拟，实际开发要根据具体业务逻辑来获取userId
         return 10001;
