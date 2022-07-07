@@ -4,7 +4,7 @@
     <parent>
         <groupId>io.quarkiverse.satoken</groupId>
         <artifactId>quarkus-satoken-context-dubbo-parent</artifactId>
-        <version>999-SNAPSHOT</version>
+        <version>1.30.0</version>
     </parent>
     <artifactId>quarkus-satoken-context-dubbo</artifactId>
     <name>Quarkus - Satoken Context Dubbo - Runtime</name>

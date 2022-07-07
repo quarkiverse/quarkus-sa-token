@@ -4,7 +4,7 @@
   <parent>
     <groupId>io.quarkiverse.satoken</groupId>
     <artifactId>quarkus-satoken-sso-parent</artifactId>
-    <version>999-SNAPSHOT</version>
+    <version>1.30.0</version>
   </parent>
   <artifactId>quarkus-satoken-sso</artifactId>
   <name>Quarkus - Satoken Sso - Runtime</name>
