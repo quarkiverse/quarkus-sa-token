@@ -4,7 +4,7 @@
     <parent>
         <artifactId>quarkus-satoken-plugins</artifactId>
         <groupId>io.quarkiverse.satoken</groupId>
-        <version>1.0.2-SNAPSHOT</version>
+        <version>999-SNAPSHOT</version>
     </parent>
     <artifactId>quarkus-satoken-context-dubbo-parent</artifactId>
     <packaging>pom</packaging>

@@ -4,7 +4,7 @@
     <parent>
         <groupId>io.quarkiverse.satoken</groupId>
         <artifactId>quarkus-satoken-dao-redis-jackson-parent</artifactId>
-        <version>1.0.2-SNAPSHOT</version>
+        <version>999-SNAPSHOT</version>
     </parent>
     <artifactId>quarkus-satoken-dao-redis-jackson-integration-tests</artifactId>
     <name>Quarkus - Satoken Dao Redis Jackson - Integration Tests</name>

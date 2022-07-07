@@ -4,7 +4,7 @@
     <parent>
         <groupId>io.quarkiverse.satoken</groupId>
         <artifactId>quarkus-satoken-oauth2-parent</artifactId>
-        <version>1.0.2-SNAPSHOT</version>
+        <version>999-SNAPSHOT</version>
     </parent>
     <artifactId>quarkus-satoken-oauth2</artifactId>
     <name>Quarkus - Satoken Oauth2 - Runtime</name>
