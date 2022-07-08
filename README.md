@@ -1,7 +1,7 @@
 # Quarkus - Satoken
 [![Build](https://github.com/quarkiverse/quarkus-sa-token/workflows/Build/badge.svg?branch=main)](https://github.com/quarkiverse/quarkus-sa-token/actions?query=workflow%3ABuild)
 [![License](https://img.shields.io/github/license/quarkiverse/quarkus-sa-token)](http://www.apache.org/licenses/LICENSE-2.0)
-[![Central](https://img.shields.io/maven-central/v/io.quarkiverse.satoken/quarkus-sa-token-parent?color=green)](https://search.maven.org/search?q=g:io.quarkiverse.satoken%20AND%20a:quarkus-satoken-parent)
+[![Central](https://img.shields.io/maven-central/v/io.quarkiverse.satoken/quarkus-satoken-parent?color=green)](https://search.maven.org/search?q=g:io.quarkiverse.satoken%20AND%20a:quarkus-satoken-parent)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
