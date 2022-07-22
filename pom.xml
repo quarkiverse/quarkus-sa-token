@@ -25,7 +25,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <quarkus.version>2.10.1.Final</quarkus.version>
         <sa-token.version>1.30.0</sa-token.version>
-        <redisson.version>3.17.4</redisson.version>
+        <redisson.version>3.17.5</redisson.version>
     </properties>
 
     <dependencyManagement>
