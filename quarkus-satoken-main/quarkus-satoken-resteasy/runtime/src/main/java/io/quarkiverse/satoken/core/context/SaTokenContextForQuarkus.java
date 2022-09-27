@@ -1,5 +1,6 @@
 package io.quarkiverse.satoken.core.context;
 
+import java.nio.charset.Charset;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
@@ -140,11 +141,12 @@ public class SaTokenContextForQuarkus implements SaTokenContext {
         return response;
     }
 
-    class MockHttpServerRequest implements HttpServerRequest {
+    static class MockHttpServerRequest implements HttpServerRequest {
 
         MultiMap headers = MultiMap.caseInsensitiveMultiMap();
         MultiMap params = MultiMap.caseInsensitiveMultiMap();
         MultiMap forms = MultiMap.caseInsensitiveMultiMap();
+        Charset paramsCharset;
 
         @Override
         public HttpServerRequest exceptionHandler(Handler<Throwable> handler) {
@@ -224,6 +226,21 @@ public class SaTokenContextForQuarkus implements SaTokenContext {
         @Override
         public MultiMap headers() {
             return headers;
+        }
+
+        @Override
+        public HttpServerRequest setParamsCharset(String charset) {
+            Charset current = this.paramsCharset;
+            this.paramsCharset = Charset.forName(charset);
+            if (!this.paramsCharset.equals(current)) {
+                this.params = null;
+            }
+            return this;
+        }
+
+        @Override
+        public String getParamsCharset() {
+            return null;
         }
 
         @Override
@@ -332,7 +349,7 @@ public class SaTokenContextForQuarkus implements SaTokenContext {
         }
     }
 
-    class MockHttpServerResponse implements HttpServerResponse {
+    static class MockHttpServerResponse implements HttpServerResponse {
 
         MultiMap headers = MultiMap.caseInsensitiveMultiMap();
         MultiMap trailers = MultiMap.caseInsensitiveMultiMap();
