@@ -17,6 +17,7 @@
 package io.quarkiverse.satoken.resteasy.it;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
@@ -31,7 +32,7 @@ public class SatokenResteasyResource {
     // 测试登录  ---- http://localhost:8081/acc/doLogin?name=zhang&pwd=123456
     @POST
     @Path("doLogin")
-    public SaResult doLogin(@QueryParam("name") String name, @QueryParam("pwd") String pwd) {
+    public SaResult doLogin(@FormParam("name") String name, @QueryParam("pwd") String pwd) {
         // 此处仅作模拟示例，真实项目需要从数据库中查询数据进行比对
         if ("zhang".equals(name) && "123456".equals(pwd)) {
             StpUtil.login(10001);
