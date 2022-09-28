@@ -9,7 +9,7 @@ import cn.dev33.satoken.session.SaSession;
 import cn.dev33.satoken.session.TokenSign;
 import io.quarkiverse.satoken.core.config.SaTokenConfigForQuarkus;
 import io.quarkiverse.satoken.core.filter.SaRouteFilter;
-import io.quarkiverse.satoken.core.interceptor.SaAnnotationInterceptor;
+import io.quarkiverse.satoken.core.interceptor.SaInterceptor;
 import io.quarkiverse.satoken.runtime.SaTokenProducer;
 import io.quarkiverse.satoken.runtime.SaTokenRecorder;
 import io.quarkus.arc.deployment.AdditionalBeanBuildItem;
@@ -68,11 +68,12 @@ class SatokenResteasyProcessor {
                             InterceptorBinding saCheckRole = InterceptorBinding.of(SaCheckRole.class);
                             InterceptorBinding saCheckPermission = InterceptorBinding.of(SaCheckPermission.class);
                             InterceptorBinding checkSafe = InterceptorBinding.of(SaCheckSafe.class);
+                            InterceptorBinding checkDisable = InterceptorBinding.of(SaCheckDisable.class);
                             InterceptorBinding checkBasic = InterceptorBinding.of(SaCheckBasic.class);
-                            return List.of(saCheckLogin, saCheckRole, saCheckPermission, checkSafe, checkBasic);
+                            return List.of(saCheckLogin, saCheckRole, saCheckPermission, checkSafe,checkDisable, checkBasic);
                         }
                     }));
-            additionalBeans.produce(AdditionalBeanBuildItem.unremovableOf(SaAnnotationInterceptor.class));
+            additionalBeans.produce(AdditionalBeanBuildItem.unremovableOf(SaInterceptor.class));
         }
     }
 
