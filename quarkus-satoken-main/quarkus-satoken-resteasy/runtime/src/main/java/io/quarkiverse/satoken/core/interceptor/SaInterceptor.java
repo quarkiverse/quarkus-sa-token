@@ -1,5 +1,12 @@
 package io.quarkiverse.satoken.core.interceptor;
 
+import java.lang.reflect.Method;
+import java.util.Objects;
+
+import javax.interceptor.AroundInvoke;
+import javax.interceptor.Interceptor;
+import javax.interceptor.InvocationContext;
+
 import cn.dev33.satoken.annotation.SaCheckBasic;
 import cn.dev33.satoken.annotation.SaCheckDisable;
 import cn.dev33.satoken.annotation.SaCheckLogin;
@@ -13,13 +20,6 @@ import cn.dev33.satoken.fun.SaParamFunction;
 import cn.dev33.satoken.strategy.SaStrategy;
 import cn.dev33.satoken.util.SaTokenConsts;
 import io.quarkus.arc.Priority;
-
-import javax.inject.Inject;
-import javax.interceptor.AroundInvoke;
-import javax.interceptor.Interceptor;
-import javax.interceptor.InvocationContext;
-import java.lang.reflect.Method;
-import java.util.Objects;
 
 /**
  * Sa-Token 综合拦截器，提供注解鉴权和路由拦截鉴权能力
@@ -37,29 +37,13 @@ import java.util.Objects;
 @Priority(SaTokenConsts.ASSEMBLY_ORDER)
 public class SaInterceptor {
 
-
-    /**
-     * 是否打开注解鉴权
-     */
-    public boolean isAnnotation = true;
-
     /**
      * 认证函数：每次请求执行
-     * <p> 参数：路由处理函数指针
+     * <p>
+     * 参数：路由处理函数指针
      */
-    @Inject
-    public SaParamFunction<Object> auth;
-
-    /**
-     * 设置是否打开注解鉴权
-     *
-     * @param isAnnotation /
-     * @return 对象自身
-     */
-    public SaInterceptor isAnnotation(boolean isAnnotation) {
-        this.isAnnotation = isAnnotation;
-        return this;
-    }
+    public SaParamFunction<Object> auth = handler -> {
+    };
 
     /**
      * 写入[认证函数]: 每次请求执行
@@ -72,21 +56,18 @@ public class SaInterceptor {
         return this;
     }
 
-
     @AroundInvoke
     public Object intercept(InvocationContext context) throws Exception {
 
         try {
             // 获取此请求对应的 Method 处理函数
             Method method = context.getMethod();
-            if (isAnnotation) {
-                // 如果此 Method 或其所属 Class 标注了 @SaIgnore，则忽略掉鉴权
-                if (SaStrategy.me.isAnnotationPresent.apply(method, SaIgnore.class)) {
-                    return context.proceed();
-                }
-                // 注解校验
-                SaStrategy.me.checkMethodAnnotation.accept(method);
+            // 如果此 Method 或其所属 Class 标注了 @SaIgnore，则忽略掉鉴权
+            if (SaStrategy.me.isAnnotationPresent.apply(method, SaIgnore.class)) {
+                return context.proceed();
             }
+            // 注解校验
+            SaStrategy.me.checkMethodAnnotation.accept(method);
             if (Objects.nonNull(auth)) {
                 // Auth 校验
                 auth.run(context);

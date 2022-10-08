@@ -70,7 +70,7 @@ class SatokenResteasyProcessor {
                             InterceptorBinding checkSafe = InterceptorBinding.of(SaCheckSafe.class);
                             InterceptorBinding checkDisable = InterceptorBinding.of(SaCheckDisable.class);
                             InterceptorBinding checkBasic = InterceptorBinding.of(SaCheckBasic.class);
-                            return List.of(saCheckLogin, saCheckRole, saCheckPermission, checkSafe,checkDisable, checkBasic);
+                            return List.of(saCheckLogin, saCheckRole, saCheckPermission, checkSafe, checkDisable, checkBasic);
                         }
                     }));
             additionalBeans.produce(AdditionalBeanBuildItem.unremovableOf(SaInterceptor.class));

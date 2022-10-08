@@ -49,8 +49,8 @@ public class SaTokenConfigAdapter extends SaTokenConfig {
     }
 
     @Override
-    public Boolean getIsReadHead() {
-        return config.isReadHead;
+    public Boolean getIsReadHeader() {
+        return config.isReadHeader;
     }
 
     @Override

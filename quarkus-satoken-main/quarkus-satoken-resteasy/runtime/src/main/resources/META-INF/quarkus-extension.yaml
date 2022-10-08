@@ -8,3 +8,5 @@ metadata:
   categories:
     - "miscellaneous"
   status: "preview"
+  config:
+  - "sa-token."

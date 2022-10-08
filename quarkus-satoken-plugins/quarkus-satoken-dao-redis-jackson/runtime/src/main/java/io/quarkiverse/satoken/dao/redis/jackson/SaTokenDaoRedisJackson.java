@@ -204,14 +204,11 @@ public class SaTokenDaoRedisJackson implements SaTokenDao {
         redissonClient.getBucket(key).expire(timeout, TimeUnit.SECONDS);
     }
 
-    /**
-     * 搜索数据
-     */
     @Override
-    public List<String> searchData(String prefix, String keyword, int start, int size) {
+    public List<String> searchData(String prefix, String keyword, int start, int size, boolean sortType) {
         List<String> keys = new ArrayList<>();
         redissonClient.getKeys().getKeysByPattern(prefix + "*" + keyword + "*").forEach(k -> keys.add(k));
-        return SaFoxUtil.searchList(keys, start, size);
+        return SaFoxUtil.searchList(keys, start, size, sortType);
     }
 
 }

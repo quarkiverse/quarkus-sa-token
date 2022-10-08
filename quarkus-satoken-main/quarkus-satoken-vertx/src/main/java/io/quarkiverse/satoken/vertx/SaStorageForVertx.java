@@ -23,8 +23,9 @@ public class SaStorageForVertx implements SaStorage {
     }
 
     @Override
-    public void set(String s, Object o) {
+    public SaStorage set(String s, Object o) {
         this.request.formAttributes().set(s, o.toString());
+        return this;
     }
 
     @Override
@@ -33,7 +34,8 @@ public class SaStorageForVertx implements SaStorage {
     }
 
     @Override
-    public void delete(String s) {
+    public SaStorage delete(String s) {
         this.request.formAttributes().remove(s);
+        return this;
     }
 }

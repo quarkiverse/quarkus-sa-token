@@ -61,7 +61,7 @@ public class SaTokenConfigForQuarkus implements Serializable {
      * 是否尝试从header里读取token
      */
     @ConfigItem(defaultValue = "true")
-    public Boolean isReadHead;
+    public Boolean isReadHeader;
 
     /**
      * 是否尝试从cookie里读取token
