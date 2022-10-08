@@ -9,7 +9,12 @@ import cn.dev33.satoken.session.SaSession;
 import cn.dev33.satoken.session.TokenSign;
 import io.quarkiverse.satoken.core.config.SaTokenConfigForQuarkus;
 import io.quarkiverse.satoken.core.filter.SaRouteFilter;
-import io.quarkiverse.satoken.core.interceptor.SaInterceptor;
+import io.quarkiverse.satoken.core.interceptor.SaCheckBasicInterceptor;
+import io.quarkiverse.satoken.core.interceptor.SaCheckDisableInterceptor;
+import io.quarkiverse.satoken.core.interceptor.SaCheckLoginInterceptor;
+import io.quarkiverse.satoken.core.interceptor.SaCheckPermissionInterceptor;
+import io.quarkiverse.satoken.core.interceptor.SaCheckRoleInterceptor;
+import io.quarkiverse.satoken.core.interceptor.SaCheckSafeInterceptor;
 import io.quarkiverse.satoken.runtime.SaTokenProducer;
 import io.quarkiverse.satoken.runtime.SaTokenRecorder;
 import io.quarkus.arc.deployment.AdditionalBeanBuildItem;
@@ -73,7 +78,12 @@ class SatokenResteasyProcessor {
                             return List.of(saCheckLogin, saCheckRole, saCheckPermission, checkSafe, checkDisable, checkBasic);
                         }
                     }));
-            additionalBeans.produce(AdditionalBeanBuildItem.unremovableOf(SaInterceptor.class));
+            additionalBeans.produce(AdditionalBeanBuildItem.unremovableOf(SaCheckLoginInterceptor.class));
+            additionalBeans.produce(AdditionalBeanBuildItem.unremovableOf(SaCheckRoleInterceptor.class));
+            additionalBeans.produce(AdditionalBeanBuildItem.unremovableOf(SaCheckPermissionInterceptor.class));
+            additionalBeans.produce(AdditionalBeanBuildItem.unremovableOf(SaCheckSafeInterceptor.class));
+            additionalBeans.produce(AdditionalBeanBuildItem.unremovableOf(SaCheckDisableInterceptor.class));
+            additionalBeans.produce(AdditionalBeanBuildItem.unremovableOf(SaCheckBasicInterceptor.class));
         }
     }
 

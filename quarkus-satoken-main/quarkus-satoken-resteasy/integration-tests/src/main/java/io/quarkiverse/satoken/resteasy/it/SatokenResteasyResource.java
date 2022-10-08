@@ -21,6 +21,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 
+import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.util.SaResult;
 
@@ -49,6 +50,7 @@ public class SatokenResteasyResource {
 
     // 查询 Token 信息  ---- http://localhost:8081/acc/tokenInfo
     @POST
+    @SaCheckLogin
     @Path("tokenInfo")
     public SaResult tokenInfo() {
         return SaResult.data(StpUtil.getTokenInfo());
