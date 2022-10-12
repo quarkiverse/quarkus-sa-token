@@ -24,6 +24,8 @@ import cn.dev33.satoken.stp.StpInterface;
 import cn.dev33.satoken.stp.StpLogic;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.temp.SaTempInterface;
+import io.quarkiverse.satoken.core.context.SaPathMatcherHolder;
+import io.quarkiverse.satoken.core.utils.AntPathMatcher;
 import io.quarkus.arc.Arc;
 import io.quarkus.runtime.annotations.Recorder;
 
@@ -50,6 +52,7 @@ public class SaTokenRecorder {
         setSaJsonTemplate();
         setStpLogic();
         setSaSignTemplate();
+        setPathMatcher();
     }
 
     /**
@@ -159,6 +162,14 @@ public class SaTokenRecorder {
      */
     public void setStpLogic() {
         injectBean(StpLogic.class, StpUtil::setStpLogic);
+    }
+
+    /**
+     * 路由匹配器
+     *
+     */
+    public void setPathMatcher(){
+        SaPathMatcherHolder.setPathMatcher(new AntPathMatcher());
     }
 
     public <T> void injectBean(Class<T> clazz, Consumer<T> consumer) {
