@@ -4,10 +4,19 @@ import java.util.List;
 import java.util.Vector;
 import java.util.concurrent.ConcurrentHashMap;
 
-import cn.dev33.satoken.annotation.*;
+import javax.ws.rs.Priorities;
+
+import cn.dev33.satoken.annotation.SaCheckBasic;
+import cn.dev33.satoken.annotation.SaCheckDisable;
+import cn.dev33.satoken.annotation.SaCheckLogin;
+import cn.dev33.satoken.annotation.SaCheckPermission;
+import cn.dev33.satoken.annotation.SaCheckRole;
+import cn.dev33.satoken.annotation.SaCheckSafe;
+import cn.dev33.satoken.exception.SaTokenException;
 import cn.dev33.satoken.session.SaSession;
 import cn.dev33.satoken.session.TokenSign;
 import io.quarkiverse.satoken.core.config.SaTokenConfigForQuarkus;
+import io.quarkiverse.satoken.core.exception.SaTokenExceptionMapper;
 import io.quarkiverse.satoken.core.filter.SaRouteFilter;
 import io.quarkiverse.satoken.core.interceptor.SaCheckBasicInterceptor;
 import io.quarkiverse.satoken.core.interceptor.SaCheckDisableInterceptor;
@@ -27,6 +36,7 @@ import io.quarkus.deployment.annotations.Record;
 import io.quarkus.deployment.builditem.FeatureBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.ReflectiveClassBuildItem;
 import io.quarkus.resteasy.reactive.spi.CustomContainerRequestFilterBuildItem;
+import io.quarkus.resteasy.reactive.spi.ExceptionMapperBuildItem;
 
 class SatokenResteasyProcessor {
 
@@ -84,6 +94,18 @@ class SatokenResteasyProcessor {
             additionalBeans.produce(AdditionalBeanBuildItem.unremovableOf(SaCheckSafeInterceptor.class));
             additionalBeans.produce(AdditionalBeanBuildItem.unremovableOf(SaCheckDisableInterceptor.class));
             additionalBeans.produce(AdditionalBeanBuildItem.unremovableOf(SaCheckBasicInterceptor.class));
+        }
+    }
+
+    @BuildStep
+    void registerHttpExceptionMapper(final SaTokenConfigForQuarkus satokenConfig,
+            BuildProducer<ExceptionMapperBuildItem> providers) {
+        if (satokenConfig.exceptionMapperEnabled) {
+            providers.produce(new ExceptionMapperBuildItem(
+                    SaTokenExceptionMapper.class.getName(),
+                    SaTokenException.class.getName(),
+                    Priorities.AUTHENTICATION,
+                    false));
         }
     }
 
