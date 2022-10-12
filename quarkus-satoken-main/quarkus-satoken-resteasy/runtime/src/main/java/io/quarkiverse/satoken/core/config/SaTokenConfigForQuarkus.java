@@ -52,6 +52,12 @@ public class SaTokenConfigForQuarkus implements Serializable {
     public Boolean isShare;
 
     /**
+     * 同一账号最大登录数量，-1代表不限 （只有在 isConcurrent=true, isShare=false 时此配置才有效）
+     */
+    @ConfigItem(defaultValue = "12")
+    public int maxLoginCount;
+
+    /**
      * 是否尝试从请求体里读取token
      */
     @ConfigItem(defaultValue = "true")
@@ -152,5 +158,11 @@ public class SaTokenConfigForQuarkus implements Serializable {
      */
     @ConfigItem(defaultValue = "false")
     public Boolean annotationInterceptedEnabled;
+
+    /**
+     * 开启异常拦截
+     */
+    @ConfigItem(defaultValue = "false")
+    public Boolean exceptionMapperEnabled;
 
 }
