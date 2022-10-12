@@ -5,6 +5,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import javax.enterprise.util.Nonbinding;
 import javax.interceptor.InterceptorBinding;
 
 /**
@@ -25,6 +26,7 @@ public @interface SaCheckPermission {
      *
      * @return 需要校验的权限码
      */
+    @Nonbinding
     String[] value() default {};
 
     /**
@@ -32,6 +34,7 @@ public @interface SaCheckPermission {
      *
      * @return 验证模式
      */
+    @Nonbinding
     SaMode mode() default SaMode.AND;
 
     /**
@@ -39,6 +42,7 @@ public @interface SaCheckPermission {
      *
      * @return see note
      */
+    @Nonbinding
     String type() default "";
 
     /**
@@ -56,6 +60,7 @@ public @interface SaCheckPermission {
      *
      * @return /
      */
+    @Nonbinding
     String[] orRole() default {};
 
 }

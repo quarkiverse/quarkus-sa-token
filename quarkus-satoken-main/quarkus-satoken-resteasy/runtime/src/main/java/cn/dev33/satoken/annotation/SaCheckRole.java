@@ -5,6 +5,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import javax.enterprise.util.Nonbinding;
 import javax.interceptor.InterceptorBinding;
 
 /**
@@ -25,6 +26,7 @@ public @interface SaCheckRole {
      *
      * @return 需要校验的角色标识
      */
+    @Nonbinding
     String[] value() default {};
 
     /**
@@ -32,6 +34,7 @@ public @interface SaCheckRole {
      *
      * @return 验证模式
      */
+    @Nonbinding
     SaMode mode() default SaMode.AND;
 
     /**
@@ -41,6 +44,7 @@ public @interface SaCheckRole {
      *
      * @return see note
      */
+    @Nonbinding
     String type() default "";
 
 }

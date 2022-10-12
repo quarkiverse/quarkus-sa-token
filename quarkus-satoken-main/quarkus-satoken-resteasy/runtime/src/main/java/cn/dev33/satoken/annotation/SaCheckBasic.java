@@ -5,6 +5,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import javax.enterprise.util.Nonbinding;
 import javax.interceptor.InterceptorBinding;
 
 import cn.dev33.satoken.basic.SaBasicTemplate;
@@ -28,6 +29,7 @@ public @interface SaCheckBasic {
      *
      * @return see note
      */
+    @Nonbinding
     String realm() default SaBasicTemplate.DEFAULT_REALM;
 
     /**
@@ -35,6 +37,7 @@ public @interface SaCheckBasic {
      *
      * @return see note
      */
+    @Nonbinding
     String account() default "";
 
 }

@@ -5,6 +5,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import javax.enterprise.util.Nonbinding;
 import javax.interceptor.InterceptorBinding;
 
 import cn.dev33.satoken.util.SaTokenConsts;
@@ -27,6 +28,7 @@ public @interface SaCheckDisable {
      *
      * @return see note
      */
+    @Nonbinding
     String type() default "";
 
     /**
@@ -34,6 +36,7 @@ public @interface SaCheckDisable {
      *
      * @return see note
      */
+    @Nonbinding
     String[] value() default { SaTokenConsts.DEFAULT_DISABLE_SERVICE };
 
     /**
@@ -41,6 +44,7 @@ public @interface SaCheckDisable {
      *
      * @return /
      */
+    @Nonbinding
     int level() default SaTokenConsts.DEFAULT_DISABLE_LEVEL;
 
 }
