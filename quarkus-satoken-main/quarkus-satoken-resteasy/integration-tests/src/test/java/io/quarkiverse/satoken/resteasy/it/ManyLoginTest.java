@@ -31,11 +31,10 @@ public class ManyLoginTest {
     public static void beforeClass() {
         System.out.println("\n------------ 多端登录测试 star ...");
     }
-
     // 结束
     @AfterAll
     public static void afterClass() {
-        //    	System.out.println("\n---------- 多端登录测试 end ... \n");
+//    	System.out.println("\n---------- 多端登录测试 end ... \n");
     }
 
     // 测试：并发登录、共享token、同端

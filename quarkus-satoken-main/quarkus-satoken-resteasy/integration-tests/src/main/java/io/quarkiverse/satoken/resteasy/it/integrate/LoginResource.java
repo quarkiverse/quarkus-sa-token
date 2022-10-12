@@ -14,9 +14,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.quarkiverse.satoken.resteasy.it;
+package io.quarkiverse.satoken.resteasy.it.integrate;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
@@ -27,7 +28,7 @@ import cn.dev33.satoken.util.SaResult;
 
 @Path("/acc/")
 @ApplicationScoped
-public class SatokenResteasyResource {
+public class LoginResource {
 
     // 测试登录  ---- http://localhost:8081/acc/doLogin?name=zhang&pwd=123456
     @POST
