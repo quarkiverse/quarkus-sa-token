@@ -4,7 +4,6 @@ import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
 
-import cn.dev33.satoken.annotation.SaCheckLogin;
 import cn.dev33.satoken.annotation.SaCheckSafe;
 import cn.dev33.satoken.util.SaTokenConsts;
 import io.quarkus.arc.Priority;
@@ -18,7 +17,7 @@ import io.quarkus.arc.Priority;
 @SaCheckSafe
 @Interceptor
 @Priority(SaTokenConsts.ASSEMBLY_ORDER)
-public class SaCheckSafeInterceptor extends AbstractSaInterceptor<SaCheckLogin> {
+public class SaCheckSafeInterceptor extends AbstractSaInterceptor<SaCheckSafe> {
 
     @AroundInvoke
     public Object intercept(InvocationContext context) throws Exception {
