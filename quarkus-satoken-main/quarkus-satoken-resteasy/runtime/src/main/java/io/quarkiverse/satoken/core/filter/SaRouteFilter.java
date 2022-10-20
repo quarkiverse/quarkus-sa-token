@@ -1,12 +1,7 @@
 package io.quarkiverse.satoken.core.filter;
 
-import cn.dev33.satoken.exception.BackResultException;
-import cn.dev33.satoken.exception.StopMatchException;
-import cn.dev33.satoken.router.SaRouter;
-import io.quarkiverse.satoken.core.config.SaRouteConfigForQuarkus;
-import io.quarkiverse.satoken.core.config.SaTokenConfigForQuarkus;
-import io.quarkus.arc.All;
-import org.jboss.resteasy.reactive.server.ServerRequestFilter;
+import java.io.IOException;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.ws.rs.Priorities;
@@ -16,8 +11,15 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.io.IOException;
-import java.util.List;
+
+import org.jboss.resteasy.reactive.server.ServerRequestFilter;
+
+import cn.dev33.satoken.exception.BackResultException;
+import cn.dev33.satoken.exception.StopMatchException;
+import cn.dev33.satoken.router.SaRouter;
+import io.quarkiverse.satoken.core.config.SaRouteConfigForQuarkus;
+import io.quarkiverse.satoken.core.config.SaTokenConfigForQuarkus;
+import io.quarkus.arc.All;
 
 /**
  * SaRouteFilter
@@ -41,7 +43,6 @@ public class SaRouteFilter {
 
     @Inject
     SaTokenConfigForQuarkus config;
-
 
     @ServerRequestFilter(priority = Priorities.AUTHENTICATION)
     public Response pre(ContainerRequestContext requestContext) throws IOException {

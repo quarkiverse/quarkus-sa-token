@@ -1,5 +1,9 @@
 package io.quarkiverse.satoken.core.context;
 
+import java.util.Objects;
+
+import org.jboss.resteasy.reactive.server.core.CurrentRequestManager;
+
 import cn.dev33.satoken.context.SaTokenContext;
 import cn.dev33.satoken.context.model.SaRequest;
 import cn.dev33.satoken.context.model.SaResponse;
@@ -7,9 +11,6 @@ import cn.dev33.satoken.context.model.SaStorage;
 import io.quarkiverse.satoken.resteasy.SaRequestForResteasy;
 import io.quarkiverse.satoken.resteasy.SaResponseForResteasy;
 import io.quarkiverse.satoken.resteasy.SaStorageForResteasy;
-import org.jboss.resteasy.reactive.server.core.CurrentRequestManager;
-
-import java.util.Objects;
 
 /**
  * SaTokenContextForQuarkus
@@ -18,9 +19,6 @@ import java.util.Objects;
  * @date 2022/4/6 3:10 PM
  */
 public class SaTokenContextForQuarkus implements SaTokenContext {
-
-
-
 
     @Override
     public SaRequest getRequest() {
@@ -44,7 +42,7 @@ public class SaTokenContextForQuarkus implements SaTokenContext {
 
     @Override
     public boolean isValid() {
-//        无论web还是mock都有效
+        //        无论web还是mock都有效
         return true;
     }
 

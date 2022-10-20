@@ -1,12 +1,5 @@
 package io.quarkiverse.satoken.resteasy;
 
-import io.vertx.core.MultiMap;
-import io.vertx.core.http.HttpMethod;
-import org.jboss.resteasy.reactive.server.core.ResteasyReactiveRequestContext;
-import org.jboss.resteasy.reactive.server.core.multipart.FormData;
-import org.jboss.resteasy.reactive.server.spi.ServerHttpRequest;
-import org.jboss.resteasy.reactive.server.spi.ServerHttpResponse;
-
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.ByteBuffer;
@@ -17,6 +10,14 @@ import java.util.Objects;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.Executor;
 import java.util.function.Consumer;
+
+import org.jboss.resteasy.reactive.server.core.ResteasyReactiveRequestContext;
+import org.jboss.resteasy.reactive.server.core.multipart.FormData;
+import org.jboss.resteasy.reactive.server.spi.ServerHttpRequest;
+import org.jboss.resteasy.reactive.server.spi.ServerHttpResponse;
+
+import io.vertx.core.MultiMap;
+import io.vertx.core.http.HttpMethod;
 
 public class MockResteasyReactiveRequestContext extends ResteasyReactiveRequestContext {
 
@@ -31,11 +32,11 @@ public class MockResteasyReactiveRequestContext extends ResteasyReactiveRequestC
         return mockResteasyReactiveRequestContext;
     }
 
-    public static boolean exists(){
+    public static boolean exists() {
         return Objects.nonNull(requestTl.get());
     }
 
-    public static void remove(){
+    public static void remove() {
         requestTl.remove();
     }
 
@@ -88,7 +89,6 @@ public class MockResteasyReactiveRequestContext extends ResteasyReactiveRequestC
     public ServerHttpRequest serverRequest() {
         return request;
     }
-
 
     @Override
     public ServerHttpResponse serverResponse() {

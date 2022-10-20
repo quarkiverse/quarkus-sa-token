@@ -3,21 +3,6 @@ package io.quarkiverse.satoken.resteasy.it;
 import java.util.List;
 import java.util.Map;
 
-import cn.dev33.satoken.context.SaHolder;
-import cn.dev33.satoken.context.SaTokenContext;
-import cn.dev33.satoken.exception.NotPermissionException;
-import cn.dev33.satoken.exception.NotRoleException;
-import cn.dev33.satoken.exception.NotSafeException;
-import cn.dev33.satoken.exception.SaJsonConvertException;
-import cn.dev33.satoken.json.SaJsonTemplate;
-import cn.dev33.satoken.stp.SaLoginConfig;
-import cn.dev33.satoken.stp.SaLoginModel;
-import cn.dev33.satoken.stp.StpLogic;
-import io.quarkiverse.satoken.core.context.SaPathMatcherHolder;
-import io.quarkiverse.satoken.core.context.SaTokenContextForQuarkus;
-import io.quarkiverse.satoken.core.utils.AntPathMatcher;
-import io.quarkiverse.satoken.resteasy.MockResteasyReactiveRequestContext;
-import io.quarkiverse.satoken.resteasy.it.utils.SoMap;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -25,14 +10,27 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import cn.dev33.satoken.SaManager;
+import cn.dev33.satoken.context.SaHolder;
+import cn.dev33.satoken.context.SaTokenContext;
 import cn.dev33.satoken.dao.SaTokenDao;
 import cn.dev33.satoken.exception.DisableServiceException;
 import cn.dev33.satoken.exception.NotLoginException;
+import cn.dev33.satoken.exception.NotPermissionException;
+import cn.dev33.satoken.exception.NotRoleException;
+import cn.dev33.satoken.exception.NotSafeException;
+import cn.dev33.satoken.exception.SaJsonConvertException;
+import cn.dev33.satoken.json.SaJsonTemplate;
 import cn.dev33.satoken.session.SaSession;
-import cn.dev33.satoken.session.SaSessionCustomUtil;
+import cn.dev33.satoken.stp.SaLoginConfig;
+import cn.dev33.satoken.stp.SaLoginModel;
+import cn.dev33.satoken.stp.StpLogic;
 import cn.dev33.satoken.stp.StpUtil;
-import cn.dev33.satoken.temp.SaTempUtil;
 import cn.dev33.satoken.util.SaTokenConsts;
+import io.quarkiverse.satoken.core.context.SaPathMatcherHolder;
+import io.quarkiverse.satoken.core.context.SaTokenContextForQuarkus;
+import io.quarkiverse.satoken.core.utils.AntPathMatcher;
+import io.quarkiverse.satoken.resteasy.MockResteasyReactiveRequestContext;
+import io.quarkiverse.satoken.resteasy.it.utils.SoMap;
 import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest
@@ -55,7 +53,7 @@ public class BasicTest {
     }
 
     @AfterEach
-    public void clear(){
+    public void clear() {
         MockResteasyReactiveRequestContext.remove();
     }
 
@@ -96,13 +94,13 @@ public class BasicTest {
         // API 验证
         Assertions.assertTrue(StpUtil.isLogin());
         Assertions.assertDoesNotThrow(() -> StpUtil.checkLogin());
-        Assertions.assertNotNull(token);	// token不为null
-        Assertions.assertEquals(StpUtil.getLoginIdAsLong(), 10001);	// loginId=10001
-        Assertions.assertEquals(StpUtil.getLoginIdAsInt(), 10001);	// loginId=10001
-        Assertions.assertEquals(StpUtil.getLoginIdAsString(), "10001");	// loginId=10001
-        Assertions.assertEquals(StpUtil.getLoginId(), "10001");	// loginId=10001
-        Assertions.assertEquals(StpUtil.getLoginIdDefaultNull(), "10001");	// loginId=10001
-        Assertions.assertEquals(StpUtil.getLoginDevice(), SaTokenConsts.DEFAULT_LOGIN_DEVICE);	// 登录设备类型
+        Assertions.assertNotNull(token); // token不为null
+        Assertions.assertEquals(StpUtil.getLoginIdAsLong(), 10001); // loginId=10001
+        Assertions.assertEquals(StpUtil.getLoginIdAsInt(), 10001); // loginId=10001
+        Assertions.assertEquals(StpUtil.getLoginIdAsString(), "10001"); // loginId=10001
+        Assertions.assertEquals(StpUtil.getLoginId(), "10001"); // loginId=10001
+        Assertions.assertEquals(StpUtil.getLoginIdDefaultNull(), "10001"); // loginId=10001
+        Assertions.assertEquals(StpUtil.getLoginDevice(), SaTokenConsts.DEFAULT_LOGIN_DEVICE); // 登录设备类型
 
         // db数据 验证
         // token存在
@@ -158,10 +156,10 @@ public class BasicTest {
         session.set("age", "18");
         Assertions.assertEquals(session.get("name"), "zhang");
         Assertions.assertEquals(session.getInt("age"), 18);
-        Assertions.assertEquals((int)session.getModel("age", int.class), 18);
-        Assertions.assertEquals((int)session.get("age", 20), 18);
-        Assertions.assertEquals((int)session.get("name2", 20), 20);
-        Assertions.assertEquals((int)session.get("name2", () -> 30), 30);
+        Assertions.assertEquals((int) session.getModel("age", int.class), 18);
+        Assertions.assertEquals((int) session.get("age", 20), 18);
+        Assertions.assertEquals((int) session.get("name2", 20), 20);
+        Assertions.assertEquals((int) session.get("name2", () -> 30), 30);
         session.clear();
         Assertions.assertEquals(session.get("name"), null);
     }
@@ -349,7 +347,8 @@ public class BasicTest {
         // 封号
         StpUtil.disable(10007, 200);
         Assertions.assertTrue(StpUtil.isDisable(10007));
-        Assertions.assertEquals(dao.get("satoken:login:disable:login:" + 10007), String.valueOf(SaTokenConsts.DEFAULT_DISABLE_LEVEL));
+        Assertions.assertEquals(dao.get("satoken:login:disable:login:" + 10007),
+                String.valueOf(SaTokenConsts.DEFAULT_DISABLE_LEVEL));
 
         // 封号后检测一下 (会抛出 DisableLoginException 异常)
         Assertions.assertThrows(DisableServiceException.class, () -> StpUtil.checkDisable(10007));
@@ -371,7 +370,8 @@ public class BasicTest {
         // 封掉评论功能
         StpUtil.disable(10008, "comment", 200);
         Assertions.assertTrue(StpUtil.isDisable(10008, "comment"));
-        Assertions.assertEquals(dao.get("satoken:login:disable:comment:" + 10008), String.valueOf(SaTokenConsts.DEFAULT_DISABLE_LEVEL));
+        Assertions.assertEquals(dao.get("satoken:login:disable:comment:" + 10008),
+                String.valueOf(SaTokenConsts.DEFAULT_DISABLE_LEVEL));
         Assertions.assertNull(dao.get("satoken:login:disable:login:" + 10008));
 
         // 封号后检测一下
@@ -550,11 +550,11 @@ public class BasicTest {
         StpUtil.checkSafe();
 
         // 自然结束
-//    	Thread.sleep(2500);
-//    	Assertions.assertFalse(StpUtil.isSafe());
+        //    	Thread.sleep(2500);
+        //    	Assertions.assertFalse(StpUtil.isSafe());
 
         // 手动结束
-//    	StpUtil.openSafe(2);
+        //    	StpUtil.openSafe(2);
         StpUtil.closeSafe();
         Assertions.assertFalse(StpUtil.isSafe());
 
@@ -616,7 +616,6 @@ public class BasicTest {
         StpUtil.getTokenSession();
         timeout = StpUtil.getTokenSessionTimeout();
         Assertions.assertTrue(timeout >= 299);
-
 
         // 注销后，就是-2
         StpUtil.logout();
@@ -694,7 +693,7 @@ public class BasicTest {
         // 默认跟随全局 timeout
         StpUtil.updateLastActivityToNow();
         long activityTimeout = StpUtil.getTokenActivityTimeout();
-        Assertions.assertTrue(activityTimeout <=180 || activityTimeout >=179);
+        Assertions.assertTrue(activityTimeout <= 180 || activityTimeout >= 179);
 
         // 不会抛出异常
         Assertions.assertDoesNotThrow(() -> StpUtil.checkActivityTimeout());
@@ -709,9 +708,9 @@ public class BasicTest {
         // context 是否有效
         Assertions.assertTrue(context.isValid());
         // 是否为web环境
-        Assertions.assertFalse(((SaTokenContextForQuarkus)context).isWeb());
-//        // pathMatcher
-//        // Assertions.assertEquals(pathMatcher, SaPathMatcherHolder.getPathMatcher());
+        Assertions.assertFalse(((SaTokenContextForQuarkus) context).isWeb());
+        //        // pathMatcher
+        //        // Assertions.assertEquals(pathMatcher, SaPathMatcherHolder.getPathMatcher());
         // 自创建
         SaPathMatcherHolder.pathMatcher = null;
         Assertions.assertNotNull(SaPathMatcherHolder.getPathMatcher());

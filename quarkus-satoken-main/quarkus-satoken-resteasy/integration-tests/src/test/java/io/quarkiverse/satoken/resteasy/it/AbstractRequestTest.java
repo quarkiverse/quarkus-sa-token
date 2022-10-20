@@ -1,16 +1,18 @@
 package io.quarkiverse.satoken.resteasy.it;
 
+import static io.restassured.RestAssured.given;
+
+import java.util.Map;
+
+import javax.ws.rs.core.MediaType;
+
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
+
 import cn.dev33.satoken.SaManager;
 import cn.dev33.satoken.util.SaResult;
 import io.quarkiverse.satoken.resteasy.it.utils.SoMap;
 import io.restassured.response.ValidatableResponse;
-import org.hamcrest.Description;
-import org.hamcrest.Matcher;
-
-import javax.ws.rs.core.MediaType;
-import java.util.Map;
-
-import static io.restassured.RestAssured.given;
 
 /**
  * AbstractRequestTest
@@ -29,7 +31,8 @@ public class AbstractRequestTest {
                 .body(matcher);
 
     }
-    protected ValidatableResponse request(String path,Map<String,String> headers, SaResultMatcher matcher) {
+
+    protected ValidatableResponse request(String path, Map<String, String> headers, SaResultMatcher matcher) {
         return given()
                 .when()
                 .headers(headers)
@@ -39,7 +42,9 @@ public class AbstractRequestTest {
                 .body(matcher);
 
     }
-    protected ValidatableResponse request(String path,Map<String,String> headers,Map<String,String> cookies, SaResultMatcher matcher) {
+
+    protected ValidatableResponse request(String path, Map<String, String> headers, Map<String, String> cookies,
+            SaResultMatcher matcher) {
         return given()
                 .when()
                 .headers(headers)
@@ -50,7 +55,6 @@ public class AbstractRequestTest {
                 .body(matcher);
 
     }
-
 
     public interface SaMapMatcher extends Matcher {
 

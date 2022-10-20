@@ -1,5 +1,13 @@
 package io.quarkiverse.satoken.resteasy.it.configuration;
 
+import java.util.Arrays;
+
+import javax.enterprise.context.Dependent;
+import javax.enterprise.inject.Produces;
+
+import org.jboss.resteasy.reactive.server.core.CurrentRequestManager;
+import org.jboss.resteasy.reactive.server.core.ResteasyReactiveRequestContext;
+
 import cn.dev33.satoken.context.SaHolder;
 import cn.dev33.satoken.router.SaHttpMethod;
 import cn.dev33.satoken.router.SaRouter;
@@ -9,14 +17,6 @@ import io.quarkiverse.satoken.core.filter.SaRouteInterceptor;
 import io.quarkus.arc.Priority;
 import io.quarkus.arc.Unremovable;
 import io.quarkus.arc.profile.IfBuildProfile;
-import io.vertx.ext.web.RoutingContext;
-import org.jboss.resteasy.reactive.server.core.CurrentRequestManager;
-import org.jboss.resteasy.reactive.server.core.ResteasyReactiveRequestContext;
-
-import javax.enterprise.context.Dependent;
-import javax.enterprise.inject.Produces;
-import javax.enterprise.inject.spi.CDI;
-import java.util.Arrays;
 
 /**
  * RouterFilterConfiguration
@@ -74,14 +74,13 @@ public class RouterFilterConfiguration {
             SaRouter.notMatch(Arrays.asList("/rt/getInfo12", "/rt/getInfo14")).match("/rt/getInfo13").back(SaResult.code(213));
             SaRouter.notMatchMethod("GET", "PUT").match("/rt/getInfo14").back(SaResult.code(214));
 
-//        	SaRouter.match(Arrays.asList("/rt/getInfo15", "/rt/getInfo16"))
+            //        	SaRouter.match(Arrays.asList("/rt/getInfo15", "/rt/getInfo16"))
             ResteasyReactiveRequestContext resteasyReactiveRequestContext = CurrentRequestManager.get();
             if (SaRouter.isMatchCurrURI("/rt/getInfo15")) {
                 if (SaHolder.getRequest().getCookieValue("ddd") == null
-                        && SaHolder.getStorage().getSource() ==resteasyReactiveRequestContext
+                        && SaHolder.getStorage().getSource() == resteasyReactiveRequestContext
                         && SaHolder.getRequest().getSource() == resteasyReactiveRequestContext
-                        && SaHolder.getResponse().getSource() == resteasyReactiveRequestContext.serverResponse()
-                ) {
+                        && SaHolder.getResponse().getSource() == resteasyReactiveRequestContext.serverResponse()) {
                     SaRouter.newMatch().free(r -> SaRouter.back(SaResult.code(215)));
                 }
             }

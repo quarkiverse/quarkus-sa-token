@@ -66,7 +66,7 @@ public class StpInterfaceConfiguration {
             @Override
             public List<String> getPermissionList(Object loginId, String loginType) {
                 int id = SaFoxUtil.getValueByType(loginId, int.class);
-                if(id == 10001) {
+                if (id == 10001) {
                     return Arrays.asList("user*", "art-add", "art-delete", "art-update", "art-get");
                 } else {
                     return null;
@@ -79,7 +79,7 @@ public class StpInterfaceConfiguration {
             @Override
             public List<String> getRoleList(Object loginId, String loginType) {
                 int id = SaFoxUtil.getValueByType(loginId, int.class);
-                if(id == 10001) {
+                if (id == 10001) {
                     return Arrays.asList("admin", "super-admin");
                 } else {
                     return null;

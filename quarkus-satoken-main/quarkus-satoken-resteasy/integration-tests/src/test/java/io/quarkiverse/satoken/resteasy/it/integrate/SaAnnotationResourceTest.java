@@ -1,11 +1,12 @@
 package io.quarkiverse.satoken.resteasy.it.integrate;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
 import io.quarkiverse.satoken.resteasy.it.AbstractRequestTest;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.QuarkusTestProfile;
 import io.quarkus.test.junit.TestProfile;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 
 /**
  * SaAnnotationResteasyResourceTest
@@ -104,8 +105,6 @@ public class SaAnnotationResourceTest extends AbstractRequestTest {
         // 不登录也可以访问的
         request("/ig/show2", res2 -> Assertions.assertEquals(res2.getCode(), 200));
     }
-
-
 
     public static class AnnotationTestProfile implements QuarkusTestProfile {
         public AnnotationTestProfile() {

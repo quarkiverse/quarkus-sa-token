@@ -1,5 +1,11 @@
 package io.quarkiverse.satoken.resteasy.it.integrate;
 
+import java.util.Arrays;
+import java.util.Map;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
 import cn.dev33.satoken.SaManager;
 import cn.dev33.satoken.router.SaRouter;
 import cn.dev33.satoken.router.SaRouterStaff;
@@ -7,11 +13,6 @@ import io.quarkiverse.satoken.resteasy.it.AbstractRequestTest;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.QuarkusTestProfile;
 import io.quarkus.test.junit.TestProfile;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
-import java.util.Map;
 
 /**
  * RouteResourceTest
@@ -22,7 +23,6 @@ import java.util.Map;
 @QuarkusTest
 @TestProfile(RouteResourceTest.RouteTestProfile.class)
 public class RouteResourceTest extends AbstractRequestTest {
-
 
     // 基础API测试
     @Test
@@ -41,9 +41,9 @@ public class RouteResourceTest extends AbstractRequestTest {
 
         // 匹配
         Assertions.assertTrue(SaRouter.isMatch("/user/**", "/user/add"));
-        Assertions.assertTrue(SaRouter.isMatch(new String[]{"/user/**", "/art/**", "/goods/**"}, "/art/delete"));
+        Assertions.assertTrue(SaRouter.isMatch(new String[] { "/user/**", "/art/**", "/goods/**" }, "/art/delete"));
         Assertions.assertTrue(SaRouter.isMatch(Arrays.asList("/user/**", "/art/**", "/goods/**"), "/art/delete"));
-        Assertions.assertTrue(SaRouter.isMatch(new String[]{"POST", "GET", "PUT"}, "GET"));
+        Assertions.assertTrue(SaRouter.isMatch(new String[] { "POST", "GET", "PUT" }, "GET"));
 
         // 不匹配的
         Assertions.assertTrue(SaRouter.notMatch(false).isHit());
@@ -111,7 +111,8 @@ public class RouteResourceTest extends AbstractRequestTest {
 
         // 自定义当前域名
         SaManager.getConfig().setCurrDomain("http://xxx.com");
-        request("/rt/getInfo_101?id=1", res3 -> Assertions.assertEquals(res3.getData().toString(), "http://xxx.com/rt/getInfo_101"));
+        request("/rt/getInfo_101?id=1",
+                res3 -> Assertions.assertEquals(res3.getData().toString(), "http://xxx.com/rt/getInfo_101"));
         SaManager.getConfig().setCurrDomain(null);
     }
 
@@ -121,7 +122,6 @@ public class RouteResourceTest extends AbstractRequestTest {
         request("/rt/getInfo_102", Map.of(), Map.of("x-token", "token-111"), res -> {
             Assertions.assertEquals(res.getData(), "token-111");
         }).statusCode(200);
-
 
     }
 
@@ -154,7 +154,6 @@ public class RouteResourceTest extends AbstractRequestTest {
         request("/rt/getInfo_103", res -> Assertions.assertEquals(res.getCode(), 200));
 
     }
-
 
     public static class RouteTestProfile implements QuarkusTestProfile {
         public RouteTestProfile() {

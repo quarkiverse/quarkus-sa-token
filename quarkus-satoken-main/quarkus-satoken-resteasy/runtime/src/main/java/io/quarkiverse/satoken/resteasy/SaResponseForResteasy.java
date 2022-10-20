@@ -1,6 +1,10 @@
 package io.quarkiverse.satoken.resteasy;
 
-import cn.dev33.satoken.context.model.SaResponse;
+import java.net.URI;
+import java.util.Objects;
+
+import javax.ws.rs.core.Response;
+
 import org.jboss.resteasy.reactive.RestResponse;
 import org.jboss.resteasy.reactive.server.core.CurrentRequestManager;
 import org.jboss.resteasy.reactive.server.core.ResteasyReactiveRequestContext;
@@ -8,9 +12,7 @@ import org.jboss.resteasy.reactive.server.spi.ServerHttpResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.ws.rs.core.Response;
-import java.net.URI;
-import java.util.Objects;
+import cn.dev33.satoken.context.model.SaResponse;
 
 /**
  * SaResponseForResteasy
@@ -54,7 +56,6 @@ public class SaResponseForResteasy implements SaResponse {
         response.addResponseHeader(name, value);
         return this;
     }
-
 
     @Override
     public Object redirect(String url) {

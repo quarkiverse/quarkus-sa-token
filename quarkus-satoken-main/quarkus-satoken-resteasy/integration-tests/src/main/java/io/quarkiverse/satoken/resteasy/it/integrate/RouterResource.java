@@ -16,19 +16,18 @@
  */
 package io.quarkiverse.satoken.resteasy.it.integrate;
 
-import cn.dev33.satoken.context.SaHolder;
-import cn.dev33.satoken.stp.StpUtil;
-import cn.dev33.satoken.util.SaResult;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 
+import cn.dev33.satoken.context.SaHolder;
+import cn.dev33.satoken.stp.StpUtil;
+import cn.dev33.satoken.util.SaResult;
+
 @Path("/rt/")
 @ApplicationScoped
 public class RouterResource {
-
 
     @POST
     @Path("getInfo")
@@ -42,21 +41,21 @@ public class RouterResource {
         return SaResult.ok();
     }
 
-    // 读url 
+    // 读url
     @POST
     @Path("getInfo_101")
     public SaResult getInfo_101() {
         return SaResult.data(SaHolder.getRequest().getUrl());
     }
 
-    // 读Cookie 
+    // 读Cookie
     @POST
     @Path("getInfo_102")
     public SaResult getInfo_102() {
         return SaResult.data(SaHolder.getRequest().getCookieValue("x-token"));
     }
 
-    // 测试转发 
+    // 测试转发
     @POST
     @Path("getInfo_103")
     public SaResult getInfo_103() {
@@ -64,7 +63,7 @@ public class RouterResource {
         return SaResult.ok();
     }
 
-    // 空接口 
+    // 空接口
     @POST
     @Path("getInfo_200")
     public SaResult getInfo_200() {

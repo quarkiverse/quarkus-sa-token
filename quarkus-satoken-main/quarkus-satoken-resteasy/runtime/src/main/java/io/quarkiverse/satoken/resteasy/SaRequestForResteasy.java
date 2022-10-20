@@ -1,19 +1,21 @@
 package io.quarkiverse.satoken.resteasy;
 
-import cn.dev33.satoken.SaManager;
-import cn.dev33.satoken.context.model.SaRequest;
-import cn.dev33.satoken.util.SaFoxUtil;
+import java.net.URI;
+import java.util.Objects;
+import java.util.Optional;
+
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+
 import org.jboss.resteasy.reactive.server.core.CurrentRequestManager;
 import org.jboss.resteasy.reactive.server.core.ResteasyReactiveRequestContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
-import java.net.URI;
-import java.util.Objects;
-import java.util.Optional;
+import cn.dev33.satoken.SaManager;
+import cn.dev33.satoken.context.model.SaRequest;
+import cn.dev33.satoken.util.SaFoxUtil;
 
 /**
  * SaRequestForRestEasy
@@ -87,6 +89,5 @@ public class SaRequestForResteasy implements SaRequest {
         return CLIENT.target(newUrl).request()
                 .post(Entity.json(null), String.class);
     }
-
 
 }

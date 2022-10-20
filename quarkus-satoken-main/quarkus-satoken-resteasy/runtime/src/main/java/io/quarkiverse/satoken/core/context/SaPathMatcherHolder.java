@@ -19,10 +19,11 @@ public class SaPathMatcherHolder {
 
     /**
      * 获取路由匹配器
+     *
      * @return 路由匹配器
      */
     public static AntPathMatcher getPathMatcher() {
-        if(pathMatcher == null) {
+        if (pathMatcher == null) {
             pathMatcher = new AntPathMatcher();
         }
         return pathMatcher;
@@ -30,6 +31,7 @@ public class SaPathMatcherHolder {
 
     /**
      * 写入路由匹配器
+     *
      * @param pathMatcher 路由匹配器
      */
     public static void setPathMatcher(AntPathMatcher pathMatcher) {

@@ -92,7 +92,7 @@ public class SaAnnotationResource {
     // 封禁账号
     @POST
     @Path("disable")
-    public SaResult disable(@QueryParam("id")long id) {
+    public SaResult disable(@QueryParam("id") long id) {
         StpUtil.disable(id, "comment", 200);
         return SaResult.ok();
     }
@@ -108,7 +108,7 @@ public class SaAnnotationResource {
     // 解封账号
     @POST
     @Path("untieDisable")
-    public SaResult untieDisable(@QueryParam("id")long id) {
+    public SaResult untieDisable(@QueryParam("id") long id) {
         StpUtil.untieDisable(id, "comment");
         return SaResult.ok();
     }

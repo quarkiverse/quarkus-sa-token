@@ -168,7 +168,7 @@ public class SaTokenRecorder {
      * 路由匹配器
      *
      */
-    public void setPathMatcher(){
+    public void setPathMatcher() {
         SaPathMatcherHolder.setPathMatcher(new AntPathMatcher());
     }
 

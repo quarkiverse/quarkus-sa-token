@@ -1,12 +1,13 @@
 package io.quarkiverse.satoken.resteasy;
 
-import cn.dev33.satoken.context.model.SaStorage;
+import java.util.Objects;
+
 import org.jboss.resteasy.reactive.server.core.CurrentRequestManager;
 import org.jboss.resteasy.reactive.server.core.ResteasyReactiveRequestContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Objects;
+import cn.dev33.satoken.context.model.SaStorage;
 
 /**
  * SaStorageForResteasy
@@ -39,7 +40,7 @@ public class SaStorageForResteasy implements SaStorage {
 
     @Override
     public SaStorage set(String key, Object value) {
-        context.setProperty(key,value);
+        context.setProperty(key, value);
         return this;
     }
 

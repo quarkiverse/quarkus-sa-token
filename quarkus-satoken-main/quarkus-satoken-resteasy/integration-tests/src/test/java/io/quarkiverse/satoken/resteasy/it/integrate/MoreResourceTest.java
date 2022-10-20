@@ -1,11 +1,12 @@
 package io.quarkiverse.satoken.resteasy.it.integrate;
 
-import io.quarkiverse.satoken.resteasy.it.AbstractRequestTest;
-import io.quarkus.test.junit.QuarkusTest;
+import java.util.Map;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Map;
+import io.quarkiverse.satoken.resteasy.it.AbstractRequestTest;
+import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest
 public class MoreResourceTest extends AbstractRequestTest {
@@ -28,12 +29,10 @@ public class MoreResourceTest extends AbstractRequestTest {
             Assertions.assertEquals(res.getCode(), 903);
         }).statusCode(401).header("WWW-Authenticate", "Basic Realm=Sa-Token");
 
-
         // ---------------- 认证通过
         request("/more/basicAuth", Map.of("Authorization", "Basic c2E6MTIzNDU2"), res -> {
             Assertions.assertEquals(res.getCode(), 200);
         }).statusCode(200);
     }
-
 
 }

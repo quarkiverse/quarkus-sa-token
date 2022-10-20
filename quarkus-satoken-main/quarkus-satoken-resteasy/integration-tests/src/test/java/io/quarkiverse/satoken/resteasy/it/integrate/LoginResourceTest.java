@@ -1,21 +1,23 @@
 package io.quarkiverse.satoken.resteasy.it.integrate;
 
-import io.quarkiverse.satoken.resteasy.it.AbstractRequestTest;
-import io.quarkiverse.satoken.resteasy.it.utils.SoMap;
-import io.quarkus.test.junit.QuarkusTest;
-import io.restassured.response.ValidatableResponse;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-
-import javax.ws.rs.core.MediaType;
-import java.util.Map;
-
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.Map;
+
+import javax.ws.rs.core.MediaType;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import io.quarkiverse.satoken.resteasy.it.AbstractRequestTest;
+import io.quarkiverse.satoken.resteasy.it.utils.SoMap;
+import io.quarkus.test.junit.QuarkusTest;
+import io.restassured.response.ValidatableResponse;
 
 @QuarkusTest
 public class LoginResourceTest extends AbstractRequestTest {
@@ -40,12 +42,12 @@ public class LoginResourceTest extends AbstractRequestTest {
                     String token = so.getString("token");
 
                     // 是否登录
-                    requestSoMap("/acc/isLogin?satoken=" + token,  so2 -> {
+                    requestSoMap("/acc/isLogin?satoken=" + token, so2 -> {
                         Assertions.assertTrue(so2.getBoolean("data"));
                     });
 
                     // tokenInfo
-                    requestSoMap("/acc/tokenInfo?satoken=" + token,  so3 -> {
+                    requestSoMap("/acc/tokenInfo?satoken=" + token, so3 -> {
                         SoMap so4 = SoMap.getSoMap((Map<String, ?>) so3.get("data"));
                         Assertions.assertEquals(so4.getString("tokenName"), "satoken");
                         Assertions.assertEquals(so4.getString("tokenValue"), token);
@@ -60,7 +62,6 @@ public class LoginResourceTest extends AbstractRequestTest {
                         Assertions.assertFalse(so5.getBoolean("data"));
                     });
 
-
                 });
     }
 
@@ -74,6 +75,5 @@ public class LoginResourceTest extends AbstractRequestTest {
                 .body(matcher);
 
     }
-
 
 }

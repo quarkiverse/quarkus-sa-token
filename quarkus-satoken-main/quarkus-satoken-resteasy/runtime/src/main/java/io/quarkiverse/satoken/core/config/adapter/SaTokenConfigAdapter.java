@@ -1,10 +1,10 @@
 package io.quarkiverse.satoken.core.config.adapter;
 
+import java.util.Optional;
+
 import cn.dev33.satoken.config.SaCookieConfig;
 import cn.dev33.satoken.config.SaTokenConfig;
 import io.quarkiverse.satoken.core.config.SaTokenConfigForQuarkus;
-
-import java.util.Optional;
 
 /**
  * SaTokenConfigAdapter
@@ -121,7 +121,6 @@ public class SaTokenConfigAdapter extends SaTokenConfig {
         return config.checkIdToken;
     }
 
-
     @Override
     public SaTokenConfig setTokenName(String tokenName) {
         config.tokenName = tokenName;
@@ -136,13 +135,13 @@ public class SaTokenConfigAdapter extends SaTokenConfig {
 
     @Override
     public SaTokenConfig setActivityTimeout(long activityTimeout) {
-        config.activityTimeout=activityTimeout;
+        config.activityTimeout = activityTimeout;
         return this;
     }
 
     @Override
     public SaTokenConfig setIsConcurrent(Boolean isConcurrent) {
-        config.isConcurrent=isConcurrent;
+        config.isConcurrent = isConcurrent;
         return this;
     }
 
