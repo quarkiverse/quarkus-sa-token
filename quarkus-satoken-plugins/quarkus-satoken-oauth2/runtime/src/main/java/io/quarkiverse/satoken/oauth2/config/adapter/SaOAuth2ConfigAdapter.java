@@ -68,4 +68,60 @@ public class SaOAuth2ConfigAdapter extends SaOAuth2Config {
         return Objects.nonNull(config) ? config.pastClientTokenTimeout : super.getPastClientTokenTimeout();
     }
 
+
+    @Override
+    public void setIsCode(Boolean isCode) {
+        config.isCode = isCode;
+    }
+
+    @Override
+    public void setIsImplicit(Boolean isImplicit) {
+        config.isImplicit=isImplicit;
+    }
+
+    @Override
+    public void setIsPassword(Boolean isPassword) {
+        config.isPassword=isPassword;
+    }
+
+    @Override
+    public void setIsClient(Boolean isClient) {
+        config.isClient=isClient;
+    }
+
+    @Override
+    public void setIsNewRefresh(Boolean isNewRefresh) {
+        config.isNewRefresh=isNewRefresh;
+    }
+
+    @Override
+    public SaOAuth2Config setCodeTimeout(long codeTimeout) {
+        config.codeTimeout=codeTimeout;
+        return this;
+    }
+
+    @Override
+    public SaOAuth2Config setAccessTokenTimeout(long accessTokenTimeout) {
+        config.accessTokenTimeout = accessTokenTimeout;
+        return this;
+    }
+
+    @Override
+    public SaOAuth2Config setRefreshTokenTimeout(long refreshTokenTimeout) {
+        config.refreshTokenTimeout=refreshTokenTimeout;
+        return this;
+    }
+
+    @Override
+    public SaOAuth2Config setClientTokenTimeout(long clientTokenTimeout) {
+        config.clientTokenTimeout = clientTokenTimeout;
+        return this;
+    }
+
+    @Override
+    public SaOAuth2Config setPastClientTokenTimeout(long pastClientTokenTimeout) {
+        config.pastClientTokenTimeout=pastClientTokenTimeout;
+        return this;
+    }
+
 }
