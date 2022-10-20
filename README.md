@@ -55,7 +55,7 @@ There are some demo in every `integration-tests` module.
 - [x] quarkus-satoken-aop(in quarkus-satoken-resteasy)
 - [x] quarkus-satoken-dao-redis-jackson(based on quarkus-redisson)
 - [x] quarkus-satoken-context-dubbo
-- [ ] quarkus-satoken-alone-redis
+- [x] quarkus-satoken-alone-redis
 - [ ] quarkus-satoken-dao-redis
 - [ ] quarkus-satoken-dialect-thymeleaf
 - [ ] quarkus-satoken-jwt

@@ -1,7 +1,7 @@
 package io.quarkiverse.satoken.dao.redis.jackson.deployment;
 
-import io.quarkiverse.satoken.dao.redis.jackson.SaTokenDaoRedisJackson;
-import io.quarkiverse.satoken.dao.redis.jackson.SaTokenJacksonModuleCustomizer;
+import io.quarkiverse.satoken.dao.redis.jackson.core.SaTokenDaoRedisJackson;
+import io.quarkiverse.satoken.dao.redis.jackson.core.SaTokenJacksonModuleCustomizer;
 import io.quarkus.arc.deployment.AdditionalBeanBuildItem;
 import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
@@ -18,7 +18,7 @@ class SatokenDaoRedisJacksonProcessor {
 
     @BuildStep
     void additionalBeans(BuildProducer<AdditionalBeanBuildItem> additionalBeans) {
-        additionalBeans.produce(AdditionalBeanBuildItem.unremovableOf(SaTokenJacksonModuleCustomizer.class));
         additionalBeans.produce(AdditionalBeanBuildItem.unremovableOf(SaTokenDaoRedisJackson.class));
+        additionalBeans.produce(AdditionalBeanBuildItem.unremovableOf(SaTokenJacksonModuleCustomizer.class));
     }
 }
