@@ -68,7 +68,6 @@ public class SaOAuth2ConfigAdapter extends SaOAuth2Config {
         return Objects.nonNull(config) ? config.pastClientTokenTimeout : super.getPastClientTokenTimeout();
     }
 
-
     @Override
     public void setIsCode(Boolean isCode) {
         config.isCode = isCode;
@@ -76,27 +75,27 @@ public class SaOAuth2ConfigAdapter extends SaOAuth2Config {
 
     @Override
     public void setIsImplicit(Boolean isImplicit) {
-        config.isImplicit=isImplicit;
+        config.isImplicit = isImplicit;
     }
 
     @Override
     public void setIsPassword(Boolean isPassword) {
-        config.isPassword=isPassword;
+        config.isPassword = isPassword;
     }
 
     @Override
     public void setIsClient(Boolean isClient) {
-        config.isClient=isClient;
+        config.isClient = isClient;
     }
 
     @Override
     public void setIsNewRefresh(Boolean isNewRefresh) {
-        config.isNewRefresh=isNewRefresh;
+        config.isNewRefresh = isNewRefresh;
     }
 
     @Override
     public SaOAuth2Config setCodeTimeout(long codeTimeout) {
-        config.codeTimeout=codeTimeout;
+        config.codeTimeout = codeTimeout;
         return this;
     }
 
@@ -108,7 +107,7 @@ public class SaOAuth2ConfigAdapter extends SaOAuth2Config {
 
     @Override
     public SaOAuth2Config setRefreshTokenTimeout(long refreshTokenTimeout) {
-        config.refreshTokenTimeout=refreshTokenTimeout;
+        config.refreshTokenTimeout = refreshTokenTimeout;
         return this;
     }
 
@@ -120,7 +119,7 @@ public class SaOAuth2ConfigAdapter extends SaOAuth2Config {
 
     @Override
     public SaOAuth2Config setPastClientTokenTimeout(long pastClientTokenTimeout) {
-        config.pastClientTokenTimeout=pastClientTokenTimeout;
+        config.pastClientTokenTimeout = pastClientTokenTimeout;
         return this;
     }
 

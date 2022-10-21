@@ -56,6 +56,7 @@ public class BasicTest {
     public void clear() {
         MockResteasyReactiveRequestContext.remove();
     }
+
     // 测试：基础API
     @Test
     public void testBasicsApi() {
@@ -93,13 +94,13 @@ public class BasicTest {
         // API 验证
         Assertions.assertTrue(StpUtil.isLogin());
         Assertions.assertDoesNotThrow(() -> StpUtil.checkLogin());
-        Assertions.assertNotNull(token);	// token不为null
-        Assertions.assertEquals(StpUtil.getLoginIdAsLong(), 10001);	// loginId=10001
-        Assertions.assertEquals(StpUtil.getLoginIdAsInt(), 10001);	// loginId=10001
-        Assertions.assertEquals(StpUtil.getLoginIdAsString(), "10001");	// loginId=10001
-        Assertions.assertEquals(StpUtil.getLoginId(), "10001");	// loginId=10001
-        Assertions.assertEquals(StpUtil.getLoginIdDefaultNull(), "10001");	// loginId=10001
-        Assertions.assertEquals(StpUtil.getLoginDevice(), SaTokenConsts.DEFAULT_LOGIN_DEVICE);	// 登录设备类型
+        Assertions.assertNotNull(token); // token不为null
+        Assertions.assertEquals(StpUtil.getLoginIdAsLong(), 10001); // loginId=10001
+        Assertions.assertEquals(StpUtil.getLoginIdAsInt(), 10001); // loginId=10001
+        Assertions.assertEquals(StpUtil.getLoginIdAsString(), "10001"); // loginId=10001
+        Assertions.assertEquals(StpUtil.getLoginId(), "10001"); // loginId=10001
+        Assertions.assertEquals(StpUtil.getLoginIdDefaultNull(), "10001"); // loginId=10001
+        Assertions.assertEquals(StpUtil.getLoginDevice(), SaTokenConsts.DEFAULT_LOGIN_DEVICE); // 登录设备类型
 
         // db数据 验证
         // token存在
@@ -155,10 +156,10 @@ public class BasicTest {
         session.set("age", "18");
         Assertions.assertEquals(session.get("name"), "zhang");
         Assertions.assertEquals(session.getInt("age"), 18);
-        Assertions.assertEquals((int)session.getModel("age", int.class), 18);
-        Assertions.assertEquals((int)session.get("age", 20), 18);
-        Assertions.assertEquals((int)session.get("name2", 20), 20);
-        Assertions.assertEquals((int)session.get("name2", () -> 30), 30);
+        Assertions.assertEquals((int) session.getModel("age", int.class), 18);
+        Assertions.assertEquals((int) session.get("age", 20), 18);
+        Assertions.assertEquals((int) session.get("name2", 20), 20);
+        Assertions.assertEquals((int) session.get("name2", () -> 30), 30);
         session.clear();
         Assertions.assertEquals(session.get("name"), null);
     }
@@ -346,7 +347,8 @@ public class BasicTest {
         // 封号
         StpUtil.disable(10007, 200);
         Assertions.assertTrue(StpUtil.isDisable(10007));
-        Assertions.assertEquals(dao.get("satoken:login:disable:login:" + 10007), String.valueOf(SaTokenConsts.DEFAULT_DISABLE_LEVEL));
+        Assertions.assertEquals(dao.get("satoken:login:disable:login:" + 10007),
+                String.valueOf(SaTokenConsts.DEFAULT_DISABLE_LEVEL));
 
         // 封号后检测一下 (会抛出 DisableLoginException 异常)
         Assertions.assertThrows(DisableServiceException.class, () -> StpUtil.checkDisable(10007));
@@ -368,7 +370,8 @@ public class BasicTest {
         // 封掉评论功能
         StpUtil.disable(10008, "comment", 200);
         Assertions.assertTrue(StpUtil.isDisable(10008, "comment"));
-        Assertions.assertEquals(dao.get("satoken:login:disable:comment:" + 10008), String.valueOf(SaTokenConsts.DEFAULT_DISABLE_LEVEL));
+        Assertions.assertEquals(dao.get("satoken:login:disable:comment:" + 10008),
+                String.valueOf(SaTokenConsts.DEFAULT_DISABLE_LEVEL));
         Assertions.assertNull(dao.get("satoken:login:disable:login:" + 10008));
 
         // 封号后检测一下
@@ -547,18 +550,17 @@ public class BasicTest {
         StpUtil.checkSafe();
 
         // 自然结束
-//    	Thread.sleep(2500);
-//    	Assertions.assertFalse(StpUtil.isSafe());
+        //    	Thread.sleep(2500);
+        //    	Assertions.assertFalse(StpUtil.isSafe());
 
         // 手动结束
-//    	StpUtil.openSafe(2);
+        //    	StpUtil.openSafe(2);
         StpUtil.closeSafe();
         Assertions.assertFalse(StpUtil.isSafe());
 
         // 抛异常
         Assertions.assertThrows(NotSafeException.class, () -> StpUtil.checkSafe());
     }
-
 
     // ------------- 复杂点的
 
@@ -614,7 +616,6 @@ public class BasicTest {
         StpUtil.getTokenSession();
         timeout = StpUtil.getTokenSessionTimeout();
         Assertions.assertTrue(timeout >= 299);
-
 
         // 注销后，就是-2
         StpUtil.logout();
@@ -692,12 +693,11 @@ public class BasicTest {
         // 默认跟随全局 timeout
         StpUtil.updateLastActivityToNow();
         long activityTimeout = StpUtil.getTokenActivityTimeout();
-        Assertions.assertTrue(activityTimeout <=180 || activityTimeout >=179);
+        Assertions.assertTrue(activityTimeout <= 180 || activityTimeout >= 179);
 
         // 不会抛出异常
         Assertions.assertDoesNotThrow(() -> StpUtil.checkActivityTimeout());
     }
-
 
     // 测试，上下文 API
     @Test

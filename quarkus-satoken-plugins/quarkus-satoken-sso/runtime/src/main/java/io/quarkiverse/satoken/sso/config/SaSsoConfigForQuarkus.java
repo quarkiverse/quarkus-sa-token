@@ -76,12 +76,10 @@ public class SaSsoConfigForQuarkus implements Serializable {
      */
     public Optional<String> ssoLogoutCall;
 
-
     /**
      * 配置 Server 端主机总地址，拼接在 authUrl、checkTicketUrl、userinfoUrl、sloUrl 属性前面，用以简化各种 url 配置
      */
     public Optional<String> serverUrl;
-
 
     // -------------------- 其他 --------------------
 

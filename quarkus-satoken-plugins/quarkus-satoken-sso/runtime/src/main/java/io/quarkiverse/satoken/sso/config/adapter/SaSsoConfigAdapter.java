@@ -1,13 +1,13 @@
 package io.quarkiverse.satoken.sso.config.adapter;
 
-import cn.dev33.satoken.config.SaSsoConfig;
-import cn.dev33.satoken.util.SaFoxUtil;
-import io.quarkiverse.satoken.sso.config.SaSsoConfigForQuarkus;
-
 import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Supplier;
+
+import cn.dev33.satoken.config.SaSsoConfig;
+import cn.dev33.satoken.util.SaFoxUtil;
+import io.quarkiverse.satoken.sso.config.SaSsoConfigForQuarkus;
 
 /**
  * SaSsoConfigAdapter
