@@ -10,6 +10,7 @@
     <artifactId>quarkus-satoken-plugins</artifactId>
     <packaging>pom</packaging>
     <modules>
+        <module>quarkus-satoken-dao-alone-redis</module>
         <module>quarkus-satoken-dao-redis-jackson</module>
         <module>quarkus-satoken-oauth2</module>
         <module>quarkus-satoken-sso</module>

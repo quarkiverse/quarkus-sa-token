@@ -41,10 +41,10 @@ public class SaOAuthClientController {
     public SaResult codeLogin(@QueryParam("code") String code) {
         // 调用Server端接口，获取 Access-Token 以及其他信息
         String str = OkHttps.sync(serverUrl + "/oauth2/token")
-                .addBodyPara("grant_type", "authorization_code")
-                .addBodyPara("code", code)
-                .addBodyPara("client_id", clientId)
-                .addBodyPara("client_secret", clientSecret)
+                .addUrlPara("grant_type", "authorization_code")
+                .addUrlPara("code", code)
+                .addUrlPara("client_id", clientId)
+                .addUrlPara("client_secret", clientSecret)
                 .post()
                 .getBody()
                 .toString();
@@ -72,10 +72,10 @@ public class SaOAuthClientController {
     public SaResult refresh(@QueryParam("refreshToken") String refreshToken) {
         // 调用Server端接口，通过 Refresh-Token 刷新出一个新的 Access-Token
         String str = OkHttps.sync(serverUrl + "/oauth2/refresh")
-                .addBodyPara("grant_type", "refresh_token")
-                .addBodyPara("client_id", clientId)
-                .addBodyPara("client_secret", clientSecret)
-                .addBodyPara("refresh_token", refreshToken)
+                .addUrlPara("grant_type", "refresh_token")
+                .addUrlPara("client_id", clientId)
+                .addUrlPara("client_secret", clientSecret)
+                .addUrlPara("refresh_token", refreshToken)
                 .post()
                 .getBody()
                 .toString();
@@ -98,10 +98,11 @@ public class SaOAuthClientController {
     public SaResult passwordLogin(@QueryParam("username") String username, @QueryParam("password") String password) {
         // 模式三：密码式-授权登录
         String str = OkHttps.sync(serverUrl + "/oauth2/token")
-                .addBodyPara("grant_type", "password")
-                .addBodyPara("client_id", clientId)
-                .addBodyPara("username", username)
-                .addBodyPara("password", password)
+                .addUrlPara("grant_type", "password")
+                .addUrlPara("client_id", clientId)
+                .addUrlPara("client_secret", clientSecret)
+                .addUrlPara("username", username)
+                .addUrlPara("password", password)
                 .post()
                 .getBody()
                 .toString();
@@ -129,9 +130,9 @@ public class SaOAuthClientController {
     public SaResult clientToken() {
         // 调用Server端接口
         String str = OkHttps.sync(serverUrl + "/oauth2/client_token")
-                .addBodyPara("grant_type", "client_credentials")
-                .addBodyPara("client_id", clientId)
-                .addBodyPara("client_secret", clientSecret)
+                .addUrlPara("grant_type", "client_credentials")
+                .addUrlPara("client_id", clientId)
+                .addUrlPara("client_secret", clientSecret)
                 .post()
                 .getBody()
                 .toString();
@@ -162,7 +163,7 @@ public class SaOAuthClientController {
     public SaResult getUserinfo(@QueryParam("accessToken") String accessToken) {
         // 调用Server端接口，查询开放的资源
         String str = OkHttps.sync(serverUrl + "/oauth2/userinfo")
-                .addBodyPara("access_token", accessToken)
+                .addUrlPara("access_token", accessToken)
                 .post()
                 .getBody()
                 .toString();

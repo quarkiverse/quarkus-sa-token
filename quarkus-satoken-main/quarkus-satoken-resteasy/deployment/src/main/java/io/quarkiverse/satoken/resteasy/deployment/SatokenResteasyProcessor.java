@@ -4,12 +4,26 @@ import java.util.List;
 import java.util.Vector;
 import java.util.concurrent.ConcurrentHashMap;
 
-import cn.dev33.satoken.annotation.*;
+import javax.ws.rs.Priorities;
+
+import cn.dev33.satoken.annotation.SaCheckBasic;
+import cn.dev33.satoken.annotation.SaCheckDisable;
+import cn.dev33.satoken.annotation.SaCheckLogin;
+import cn.dev33.satoken.annotation.SaCheckPermission;
+import cn.dev33.satoken.annotation.SaCheckRole;
+import cn.dev33.satoken.annotation.SaCheckSafe;
+import cn.dev33.satoken.exception.SaTokenException;
 import cn.dev33.satoken.session.SaSession;
 import cn.dev33.satoken.session.TokenSign;
 import io.quarkiverse.satoken.core.config.SaTokenConfigForQuarkus;
+import io.quarkiverse.satoken.core.exception.SaTokenExceptionMapper;
 import io.quarkiverse.satoken.core.filter.SaRouteFilter;
-import io.quarkiverse.satoken.core.interceptor.SaAnnotationInterceptor;
+import io.quarkiverse.satoken.core.interceptor.SaCheckBasicInterceptor;
+import io.quarkiverse.satoken.core.interceptor.SaCheckDisableInterceptor;
+import io.quarkiverse.satoken.core.interceptor.SaCheckLoginInterceptor;
+import io.quarkiverse.satoken.core.interceptor.SaCheckPermissionInterceptor;
+import io.quarkiverse.satoken.core.interceptor.SaCheckRoleInterceptor;
+import io.quarkiverse.satoken.core.interceptor.SaCheckSafeInterceptor;
 import io.quarkiverse.satoken.runtime.SaTokenProducer;
 import io.quarkiverse.satoken.runtime.SaTokenRecorder;
 import io.quarkus.arc.deployment.AdditionalBeanBuildItem;
@@ -22,6 +36,7 @@ import io.quarkus.deployment.annotations.Record;
 import io.quarkus.deployment.builditem.FeatureBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.ReflectiveClassBuildItem;
 import io.quarkus.resteasy.reactive.spi.CustomContainerRequestFilterBuildItem;
+import io.quarkus.resteasy.reactive.spi.ExceptionMapperBuildItem;
 
 class SatokenResteasyProcessor {
 
@@ -68,11 +83,29 @@ class SatokenResteasyProcessor {
                             InterceptorBinding saCheckRole = InterceptorBinding.of(SaCheckRole.class);
                             InterceptorBinding saCheckPermission = InterceptorBinding.of(SaCheckPermission.class);
                             InterceptorBinding checkSafe = InterceptorBinding.of(SaCheckSafe.class);
+                            InterceptorBinding checkDisable = InterceptorBinding.of(SaCheckDisable.class);
                             InterceptorBinding checkBasic = InterceptorBinding.of(SaCheckBasic.class);
-                            return List.of(saCheckLogin, saCheckRole, saCheckPermission, checkSafe, checkBasic);
+                            return List.of(saCheckLogin, saCheckRole, saCheckPermission, checkSafe, checkDisable, checkBasic);
                         }
                     }));
-            additionalBeans.produce(AdditionalBeanBuildItem.unremovableOf(SaAnnotationInterceptor.class));
+            additionalBeans.produce(AdditionalBeanBuildItem.unremovableOf(SaCheckLoginInterceptor.class));
+            additionalBeans.produce(AdditionalBeanBuildItem.unremovableOf(SaCheckRoleInterceptor.class));
+            additionalBeans.produce(AdditionalBeanBuildItem.unremovableOf(SaCheckPermissionInterceptor.class));
+            additionalBeans.produce(AdditionalBeanBuildItem.unremovableOf(SaCheckSafeInterceptor.class));
+            additionalBeans.produce(AdditionalBeanBuildItem.unremovableOf(SaCheckDisableInterceptor.class));
+            additionalBeans.produce(AdditionalBeanBuildItem.unremovableOf(SaCheckBasicInterceptor.class));
+        }
+    }
+
+    @BuildStep
+    void registerHttpExceptionMapper(final SaTokenConfigForQuarkus satokenConfig,
+            BuildProducer<ExceptionMapperBuildItem> providers) {
+        if (satokenConfig.exceptionMapperEnabled) {
+            providers.produce(new ExceptionMapperBuildItem(
+                    SaTokenExceptionMapper.class.getName(),
+                    SaTokenException.class.getName(),
+                    Priorities.AUTHENTICATION,
+                    false));
         }
     }
 

@@ -44,7 +44,6 @@ There are some demo in every `integration-tests` module.
 
 ### Main
 
-- [x] quarkus-satoken-vertx
 - [x] quarkus-satoken-resteasy
 - [ ] quarkus-satoken-resteasy-reactive
 
@@ -54,8 +53,8 @@ There are some demo in every `integration-tests` module.
 - [x] quarkus-satoken-sso
 - [x] quarkus-satoken-aop(in quarkus-satoken-resteasy)
 - [x] quarkus-satoken-dao-redis-jackson(based on quarkus-redisson)
+- [x] quarkus-satoken-alone-redis(based on quarkus-redisson)
 - [x] quarkus-satoken-context-dubbo
-- [ ] quarkus-satoken-alone-redis
 - [ ] quarkus-satoken-dao-redis
 - [ ] quarkus-satoken-dialect-thymeleaf
 - [ ] quarkus-satoken-jwt
@@ -65,7 +64,6 @@ There are some demo in every `integration-tests` module.
 
 It has not been tested in native mode yet.
 
-- [ ] quarkus-satoken-vertx
 - [ ] quarkus-satoken-resteasy
 - [ ] quarkus-satoken-resteasy-reactive
 - [ ] quarkus-satoken-oauth2

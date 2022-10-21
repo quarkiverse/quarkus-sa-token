@@ -28,10 +28,10 @@
             <artifactId>quarkus-redis-client</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-resteasy-reactive-qute</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.quarkus</groupId>-->
+<!--            <artifactId>quarkus-resteasy-reactive-qute</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>io.quarkiverse.satoken</groupId>
             <artifactId>quarkus-satoken-sso</artifactId>

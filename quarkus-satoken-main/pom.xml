@@ -10,7 +10,6 @@
     <artifactId>quarkus-satoken-main</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>quarkus-satoken-vertx</module>
         <module>quarkus-satoken-resteasy</module>
     </modules>
 

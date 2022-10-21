@@ -1,0 +1,15 @@
+
+                      body{background-color: #D0D9E0;}
+*{margin: 0px; padding: 0px;}
+.login-box{max-width: 1000px; margin: 30px auto; padding: 1em;}
+.info{line-height: 30px;}
+.btn-box{margin-top: 10px; margin-bottom: 15px;}
+.btn-box a{margin-right: 10px;}
+.btn-box a:hover{text-decoration:underline !important;}
+.login-box input{line-height: 25px; margin-bottom: 10px; padding-left: 5px;}
+.login-box button{padding: 5px 15px; margin-top: 20px; cursor: pointer; }
+.login-box a{text-decoration: none;}
+.pst{color: #666; margin-top: 15px;}
+.ps{color: #666; margin-left: 10px;}
+.login-box code{display: block; background-color: #F5F2F0; border: 1px #ccc solid; color: #600; padding: 15px; margin-top: 5px; border-radius: 2px; }
+.info b,.info span{color: green;}

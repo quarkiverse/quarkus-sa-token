@@ -1,6 +1,9 @@
 package io.quarkiverse.satoken.runtime;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 import javax.enterprise.inject.spi.CDI;
 
@@ -14,12 +17,15 @@ import cn.dev33.satoken.dao.SaTokenDao;
 import cn.dev33.satoken.id.SaIdTemplate;
 import cn.dev33.satoken.id.SaIdUtil;
 import cn.dev33.satoken.json.SaJsonTemplate;
+import cn.dev33.satoken.listener.SaTokenEventCenter;
 import cn.dev33.satoken.listener.SaTokenListener;
 import cn.dev33.satoken.sign.SaSignTemplate;
 import cn.dev33.satoken.stp.StpInterface;
 import cn.dev33.satoken.stp.StpLogic;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.temp.SaTempInterface;
+import io.quarkiverse.satoken.core.context.SaPathMatcherHolder;
+import io.quarkiverse.satoken.core.utils.AntPathMatcher;
 import io.quarkus.arc.Arc;
 import io.quarkus.runtime.annotations.Recorder;
 
@@ -46,118 +52,133 @@ public class SaTokenRecorder {
         setSaJsonTemplate();
         setStpLogic();
         setSaSignTemplate();
+        setPathMatcher();
     }
 
     /**
      * 注入配置Bean
      *
-     * @param saTokenConfig 配置对象
+     * saTokenConfig 配置对象
      */
     public void setConfig() {
-        injectbean(SaTokenConfig.class, SaManager::setConfig);
+        injectBean(SaTokenConfig.class, SaManager::setConfig);
     }
 
     /**
      * 注入持久化Bean
      *
-     * @param saTokenDao SaTokenDao对象
+     * saTokenDao SaTokenDao对象
      */
     public void setSaTokenDao() {
-        injectbean(SaTokenDao.class, SaManager::setSaTokenDao);
+        injectBean(SaTokenDao.class, SaManager::setSaTokenDao);
     }
 
     /**
      * 注入权限认证Bean
      *
-     * @param stpInterface StpInterface对象
+     * stpInterface StpInterface对象
      */
     public void setStpInterface() {
-        injectbean(StpInterface.class, SaManager::setStpInterface);
+        injectBean(StpInterface.class, SaManager::setStpInterface);
     }
 
     /**
      * 注入上下文Bean
      *
-     * @param saTokenContext SaTokenContext对象
+     * saTokenContext SaTokenContext对象
      */
     public void setSaTokenContext() {
-        injectbean(SaTokenContext.class, SaManager::setSaTokenContext);
+        injectBean(SaTokenContext.class, SaManager::setSaTokenContext);
     }
 
     /**
      * 注入二级上下文Bean
      *
-     * @param saTokenSecondContextCreator 二级上下文创建器
+     * saTokenSecondContextCreator 二级上下文创建器
      */
     public void setSaTokenSecondContext() {
-        injectbean(SaTokenSecondContextCreator.class, context -> SaManager.setSaTokenSecondContext(context.create()));
+        injectBean(SaTokenSecondContextCreator.class, context -> SaManager.setSaTokenSecondContext(context.create()));
     }
 
     /**
      * 注入侦听器Bean
      *
-     * @param saTokenListener saTokenListener对象
+     * saTokenListener saTokenListener对象
      */
     public void setSaTokenListener() {
-        injectbean(SaTokenListener.class, SaManager::setSaTokenListener);
+
+        injectBeanList(SaTokenListener.class, SaTokenEventCenter::registerListenerList);
     }
 
     /**
      * 注入临时令牌验证模块 Bean
      *
-     * @param saTemp saTemp对象
+     * saTemp saTemp对象
      */
     public void setSaTemp() {
-        injectbean(SaTempInterface.class, SaManager::setSaTemp);
+        injectBean(SaTempInterface.class, SaManager::setSaTemp);
     }
 
     /**
      * 注入 Sa-Id-Token 模块 Bean
      *
-     * @param saIdTemplate saIdTemplate对象
+     * saIdTemplate saIdTemplate对象
      */
     public void setSaIdTemplate() {
-        injectbean(SaIdTemplate.class, template -> SaIdUtil.saIdTemplate = template);
+        injectBean(SaIdTemplate.class, template -> SaIdUtil.saIdTemplate = template);
     }
 
     /**
      * 注入 Sa-Token Http Basic 认证模块
      *
-     * @param saBasicTemplate saBasicTemplate对象
+     * saBasicTemplate saBasicTemplate对象
      */
     public void setSaBasicTemplate() {
-        injectbean(SaBasicTemplate.class, template -> SaBasicUtil.saBasicTemplate = template);
+        injectBean(SaBasicTemplate.class, template -> SaBasicUtil.saBasicTemplate = template);
     }
 
     /**
      * 注入自定义的 JSON 转换器 Bean
      *
-     * @param saJsonTemplate JSON 转换器
+     * saJsonTemplate JSON 转换器
      */
     public void setSaJsonTemplate() {
-        injectbean(SaJsonTemplate.class, SaManager::setSaJsonTemplate);
+        injectBean(SaJsonTemplate.class, SaManager::setSaJsonTemplate);
     }
 
     /**
      * 注入自定义的 参数签名 Bean
      *
-     * @param saSignTemplate 参数签名 Bean
+     * saSignTemplate 参数签名 Bean
      */
     public void setSaSignTemplate() {
-        injectbean(SaSignTemplate.class, SaManager::setSaSignTemplate);
+        injectBean(SaSignTemplate.class, SaManager::setSaSignTemplate);
     }
 
     /**
      * 注入自定义的 StpLogic
      *
-     * @param stpLogic /
+     * stpLogic /
      */
     public void setStpLogic() {
-        injectbean(StpLogic.class, StpUtil::setStpLogic);
+        injectBean(StpLogic.class, StpUtil::setStpLogic);
     }
 
-    public <T> void injectbean(Class<T> clazz, Consumer<T> consumer) {
+    /**
+     * 路由匹配器
+     *
+     */
+    public void setPathMatcher() {
+        SaPathMatcherHolder.setPathMatcher(new AntPathMatcher());
+    }
+
+    public <T> void injectBean(Class<T> clazz, Consumer<T> consumer) {
         CDI.current().select(clazz).stream().findFirst().ifPresent(consumer);
+    }
+
+    public <T> void injectBeanList(Class<T> clazz, Consumer<List<T>> consumer) {
+        Optional.ofNullable(CDI.current().select(clazz)).map(i -> i.stream().collect(Collectors.toList())).ifPresent(consumer);
+
     }
 
 }

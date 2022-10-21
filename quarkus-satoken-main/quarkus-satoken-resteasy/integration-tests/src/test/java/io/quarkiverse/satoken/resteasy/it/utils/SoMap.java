@@ -217,7 +217,7 @@ public class SoMap extends LinkedHashMap<String, Object> {
      */
     public <T> T getModel(Class<T> cs) {
         try {
-            return getModelByObject(cs.newInstance());
+            return getModelByObject(cs.getConstructor().newInstance());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

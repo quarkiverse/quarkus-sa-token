@@ -6,6 +6,8 @@ import javax.enterprise.event.Observes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import com.ejlchina.okhttps.OkHttps;
 
@@ -26,6 +28,7 @@ import io.quarkus.runtime.StartupEvent;
 public class SsoClientController {
 
     @GET
+    @Produces(MediaType.TEXT_HTML)
     public String index() {
         String str = "<h2>Sa-Token SSO-Client 应用端</h2>" +
                 "<p>当前会话是否登录：" + StpUtil.isLogin() + "</p>" +

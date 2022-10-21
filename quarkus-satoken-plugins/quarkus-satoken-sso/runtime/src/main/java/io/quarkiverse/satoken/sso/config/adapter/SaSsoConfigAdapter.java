@@ -1,8 +1,12 @@
 package io.quarkiverse.satoken.sso.config.adapter;
 
-import java.util.Objects;
+import java.util.Optional;
+import java.util.function.BiFunction;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 import cn.dev33.satoken.config.SaSsoConfig;
+import cn.dev33.satoken.util.SaFoxUtil;
 import io.quarkiverse.satoken.sso.config.SaSsoConfigForQuarkus;
 
 /**
@@ -20,57 +24,163 @@ public class SaSsoConfigAdapter extends SaSsoConfig {
 
     @Override
     public long getTicketTimeout() {
-        return Objects.nonNull(config) ? config.ticketTimeout : super.getTicketTimeout();
+        return config.ticketTimeout;
     }
 
     @Override
     public String getAllowUrl() {
-        return Objects.nonNull(config) ? config.allowUrl : super.getAllowUrl();
+        return config.allowUrl;
     }
 
     @Override
     public Boolean getIsSlo() {
-        return Objects.nonNull(config) ? config.isSlo : super.getIsSlo();
+        return config.isSlo;
     }
 
     @Override
     public Boolean getIsHttp() {
-        return Objects.nonNull(config) ? config.isHttp : super.getIsHttp();
+        return config.isHttp;
     }
 
     @Override
     public String getSecretkey() {
-        return Objects.nonNull(config) ? config.secretkey.orElse(null) : super.getSecretkey();
+        return config.secretkey.orElse(super.secretkey);
     }
 
     @Override
     public String getAuthUrl() {
-        return Objects.nonNull(config) ? config.authUrl.orElse(null) : super.getAuthUrl();
+        return config.authUrl.orElse(super.authUrl);
     }
 
     @Override
     public String getCheckTicketUrl() {
-        return Objects.nonNull(config) ? config.checkTicketUrl.orElse(null) : super.getCheckTicketUrl();
+        return config.checkTicketUrl.orElse(super.checkTicketUrl);
     }
 
     @Override
     public String getUserinfoUrl() {
-        return Objects.nonNull(config) ? config.userinfoUrl.orElse(null) : super.getUserinfoUrl();
+        return config.userinfoUrl.orElse(super.userinfoUrl);
     }
 
     @Override
     public String getSloUrl() {
-        return Objects.nonNull(config) ? config.sloUrl.orElse(null) : super.getSloUrl();
+        return config.sloUrl.orElse(super.sloUrl);
     }
 
     @Override
     public String getSsoLogoutCall() {
-        return Objects.nonNull(config) ? config.ssoLogoutCall.orElse(null) : super.getSsoLogoutCall();
+        return config.ssoLogoutCall.orElse(super.ssoLogoutCall);
+    }
+
+    @Override
+    public String getServerUrl() {
+        return config.serverUrl.orElse(super.serverUrl);
     }
 
     @Override
     public long getTimestampDisparity() {
-        return Objects.nonNull(config) ? config.timestampDisparity : super.getTimestampDisparity();
+        return config.timestampDisparity;
     }
 
+    @Override
+    public SaSsoConfig setTicketTimeout(long ticketTimeout) {
+        config.ticketTimeout = ticketTimeout;
+        return this;
+    }
+
+    @Override
+    public SaSsoConfig setAllowUrl(String allowUrl) {
+        config.allowUrl = allowUrl;
+        return this;
+    }
+
+    @Override
+    public SaSsoConfig setIsSlo(Boolean isSlo) {
+        config.isSlo = isSlo;
+        return this;
+    }
+
+    @Override
+    public SaSsoConfig setIsHttp(Boolean isHttp) {
+        config.isHttp = isHttp;
+        return this;
+    }
+
+    @Override
+    public SaSsoConfig setSecretkey(String secretkey) {
+        config.secretkey = Optional.ofNullable(secretkey);
+        return this;
+    }
+
+    @Override
+    public SaSsoConfig setAuthUrl(String authUrl) {
+        config.authUrl = Optional.ofNullable(authUrl);
+        return this;
+    }
+
+    @Override
+    public SaSsoConfig setCheckTicketUrl(String checkTicketUrl) {
+        config.checkTicketUrl = Optional.ofNullable(checkTicketUrl);
+        return this;
+    }
+
+    @Override
+    public SaSsoConfig setUserinfoUrl(String userinfoUrl) {
+        config.userinfoUrl = Optional.ofNullable(userinfoUrl);
+        return this;
+    }
+
+    @Override
+    public SaSsoConfig setSloUrl(String sloUrl) {
+        config.sloUrl = Optional.ofNullable(sloUrl);
+        return this;
+    }
+
+    @Override
+    public SaSsoConfig setSsoLogoutCall(String ssoLogoutCall) {
+        config.ssoLogoutCall = Optional.ofNullable(ssoLogoutCall);
+        return this;
+    }
+
+    @Override
+    public SaSsoConfig setServerUrl(String serverUrl) {
+        config.serverUrl = Optional.ofNullable(serverUrl);
+        return this;
+    }
+
+    @Override
+    public SaSsoConfig setTimestampDisparity(long timestampDisparity) {
+        config.timestampDisparity = timestampDisparity;
+        return this;
+    }
+
+    @Override
+    public SaSsoConfig setAllow(String... url) {
+        config.allowUrl = SaFoxUtil.arrayJoin(url);
+        return this;
+    }
+
+    @Override
+    public SaSsoConfig setNotLoginView(Supplier<Object> notLoginView) {
+        this.notLoginView = notLoginView;
+        return this;
+    }
+
+    @Override
+    public SaSsoConfig setDoLoginHandle(BiFunction<String, String, Object> doLoginHandle) {
+        this.doLoginHandle = doLoginHandle;
+        return this;
+    }
+
+    @Override
+    public SaSsoConfig setTicketResultHandle(BiFunction<Object, String, Object> ticketResultHandle) {
+        this.ticketResultHandle = ticketResultHandle;
+        return this;
+    }
+
+    @Override
+    public SaSsoConfig setSendHttp(Function<String, String> sendHttp) {
+        this.sendHttp = sendHttp;
+        return this;
+    }
 }

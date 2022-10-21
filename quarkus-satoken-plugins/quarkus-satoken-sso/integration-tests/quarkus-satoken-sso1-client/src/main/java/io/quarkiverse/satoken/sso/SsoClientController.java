@@ -3,6 +3,8 @@ package io.quarkiverse.satoken.sso;
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import cn.dev33.satoken.sso.SaSsoManager;
 import cn.dev33.satoken.stp.StpUtil;
@@ -18,6 +20,7 @@ import cn.dev33.satoken.stp.StpUtil;
 public class SsoClientController {
 
     @GET
+    @Produces(MediaType.TEXT_HTML)
     public String get() {
         String authUrl = SaSsoManager.getConfig().getAuthUrl();
         String solUrl = SaSsoManager.getConfig().getSloUrl();

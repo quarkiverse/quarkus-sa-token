@@ -13,10 +13,7 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-resteasy-reactive-jackson</artifactId>
         </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-resteasy-reactive-jackson</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>io.quarkiverse.satoken</groupId>
             <artifactId>quarkus-satoken-resteasy</artifactId>
