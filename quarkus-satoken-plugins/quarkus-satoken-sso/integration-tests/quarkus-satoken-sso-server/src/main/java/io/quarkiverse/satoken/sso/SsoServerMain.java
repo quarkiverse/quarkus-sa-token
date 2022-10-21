@@ -4,15 +4,15 @@ import io.quarkus.runtime.Quarkus;
 import io.quarkus.runtime.annotations.QuarkusMain;
 
 /**
- * Main
+ * SsoServerMain
  *
  * @author nayan
  * @date 2022/4/13 3:58 PM
  */
 @QuarkusMain
-public class Main {
+public class SsoServerMain {
     public static void main(String[] args) {
         Quarkus.run(args);
-        System.out.println("\nSa-Token SSO模式一 Client端启动成功");
+        System.out.println("\n------ Sa-Token-SSO 统一认证中心启动成功 ");
     }
 }

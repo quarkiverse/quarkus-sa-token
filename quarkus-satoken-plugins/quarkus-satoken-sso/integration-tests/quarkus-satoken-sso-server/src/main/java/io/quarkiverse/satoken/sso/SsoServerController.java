@@ -4,9 +4,13 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 
 import com.ejlchina.okhttps.OkHttps;
 
@@ -16,8 +20,9 @@ import cn.dev33.satoken.sso.SaSsoHandle;
 import cn.dev33.satoken.sso.SaSsoUtil;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.util.SaResult;
-import io.quarkus.qute.Template;
+//import io.quarkus.qute.Template;
 import io.quarkus.runtime.StartupEvent;
+import org.jboss.resteasy.reactive.RestForm;
 
 /**
  * SsoServerController
@@ -29,8 +34,8 @@ import io.quarkus.runtime.StartupEvent;
 @ApplicationScoped
 public class SsoServerController {
 
-    @Inject
-    Template login;
+//    @Inject
+//    Template login;
 
     /**
      * SSO-Server端：处理所有SSO相关请求
@@ -75,10 +80,11 @@ public class SsoServerController {
     // Sa-SSO 定制化配置
     @PostConstruct
     void init(@Observes StartupEvent startupEvent, SaSsoConfig sso) {
-
+        final Client CLIENT = ClientBuilder.newClient();
         // 配置：未登录时返回的View
         sso.setNotLoginView(() -> {
-            return login.instance();
+            return  CLIENT.target("http://127.0.0.1:9000/sa-res/login.html").request()
+                    .get();
         });
 
         // 配置：登录处理函数
