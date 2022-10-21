@@ -9,7 +9,7 @@
 
     <groupId>io.quarkiverse.satoken</groupId>
     <artifactId>quarkus-satoken-parent</artifactId>
-    <version>1.31.0</version>
+    <version>1.31.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Quarkus - Satoken - Parent</name>
 
@@ -82,8 +82,4 @@
             </plugins>
         </pluginManagement>
     </build>
-
-  <scm>
-    <tag>1.31.0</tag>
-  </scm>
 </project>
