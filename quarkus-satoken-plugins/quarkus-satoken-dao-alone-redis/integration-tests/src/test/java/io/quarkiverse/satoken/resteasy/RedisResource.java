@@ -14,6 +14,7 @@ import io.quarkus.test.common.QuarkusTestResourceLifecycleManager;
  * @author nayan
  * @date 2022/10/20 10:42
  */
+@Deprecated
 public class RedisResource implements QuarkusTestResourceLifecycleManager {
 
     //准备Redis容器，使用withExposedPorts方法暴露端口

@@ -13,14 +13,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import io.quarkiverse.satoken.resteasy.AbstractRequestTest;
-import io.quarkiverse.satoken.resteasy.RedisResource;
 import io.quarkiverse.satoken.resteasy.utils.SoMap;
-import io.quarkus.test.common.QuarkusTestResource;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.response.ValidatableResponse;
 
 @QuarkusTest
-@QuarkusTestResource(RedisResource.class)
+//@QuarkusTestResource(RedisResource.class)
 public class LoginResourceTest extends AbstractRequestTest {
 
     @Test

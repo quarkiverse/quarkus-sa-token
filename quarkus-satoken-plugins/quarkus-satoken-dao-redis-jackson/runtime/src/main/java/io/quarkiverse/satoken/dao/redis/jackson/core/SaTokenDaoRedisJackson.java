@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
+import javax.enterprise.inject.spi.CDI;
 
 import org.redisson.api.RBucket;
 import org.redisson.api.RedissonClient;
@@ -36,9 +36,28 @@ public class SaTokenDaoRedisJackson implements SaTokenDao {
      */
     public boolean isInit;
 
-    @Inject
     @PostConstruct
-    public void init( RedissonClient redissonClient) {
+    public void init() {
+        if (!this.isInit) {
+            //            try {
+            //                Arc.container().instance(RedissonClientProducer.class).get();
+            //            } catch (Exception e) {
+            //                LOG.debug("redisson init error");
+            //            }
+            try {
+                CDI.current().select(RedissonClient.class).stream().findAny().ifPresent(r -> {
+                    init(r);
+                    LOG.debug("satoken redisson init");
+                });
+            } catch (Exception e) {
+                LOG.debug("satoken redisson init error!");
+            }
+        } else {
+            LOG.debug("satoken redisson had inited!");
+        }
+    }
+
+    public void init(RedissonClient redissonClient) {
         this.redissonClient = redissonClient;
         // 指定相应的序列化方案
         // 通过反射获取Mapper对象, 增加一些配置, 增强兼容性
@@ -48,7 +67,7 @@ public class SaTokenDaoRedisJackson implements SaTokenDao {
         } catch (Exception e) {
             LOG.error("sa token redis jackson init failed", e);
         }
-        if (Objects.nonNull(this.redissonClient)&&Objects.nonNull(SaStrategy.me.createSession)){
+        if (Objects.nonNull(this.redissonClient) && Objects.nonNull(SaStrategy.me.createSession)) {
             this.isInit = true;
         }
 

@@ -11,8 +11,6 @@ import cn.dev33.satoken.SaManager;
 import cn.dev33.satoken.exception.IdTokenInvalidException;
 import cn.dev33.satoken.id.SaIdUtil;
 import io.quarkiverse.satoken.resteasy.AbstractRequestTest;
-import io.quarkiverse.satoken.resteasy.RedisResource;
-import io.quarkus.test.common.QuarkusTestResource;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.Header;
 import io.restassured.response.ValidatableResponse;
@@ -24,7 +22,7 @@ import io.restassured.response.ValidatableResponse;
  * @date 2022/10/8 14:29
  */
 @QuarkusTest
-@QuarkusTestResource(RedisResource.class)
+//@QuarkusTestResource(RedisResource.class)
 public class SaIdTokenResourceTest extends AbstractRequestTest {
 
     // 获取信息

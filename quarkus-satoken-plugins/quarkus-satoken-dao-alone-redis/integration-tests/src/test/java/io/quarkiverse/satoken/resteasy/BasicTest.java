@@ -30,11 +30,10 @@ import io.quarkiverse.satoken.core.context.SaPathMatcherHolder;
 import io.quarkiverse.satoken.core.context.SaTokenContextForQuarkus;
 import io.quarkiverse.satoken.core.utils.AntPathMatcher;
 import io.quarkiverse.satoken.resteasy.utils.SoMap;
-import io.quarkus.test.common.QuarkusTestResource;
 import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest
-@QuarkusTestResource(RedisResource.class)
+//@QuarkusTestResource(RedisResource.class)
 public class BasicTest extends AbstractRequestTest {
 
     // 持久化Bean

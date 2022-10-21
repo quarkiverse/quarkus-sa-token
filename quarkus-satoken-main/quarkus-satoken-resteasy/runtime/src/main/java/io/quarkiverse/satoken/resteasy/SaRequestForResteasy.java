@@ -39,13 +39,19 @@ public class SaRequestForResteasy implements SaRequest {
 
     @Override
     public Object getSource() {
-
         return this.context;
     }
 
+    /**
+     * if there is not @FormParam in Endpoint,the form data will not parsing.
+     * @see <a href="https://github.com/quarkusio/quarkus/discussions/25103">RESTEasy Reactive - get all form data</a>
+     * @see <a href="https://github.com/quarkusio/quarkus/issues/22444">RESTEasy Reactive: make body-reading filters force reading the body</a>
+     * @param name param name
+     * @return param value
+     */
     @Override
     public String getParam(String name) {
-        return Optional.ofNullable(this.context.getQueryParameter(name, true, true))
+        return Optional.ofNullable(this.context.getQueryParameter(name, true, false))
                 .or(() -> Optional.ofNullable(this.context.getFormParameter(name, true, true)))
                 .map(Object::toString)
                 .orElse(null);

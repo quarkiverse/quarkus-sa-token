@@ -10,8 +10,6 @@ import cn.dev33.satoken.SaManager;
 import cn.dev33.satoken.router.SaRouter;
 import cn.dev33.satoken.router.SaRouterStaff;
 import io.quarkiverse.satoken.resteasy.AbstractRequestTest;
-import io.quarkiverse.satoken.resteasy.RedisResource;
-import io.quarkus.test.common.QuarkusTestResource;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.QuarkusTestProfile;
 import io.quarkus.test.junit.TestProfile;
@@ -24,7 +22,7 @@ import io.quarkus.test.junit.TestProfile;
  */
 @QuarkusTest
 @TestProfile(RouteResourceTest.RouteTestProfile.class)
-@QuarkusTestResource(RedisResource.class)
+//@QuarkusTestResource(RedisResource.class)
 public class RouteResourceTest extends AbstractRequestTest {
 
     // 基础API测试

@@ -13,7 +13,6 @@ import cn.dev33.satoken.dao.SaTokenDao;
 import cn.dev33.satoken.session.TokenSign;
 import cn.dev33.satoken.stp.StpLogic;
 import cn.dev33.satoken.stp.StpUtil;
-import io.quarkus.test.common.QuarkusTestResource;
 import io.quarkus.test.junit.QuarkusTest;
 
 /**
@@ -23,7 +22,7 @@ import io.quarkus.test.junit.QuarkusTest;
  * @date 2022/4/12 2:11 PM
  */
 @QuarkusTest
-@QuarkusTestResource(RedisResource.class)
+//@QuarkusTestResource(RedisResource.class)
 public class ManyLoginTest extends AbstractRequestTest {
     // 持久化Bean
     SaTokenDao dao = SaManager.getSaTokenDao();
