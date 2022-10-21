@@ -10,7 +10,7 @@ import io.quarkus.runtime.annotations.QuarkusMain;
  * @date 2022/4/13 3:58 PM
  */
 @QuarkusMain
-public class Main {
+public class OAuth2Client {
 
     static String str = "-------------------- Sa-Token-OAuth2 示例 --------------------\n\n" +
             "首先在host文件 (C:\\windows\\system32\\drivers\\etc\\hosts) 添加以下内容: \r\n" +

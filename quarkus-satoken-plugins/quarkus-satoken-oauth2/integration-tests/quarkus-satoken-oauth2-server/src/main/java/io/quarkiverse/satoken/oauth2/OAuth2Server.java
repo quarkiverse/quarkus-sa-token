@@ -10,7 +10,7 @@ import io.quarkus.runtime.annotations.QuarkusMain;
  * @date 2022/4/13 3:58 PM
  */
 @QuarkusMain
-public class Main {
+public class OAuth2Server {
     public static void main(String[] args) {
         Quarkus.run(args);
     }
