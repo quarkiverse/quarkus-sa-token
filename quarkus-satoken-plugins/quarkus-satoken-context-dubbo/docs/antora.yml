@@ -1,5 +1,0 @@
-name: quarkus-satoken-context-dubbo
-title: Quarkus - Satoken Context Dubbo
-version: dev
-nav:
-  - modules/ROOT/nav.adoc

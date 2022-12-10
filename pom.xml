@@ -8,14 +8,14 @@
     </parent>
 
     <groupId>io.quarkiverse.satoken</groupId>
-    <artifactId>quarkus-satoken-parent</artifactId>
+    <artifactId>quarkus-sa-token-parent</artifactId>
     <version>1.31.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Quarkus - Satoken - Parent</name>
 
     <modules>
-        <module>quarkus-satoken-main</module>
-        <module>quarkus-satoken-plugins</module>
+        <module>quarkus-sa-token-main</module>
+        <module>quarkus-sa-token-plugins</module>
     </modules>
 
     <properties>

@@ -1,7 +1,7 @@
 # Quarkus - Satoken
 [![Build](https://github.com/quarkiverse/quarkus-sa-token/workflows/Build/badge.svg?branch=main)](https://github.com/quarkiverse/quarkus-sa-token/actions?query=workflow%3ABuild)
 [![License](https://img.shields.io/github/license/quarkiverse/quarkus-sa-token)](http://www.apache.org/licenses/LICENSE-2.0)
-[![Central](https://img.shields.io/maven-central/v/io.quarkiverse.satoken/quarkus-satoken-parent?color=green)](https://search.maven.org/search?q=g:io.quarkiverse.satoken%20AND%20a:quarkus-satoken-parent)
+[![Central](https://img.shields.io/maven-central/v/io.quarkiverse.satoken/quarkus-sa-token-parent?color=green)](https://search.maven.org/search?q=g:io.quarkiverse.satoken%20AND%20a:quarkus-sa-token-parent)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
@@ -44,37 +44,40 @@ There are some demo in every `integration-tests` module.
 
 ### Main
 
-- [x] quarkus-satoken-resteasy
-- [ ] quarkus-satoken-resteasy-reactive
+- [x] quarkus-sa-token-resteasy
+- [ ] quarkus-sa-token-resteasy-reactive
 
 ### Plugin
 
-- [x] quarkus-satoken-oauth2
-- [x] quarkus-satoken-sso
-- [x] quarkus-satoken-aop(in quarkus-satoken-resteasy)
-- [x] quarkus-satoken-dao-redis-jackson(based on quarkus-redisson)
-- [x] quarkus-satoken-alone-redis(based on quarkus-redisson)
-- [x] quarkus-satoken-context-dubbo
-- [ ] quarkus-satoken-dao-redis
-- [ ] quarkus-satoken-dialect-thymeleaf
-- [ ] quarkus-satoken-jwt
-- [ ] quarkus-satoken-quick-login
+- [x] quarkus-sa-token-oauth2
+- [x] quarkus-sa-token-sso
+- [x] quarkus-sa-token-aop(in quarkus-sa-token-resteasy)
+- [x] quarkus-sa-token-dao-redis-jackson(based on quarkus-redisson)
+- [x] quarkus-sa-token-alone-redis(based on quarkus-redisson)
+- [x] quarkus-sa-token-context-dubbo
+- [ ] quarkus-sa-token-dao-redis
+- [ ] quarkus-sa-token-dialect-thymeleaf
+- [ ] quarkus-sa-token-jwt
+- [ ] quarkus-sa-token-quick-login
 
 ### Native
 
 It has not been tested in native mode yet.
 
-- [ ] quarkus-satoken-resteasy
-- [ ] quarkus-satoken-resteasy-reactive
-- [ ] quarkus-satoken-oauth2
-- [ ] quarkus-satoken-sso
-- [ ] quarkus-satoken-dao-redis-jackson（based on quarkus-redisson）
-- [ ] quarkus-satoken-context-dubbo
-- [ ] quarkus-satoken-alone-redis
-- [ ] quarkus-satoken-dao-redis
-- [ ] quarkus-satoken-dialect-thymeleaf
-- [ ] quarkus-satoken-jwt
-- [ ] quarkus-satoken-quick-login
+- [ ] quarkus-sa-token-resteasy
+- [ ] quarkus-sa-token-resteasy-reactive
+- [ ] quarkus-sa-token-oauth2
+- [ ] quarkus-sa-token-sso
+- [ ] quarkus-sa-token-dao-redis-jackson（based on quarkus-redisson）
+- [ ] quarkus-sa-token-context-dubbo
+- [ ] quarkus-sa-token-alone-redis
+- [ ] quarkus-sa-token-dao-redis
+- [ ] quarkus-sa-token-dialect-thymeleaf
+- [ ] quarkus-sa-token-jwt
+- [ ] quarkus-sa-token-quick-login
+
+### migration
+Maven artifacts was changed from `quarkus-satoken-*` to `quarkus-sa-token-*` in  version `1.31.1` 
 
 
 ## Contributors ✨

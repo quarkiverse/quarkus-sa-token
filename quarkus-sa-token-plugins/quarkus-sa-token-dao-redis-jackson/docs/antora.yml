@@ -1,0 +1,5 @@
+name: quarkus-sa-token-dao-redis-jackson
+title: Quarkus - Satoken Dao Redis Jackson
+version: dev
+nav:
+  - modules/ROOT/nav.adoc
