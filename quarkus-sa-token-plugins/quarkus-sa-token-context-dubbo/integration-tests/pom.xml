@@ -4,7 +4,7 @@
     <parent>
         <groupId>io.quarkiverse.satoken</groupId>
         <artifactId>quarkus-sa-token-context-dubbo-parent</artifactId>
-        <version>1.31.1-SNAPSHOT</version>
+        <version>1.31.1</version>
     </parent>
     <artifactId>quarkus-sa-token-context-dubbo-integration-tests</artifactId>
     <name>Quarkus - Satoken Context Dubbo - Integration Tests</name>

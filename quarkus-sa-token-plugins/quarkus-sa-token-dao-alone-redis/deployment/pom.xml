@@ -4,7 +4,7 @@
   <parent>
     <groupId>io.quarkiverse.satoken</groupId>
     <artifactId>quarkus-sa-token-dao-alone-redis-parent</artifactId>
-    <version>1.31.1-SNAPSHOT</version>
+    <version>1.31.1</version>
   </parent>
   <artifactId>quarkus-sa-token-dao-alone-redis-deployment</artifactId>
   <name>Quarkus Satoken Dao Alone Redis - Deployment</name>

@@ -4,7 +4,7 @@
     <parent>
         <artifactId>quarkus-sa-token-plugins</artifactId>
         <groupId>io.quarkiverse.satoken</groupId>
-        <version>1.31.1-SNAPSHOT</version>
+        <version>1.31.1</version>
     </parent>
     <artifactId>quarkus-sa-token-oauth2-parent</artifactId>
     <packaging>pom</packaging>
