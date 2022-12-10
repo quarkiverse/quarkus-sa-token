@@ -1,0 +1,5 @@
+name: quarkus-sa-token-oauth2
+title: Quarkus - Satoken Oauth2
+version: dev
+nav:
+  - modules/ROOT/nav.adoc

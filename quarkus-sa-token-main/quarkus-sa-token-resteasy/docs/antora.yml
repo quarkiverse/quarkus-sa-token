@@ -1,0 +1,5 @@
+name: quarkus-sa-token-resteasy
+title: Quarkus - Satoken Resteasy
+version: dev
+nav:
+  - modules/ROOT/nav.adoc
