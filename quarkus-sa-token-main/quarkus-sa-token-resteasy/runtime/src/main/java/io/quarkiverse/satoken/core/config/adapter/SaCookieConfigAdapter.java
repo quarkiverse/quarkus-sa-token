@@ -1,10 +1,9 @@
 package io.quarkiverse.satoken.core.config.adapter;
 
-import cn.dev33.satoken.config.SaCookieConfig;
-import io.quarkiverse.satoken.core.config.SaCookieConfigForQuarkus;
-
 import java.util.Objects;
 
+import cn.dev33.satoken.config.SaCookieConfig;
+import io.quarkiverse.satoken.core.config.SaCookieConfigForQuarkus;
 
 /**
  * SaCookieConfigAdapter

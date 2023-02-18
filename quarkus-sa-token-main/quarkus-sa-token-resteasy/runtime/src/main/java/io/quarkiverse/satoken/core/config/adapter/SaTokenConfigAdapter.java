@@ -1,10 +1,10 @@
 package io.quarkiverse.satoken.core.config.adapter;
 
+import java.util.Optional;
+
 import cn.dev33.satoken.config.SaCookieConfig;
 import cn.dev33.satoken.config.SaTokenConfig;
 import io.quarkiverse.satoken.core.config.SaTokenConfigForQuarkus;
-
-import java.util.Optional;
 
 /**
  * SaTokenConfigAdapter
@@ -242,7 +242,7 @@ public class SaTokenConfigAdapter extends SaTokenConfig {
 
     @Override
     public SaTokenConfig setCurrDomain(String currDomain) {
-        this.config.currDomain = Optional.of(currDomain);
+        this.config.currDomain = Optional.ofNullable(currDomain);
         return this;
     }
 
