@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import cn.dev33.satoken.config.SaCookieConfig;
 import cn.dev33.satoken.config.SaTokenConfig;
+import io.quarkiverse.satoken.core.config.SaCookieConfigForQuarkus;
 import io.quarkiverse.satoken.core.config.SaTokenConfigForQuarkus;
 
 /**
@@ -16,9 +17,9 @@ public class SaTokenConfigAdapter extends SaTokenConfig {
 
     private final SaTokenConfigForQuarkus config;
 
-    public SaTokenConfigAdapter(SaTokenConfigForQuarkus config) {
+    public SaTokenConfigAdapter(SaTokenConfigForQuarkus config, SaCookieConfigForQuarkus cookieConfig) {
         this.config = config;
-        this.cookie = new SaCookieConfigAdapter(this.config.cookie);
+        this.cookie = new SaCookieConfigAdapter(cookieConfig);
     }
 
     @Override

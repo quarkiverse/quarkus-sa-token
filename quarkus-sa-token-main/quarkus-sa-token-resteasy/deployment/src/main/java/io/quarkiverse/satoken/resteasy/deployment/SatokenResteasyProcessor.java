@@ -15,7 +15,8 @@ import cn.dev33.satoken.annotation.SaCheckSafe;
 import cn.dev33.satoken.exception.SaTokenException;
 import cn.dev33.satoken.session.SaSession;
 import cn.dev33.satoken.session.TokenSign;
-import io.quarkiverse.satoken.core.config.SaTokenConfigForQuarkus;
+import io.quarkiverse.satoken.core.config.SaInterceptConfigForQuarkus;
+import io.quarkiverse.satoken.core.config.SaRouteConfigForQuarkus;
 import io.quarkiverse.satoken.core.exception.SaTokenExceptionMapper;
 import io.quarkiverse.satoken.core.filter.SaRouteFilter;
 import io.quarkiverse.satoken.core.interceptor.SaCheckBasicInterceptor;
@@ -25,14 +26,11 @@ import io.quarkiverse.satoken.core.interceptor.SaCheckPermissionInterceptor;
 import io.quarkiverse.satoken.core.interceptor.SaCheckRoleInterceptor;
 import io.quarkiverse.satoken.core.interceptor.SaCheckSafeInterceptor;
 import io.quarkiverse.satoken.runtime.SaTokenProducer;
-import io.quarkiverse.satoken.runtime.SaTokenRecorder;
 import io.quarkus.arc.deployment.AdditionalBeanBuildItem;
 import io.quarkus.arc.deployment.InterceptorBindingRegistrarBuildItem;
 import io.quarkus.arc.processor.InterceptorBindingRegistrar;
 import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
-import io.quarkus.deployment.annotations.ExecutionTime;
-import io.quarkus.deployment.annotations.Record;
 import io.quarkus.deployment.builditem.FeatureBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.ReflectiveClassBuildItem;
 import io.quarkus.resteasy.reactive.spi.CustomContainerRequestFilterBuildItem;
@@ -63,15 +61,15 @@ class SatokenResteasyProcessor {
     }
 
     @BuildStep
-    void addFilter(final SaTokenConfigForQuarkus satokenConfig,
+    void addFilter(final SaRouteConfigForQuarkus routeConfig,
             BuildProducer<CustomContainerRequestFilterBuildItem> resteasyProducer) {
-        if (satokenConfig.route.interceptor) {
+        if (routeConfig.interceptor) {
             resteasyProducer.produce(new CustomContainerRequestFilterBuildItem(SaRouteFilter.class.getName()));
         }
     }
 
     @BuildStep
-    void addAnnotationInterceptor(final SaTokenConfigForQuarkus satokenConfig,
+    void addAnnotationInterceptor(final SaInterceptConfigForQuarkus satokenConfig,
             BuildProducer<InterceptorBindingRegistrarBuildItem> interceptorRegister,
             BuildProducer<AdditionalBeanBuildItem> additionalBeans) {
         if (satokenConfig.annotationInterceptedEnabled) {
@@ -98,7 +96,7 @@ class SatokenResteasyProcessor {
     }
 
     @BuildStep
-    void registerHttpExceptionMapper(final SaTokenConfigForQuarkus satokenConfig,
+    void registerHttpExceptionMapper(final SaInterceptConfigForQuarkus satokenConfig,
             BuildProducer<ExceptionMapperBuildItem> providers) {
         if (satokenConfig.exceptionMapperEnabled) {
             providers.produce(new ExceptionMapperBuildItem(
@@ -107,13 +105,6 @@ class SatokenResteasyProcessor {
                     Priorities.AUTHENTICATION,
                     false));
         }
-    }
-
-    @BuildStep
-    @Record(ExecutionTime.RUNTIME_INIT)
-    public SaTokenResteasyBuildItem configure(SaTokenRecorder recorder) {
-        recorder.injectAllBean();
-        return new SaTokenResteasyBuildItem();
     }
 
 }

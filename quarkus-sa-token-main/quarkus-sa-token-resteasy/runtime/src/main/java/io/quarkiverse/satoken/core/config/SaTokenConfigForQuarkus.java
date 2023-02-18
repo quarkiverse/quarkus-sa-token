@@ -15,7 +15,7 @@ import io.quarkus.runtime.annotations.ConfigRoot;
  * @author nayan
  * @date 2022/4/6 6:27 PM
  */
-@ConfigRoot(prefix = "sa-token", name = "", phase = ConfigPhase.BUILD_AND_RUN_TIME_FIXED)
+@ConfigRoot(prefix = "sa-token", name = "", phase = ConfigPhase.RUN_TIME)
 public class SaTokenConfigForQuarkus implements Serializable {
 
     public static final long serialVersionUID = -6541180061782004705L;
@@ -142,29 +142,5 @@ public class SaTokenConfigForQuarkus implements Serializable {
      */
     @ConfigItem(defaultValue = "false")
     public Boolean checkIdToken;
-
-    /**
-     * Cookie配置对象
-     */
-    @ConfigItem(name = "cookie")
-    public SaCookieConfigForQuarkus cookie;
-
-    /**
-     * 路由拦截配置
-     */
-    @ConfigItem(name = "route")
-    public SaRouteConfigForQuarkus route;
-
-    /**
-     * 开启注解拦截
-     */
-    @ConfigItem(defaultValue = "false")
-    public Boolean annotationInterceptedEnabled;
-
-    /**
-     * 开启异常拦截
-     */
-    @ConfigItem(defaultValue = "false")
-    public Boolean exceptionMapperEnabled;
 
 }
