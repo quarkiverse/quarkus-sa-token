@@ -21,27 +21,27 @@ public class SaCookieConfigAdapter extends SaCookieConfig {
 
     @Override
     public String getDomain() {
-        return Objects.nonNull(config) ? config.domain.orElse(null) : super.getDomain();
+        return Objects.nonNull(config) ? this.config.domain.orElse(null) : super.getDomain();
     }
 
     @Override
     public String getPath() {
-        return Objects.nonNull(config) ? config.path.orElse(null) : super.getPath();
+        return Objects.nonNull(config) ? this.config.path.orElse(null) : super.getPath();
     }
 
     @Override
     public Boolean getSecure() {
-        return Objects.nonNull(config) ? config.secure : super.getSecure();
+        return Objects.nonNull(config) ? this.config.secure : super.getSecure();
     }
 
     @Override
     public Boolean getHttpOnly() {
-        return Objects.nonNull(config) ? config.httpOnly : super.getHttpOnly();
+        return Objects.nonNull(config) ? this.config.httpOnly : super.getHttpOnly();
     }
 
     @Override
     public String getSameSite() {
-        return Objects.nonNull(config) ? config.sameSite.orElse(null) : super.getSameSite();
+        return Objects.nonNull(config) ? this.config.sameSite.orElse(null) : super.getSameSite();
     }
 
 }

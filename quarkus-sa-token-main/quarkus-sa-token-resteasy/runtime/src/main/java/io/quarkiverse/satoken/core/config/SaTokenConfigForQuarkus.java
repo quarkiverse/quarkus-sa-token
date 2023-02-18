@@ -146,11 +146,13 @@ public class SaTokenConfigForQuarkus implements Serializable {
     /**
      * Cookie配置对象
      */
+    @ConfigItem(name = "cookie")
     public SaCookieConfigForQuarkus cookie;
 
     /**
      * 路由拦截配置
      */
+    @ConfigItem(name = "route")
     public SaRouteConfigForQuarkus route;
 
     /**

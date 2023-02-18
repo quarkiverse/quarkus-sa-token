@@ -18,241 +18,249 @@ public class SaTokenConfigAdapter extends SaTokenConfig {
 
     public SaTokenConfigAdapter(SaTokenConfigForQuarkus config) {
         this.config = config;
-        this.cookie = new SaCookieConfigAdapter(config.cookie);
+        this.cookie = new SaCookieConfigAdapter(this.config.cookie);
     }
 
     @Override
     public String getTokenName() {
-        return config.tokenName;
+        return this.config.tokenName;
     }
 
     @Override
     public long getTimeout() {
-        return config.timeout;
+        return this.config.timeout;
     }
 
     @Override
     public long getActivityTimeout() {
-        return config.activityTimeout;
+        return this.config.activityTimeout;
     }
 
     @Override
     public Boolean getIsConcurrent() {
-        return config.isConcurrent;
+        return this.config.isConcurrent;
     }
 
     @Override
     public Boolean getIsShare() {
-        return config.isShare;
+        return this.config.isShare;
     }
 
     @Override
     public Boolean getIsReadBody() {
-        return config.isReadBody;
+        return this.config.isReadBody;
     }
 
     @Override
     public Boolean getIsReadHeader() {
-        return config.isReadHeader;
+        return this.config.isReadHeader;
     }
 
     @Override
     public Boolean getIsReadCookie() {
-        return config.isReadCookie;
+        return this.config.isReadCookie;
     }
 
     @Override
     public String getTokenStyle() {
-        return config.tokenStyle;
+        return this.config.tokenStyle;
     }
 
     @Override
     public int getDataRefreshPeriod() {
-        return config.dataRefreshPeriod;
+        return this.config.dataRefreshPeriod;
     }
 
     @Override
     public Boolean getTokenSessionCheckLogin() {
-        return config.tokenSessionCheckLogin;
+        return this.config.tokenSessionCheckLogin;
     }
 
     @Override
     public Boolean getAutoRenew() {
-        return config.autoRenew;
+        return this.config.autoRenew;
     }
 
     @Override
     public String getTokenPrefix() {
-        return config.tokenPrefix.orElse(super.getTokenPrefix());
+        return this.config.tokenPrefix.orElse(super.getTokenPrefix());
     }
 
     @Override
     public Boolean getIsPrint() {
-        return config.isPrint;
+        return this.config.isPrint;
     }
 
     @Override
     public Boolean getIsLog() {
-        return config.isLog;
+        return this.config.isLog;
     }
 
     @Override
     public String getJwtSecretKey() {
-        return config.jwtSecretKey.orElse(super.getJwtSecretKey());
+        return this.config.jwtSecretKey.orElse(super.getJwtSecretKey());
     }
 
     @Override
     public long getIdTokenTimeout() {
-        return config.idTokenTimeout;
+        return this.config.idTokenTimeout;
     }
 
     @Override
     public String getBasic() {
-        return config.basic.orElse(super.getBasic());
+        return this.config.basic.orElse(super.getBasic());
     }
 
     @Override
     public String getCurrDomain() {
-        return config.currDomain.orElse(super.getCurrDomain());
+        return this.config.currDomain.orElse(super.getCurrDomain());
     }
 
     @Override
     public Boolean getCheckIdToken() {
-        return config.checkIdToken;
+        return this.config.checkIdToken;
     }
 
     @Override
     public SaTokenConfig setTokenName(String tokenName) {
-        config.tokenName = tokenName;
+        this.config.tokenName = tokenName;
         return this;
     }
 
     @Override
     public SaTokenConfig setTimeout(long timeout) {
-        config.timeout = timeout;
+        this.config.timeout = timeout;
         return this;
     }
 
     @Override
     public SaTokenConfig setActivityTimeout(long activityTimeout) {
-        config.activityTimeout = activityTimeout;
+        this.config.activityTimeout = activityTimeout;
         return this;
     }
 
     @Override
     public SaTokenConfig setIsConcurrent(Boolean isConcurrent) {
-        config.isConcurrent = isConcurrent;
+        this.config.isConcurrent = isConcurrent;
         return this;
     }
 
     @Override
     public SaTokenConfig setIsShare(Boolean isShare) {
-        config.isShare = isShare;
+        this.config.isShare = isShare;
         return this;
     }
 
     @Override
     public int getMaxLoginCount() {
-        return config.maxLoginCount;
+        return this.config.maxLoginCount;
     }
 
     @Override
     public SaTokenConfig setMaxLoginCount(int maxLoginCount) {
-        config.maxLoginCount = maxLoginCount;
+        this.config.maxLoginCount = maxLoginCount;
         return this;
     }
 
     @Override
     public SaTokenConfig setIsReadBody(Boolean isReadBody) {
-        config.isReadBody = isReadBody;
+        this.config.isReadBody = isReadBody;
         return this;
     }
 
     @Override
     public SaTokenConfig setIsReadHeader(Boolean isReadHeader) {
-        config.isReadHeader = isReadHeader;
+        this.config.isReadHeader = isReadHeader;
         return this;
     }
 
     @Override
     public SaTokenConfig setIsReadCookie(Boolean isReadCookie) {
-        config.isReadCookie = isReadCookie;
+        this.config.isReadCookie = isReadCookie;
         return this;
     }
 
     @Override
     public SaTokenConfig setTokenStyle(String tokenStyle) {
-        config.tokenStyle = tokenStyle;
+        this.config.tokenStyle = tokenStyle;
         return this;
     }
 
     @Override
     public SaTokenConfig setDataRefreshPeriod(int dataRefreshPeriod) {
-        config.dataRefreshPeriod = dataRefreshPeriod;
+        this.config.dataRefreshPeriod = dataRefreshPeriod;
         return this;
     }
 
     @Override
     public SaTokenConfig setTokenSessionCheckLogin(Boolean tokenSessionCheckLogin) {
-        config.tokenSessionCheckLogin = tokenSessionCheckLogin;
+        this.config.tokenSessionCheckLogin = tokenSessionCheckLogin;
         return this;
     }
 
     @Override
     public SaTokenConfig setAutoRenew(Boolean autoRenew) {
-        config.autoRenew = autoRenew;
+        this.config.autoRenew = autoRenew;
         return this;
     }
 
     @Override
     public SaTokenConfig setTokenPrefix(String tokenPrefix) {
-        config.tokenPrefix = Optional.ofNullable(tokenPrefix);
+        this.config.tokenPrefix = Optional.ofNullable(tokenPrefix);
         return this;
     }
 
     @Override
     public SaTokenConfig setIsPrint(Boolean isPrint) {
-        config.isPrint = isPrint;
+        this.config.isPrint = isPrint;
         return this;
     }
 
     @Override
     public SaTokenConfig setIsLog(Boolean isLog) {
-        return super.setIsLog(isLog);
+        this.config.isLog = isLog;
+        return this;
     }
 
     @Override
     public SaTokenConfig setJwtSecretKey(String jwtSecretKey) {
-        return super.setJwtSecretKey(jwtSecretKey);
+        this.config.jwtSecretKey = Optional.ofNullable(jwtSecretKey);
+        return this;
     }
 
     @Override
     public SaTokenConfig setIdTokenTimeout(long idTokenTimeout) {
-        return super.setIdTokenTimeout(idTokenTimeout);
+        this.config.idTokenTimeout = idTokenTimeout;
+        return this;
     }
 
     @Override
     public SaTokenConfig setBasic(String basic) {
-        return super.setBasic(basic);
+        this.config.basic = Optional.ofNullable(basic);
+        return this;
     }
 
     @Override
     public SaTokenConfig setCurrDomain(String currDomain) {
-        return super.setCurrDomain(currDomain);
+        this.config.currDomain = Optional.ofNullable(currDomain);
+        return this;
     }
 
     @Override
     public SaTokenConfig setCheckIdToken(Boolean checkIdToken) {
-        return super.setCheckIdToken(checkIdToken);
+        this.config.checkIdToken = checkIdToken;
+        return this;
     }
 
     @Override
     public SaCookieConfig getCookie() {
-        return super.getCookie();
+        return this.cookie;
     }
 
     @Override
     public SaTokenConfig setCookie(SaCookieConfig cookie) {
-        return super.setCookie(cookie);
+        this.cookie = cookie;
+        return this;
     }
+
 }
