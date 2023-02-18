@@ -2,8 +2,9 @@ package io.quarkiverse.satoken.core.config;
 
 import java.util.Optional;
 
-import io.quarkus.runtime.annotations.ConfigGroup;
 import io.quarkus.runtime.annotations.ConfigItem;
+import io.quarkus.runtime.annotations.ConfigPhase;
+import io.quarkus.runtime.annotations.ConfigRoot;
 
 /**
  * Sa-Token Cookie写入 相关配置
@@ -11,7 +12,7 @@ import io.quarkus.runtime.annotations.ConfigItem;
  * @author nayan
  * @date 2022/4/6 6:27 PM
  */
-@ConfigGroup
+@ConfigRoot(prefix = "sa-token", name = "cookie", phase = ConfigPhase.RUN_TIME)
 public class SaCookieConfigForQuarkus {
 
     /**

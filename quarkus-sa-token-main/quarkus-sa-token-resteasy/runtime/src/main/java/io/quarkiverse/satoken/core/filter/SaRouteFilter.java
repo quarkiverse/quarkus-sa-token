@@ -18,7 +18,6 @@ import cn.dev33.satoken.exception.BackResultException;
 import cn.dev33.satoken.exception.StopMatchException;
 import cn.dev33.satoken.router.SaRouter;
 import io.quarkiverse.satoken.core.config.SaRouteConfigForQuarkus;
-import io.quarkiverse.satoken.core.config.SaTokenConfigForQuarkus;
 import io.quarkus.arc.All;
 
 /**
@@ -42,11 +41,10 @@ public class SaRouteFilter {
     List<SaRouteInterceptor> interceptors;
 
     @Inject
-    SaTokenConfigForQuarkus config;
+    SaRouteConfigForQuarkus routeConfig;
 
     @ServerRequestFilter(priority = Priorities.AUTHENTICATION)
     public Response pre(ContainerRequestContext requestContext) throws IOException {
-        SaRouteConfigForQuarkus routeConfig = config.route;
         if (routeConfig.excludePaths.isPresent()) {
             if (SaRouter.match(routeConfig.excludePaths.get()).isHit) {
                 return null;
