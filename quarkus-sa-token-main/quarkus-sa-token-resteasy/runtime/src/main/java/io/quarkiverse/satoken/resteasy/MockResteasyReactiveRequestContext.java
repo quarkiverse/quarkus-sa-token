@@ -47,7 +47,7 @@ public class MockResteasyReactiveRequestContext extends ResteasyReactiveRequestC
     MockServerHttpResponse response = new MockServerHttpResponse();
 
     private MockResteasyReactiveRequestContext() {
-        super(null, null, null, null, null);
+        super(null, null, null, null);
     }
 
     @Override

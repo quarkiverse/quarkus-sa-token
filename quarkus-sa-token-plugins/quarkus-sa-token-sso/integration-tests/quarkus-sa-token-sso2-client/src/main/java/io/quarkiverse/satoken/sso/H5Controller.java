@@ -1,13 +1,12 @@
 package io.quarkiverse.satoken.sso;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-
 import cn.dev33.satoken.sso.SaSsoHandle;
 import cn.dev33.satoken.sso.SaSsoUtil;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.util.SaResult;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
 
 /**
  * H5Controller

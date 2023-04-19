@@ -1,15 +1,14 @@
 package io.quarkiverse.satoken.oauth2.runtime;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Produces;
-import javax.inject.Singleton;
-
 import cn.dev33.satoken.oauth2.config.SaOAuth2Config;
 import io.quarkiverse.satoken.oauth2.config.SaOAuth2ConfigForQuarkus;
 import io.quarkiverse.satoken.oauth2.config.adapter.SaOAuth2ConfigAdapter;
 import io.quarkus.arc.DefaultBean;
 import io.quarkus.arc.Unremovable;
 import io.quarkus.runtime.Startup;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.inject.Produces;
+import jakarta.inject.Singleton;
 
 /**
  * SaOAuth2Producer

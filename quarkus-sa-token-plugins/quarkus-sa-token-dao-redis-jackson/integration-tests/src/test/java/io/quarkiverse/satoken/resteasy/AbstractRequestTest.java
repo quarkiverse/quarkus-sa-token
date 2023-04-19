@@ -4,8 +4,6 @@ import static io.restassured.RestAssured.given;
 
 import java.util.Map;
 
-import javax.ws.rs.core.MediaType;
-
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 
@@ -13,6 +11,7 @@ import cn.dev33.satoken.SaManager;
 import cn.dev33.satoken.util.SaResult;
 import io.quarkiverse.satoken.resteasy.utils.SoMap;
 import io.restassured.response.ValidatableResponse;
+import jakarta.ws.rs.core.MediaType;
 
 /**
  * AbstractRequestTest

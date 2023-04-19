@@ -2,8 +2,6 @@ package io.quarkiverse.satoken.resteasy.it.integrate;
 
 import static io.restassured.RestAssured.given;
 
-import javax.ws.rs.core.MediaType;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -14,6 +12,7 @@ import io.quarkiverse.satoken.resteasy.it.AbstractRequestTest;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.Header;
 import io.restassured.response.ValidatableResponse;
+import jakarta.ws.rs.core.MediaType;
 
 /**
  * SaIdTokenResourceTest

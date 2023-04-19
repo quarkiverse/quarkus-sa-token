@@ -5,8 +5,6 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-import javax.inject.Singleton;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.json.JsonReadFeature;
@@ -21,6 +19,7 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
 
 import io.quarkus.jackson.ObjectMapperCustomizer;
+import jakarta.inject.Singleton;
 
 /**
  * SaTokenJacksonModuleCustomizer

@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Vector;
 import java.util.concurrent.ConcurrentHashMap;
 
-import javax.ws.rs.Priorities;
-
 import cn.dev33.satoken.annotation.SaCheckBasic;
 import cn.dev33.satoken.annotation.SaCheckDisable;
 import cn.dev33.satoken.annotation.SaCheckLogin;
@@ -35,6 +33,7 @@ import io.quarkus.deployment.builditem.FeatureBuildItem;
 import io.quarkus.deployment.builditem.nativeimage.ReflectiveClassBuildItem;
 import io.quarkus.resteasy.reactive.spi.CustomContainerRequestFilterBuildItem;
 import io.quarkus.resteasy.reactive.spi.ExceptionMapperBuildItem;
+import jakarta.ws.rs.Priorities;
 
 class SatokenResteasyProcessor {
 

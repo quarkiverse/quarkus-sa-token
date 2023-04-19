@@ -1,12 +1,11 @@
 package io.quarkiverse.satoken.dubbo.runtime;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Produces;
-
 import cn.dev33.satoken.context.dubbo.SaTokenSecondContextCreatorForDubbo;
 import cn.dev33.satoken.context.second.SaTokenSecondContextCreator;
 import io.quarkus.arc.DefaultBean;
 import io.quarkus.arc.Unremovable;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.inject.Produces;
 
 /**
  * SaTokenDubboContextProducer

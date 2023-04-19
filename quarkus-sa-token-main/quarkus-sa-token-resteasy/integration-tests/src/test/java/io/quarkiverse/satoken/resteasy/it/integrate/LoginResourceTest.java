@@ -9,8 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Map;
 
-import javax.ws.rs.core.MediaType;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -18,6 +16,7 @@ import io.quarkiverse.satoken.resteasy.it.AbstractRequestTest;
 import io.quarkiverse.satoken.resteasy.it.utils.SoMap;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.response.ValidatableResponse;
+import jakarta.ws.rs.core.MediaType;
 
 @QuarkusTest
 public class LoginResourceTest extends AbstractRequestTest {

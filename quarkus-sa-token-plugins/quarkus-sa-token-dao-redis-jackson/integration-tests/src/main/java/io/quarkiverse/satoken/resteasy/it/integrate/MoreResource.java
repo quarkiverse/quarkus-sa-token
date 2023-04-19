@@ -16,15 +16,14 @@
  */
 package io.quarkiverse.satoken.resteasy.it.integrate;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-
 import cn.dev33.satoken.basic.SaBasicUtil;
 import cn.dev33.satoken.context.SaHolder;
 import cn.dev33.satoken.context.model.SaRequest;
 import cn.dev33.satoken.util.SaFoxUtil;
 import cn.dev33.satoken.util.SaResult;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
 
 @Path("/more/")
 @ApplicationScoped

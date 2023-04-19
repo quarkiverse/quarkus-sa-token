@@ -2,14 +2,13 @@ package io.quarkiverse.satoken.sso.runtime;
 
 import java.util.function.Consumer;
 
-import javax.enterprise.inject.spi.CDI;
-
 import cn.dev33.satoken.config.SaSsoConfig;
 import cn.dev33.satoken.sso.SaSsoManager;
 import cn.dev33.satoken.sso.SaSsoTemplate;
 import cn.dev33.satoken.sso.SaSsoUtil;
 import io.quarkus.arc.Arc;
 import io.quarkus.runtime.annotations.Recorder;
+import jakarta.enterprise.inject.spi.CDI;
 
 /**
  * SaSsoRecorder

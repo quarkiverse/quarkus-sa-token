@@ -1,12 +1,11 @@
 package io.quarkiverse.satoken.core.interceptor;
 
-import javax.interceptor.AroundInvoke;
-import javax.interceptor.Interceptor;
-import javax.interceptor.InvocationContext;
-
 import cn.dev33.satoken.annotation.SaCheckPermission;
 import cn.dev33.satoken.util.SaTokenConsts;
-import io.quarkus.arc.Priority;
+import jakarta.annotation.Priority;
+import jakarta.interceptor.AroundInvoke;
+import jakarta.interceptor.Interceptor;
+import jakarta.interceptor.InvocationContext;
 
 /**
  * Sa-Token @SaCheckPermission拦截器

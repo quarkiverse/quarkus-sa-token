@@ -1,10 +1,5 @@
 package io.quarkiverse.satoken.oauth2;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Observes;
-import javax.inject.Inject;
-
 import cn.dev33.satoken.oauth2.config.SaOAuth2Config;
 import cn.dev33.satoken.oauth2.logic.SaOAuth2Template;
 import cn.dev33.satoken.oauth2.model.SaClientModel;
@@ -12,6 +7,10 @@ import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.util.SaResult;
 import io.quarkus.qute.Template;
 import io.quarkus.runtime.StartupEvent;
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.event.Observes;
+import jakarta.inject.Inject;
 
 /**
  * SaOAuth2TemplateImpl

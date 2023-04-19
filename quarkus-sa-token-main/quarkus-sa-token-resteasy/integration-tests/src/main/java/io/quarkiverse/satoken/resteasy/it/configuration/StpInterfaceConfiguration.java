@@ -3,14 +3,13 @@ package io.quarkiverse.satoken.resteasy.it.configuration;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.enterprise.context.Dependent;
-import javax.enterprise.inject.Produces;
-
 import cn.dev33.satoken.stp.StpInterface;
 import cn.dev33.satoken.util.SaFoxUtil;
 import io.quarkus.arc.DefaultBean;
 import io.quarkus.arc.Unremovable;
 import io.quarkus.arc.profile.IfBuildProfile;
+import jakarta.enterprise.context.Dependent;
+import jakarta.enterprise.inject.Produces;
 
 /**
  * StpInterfaceConfiguration

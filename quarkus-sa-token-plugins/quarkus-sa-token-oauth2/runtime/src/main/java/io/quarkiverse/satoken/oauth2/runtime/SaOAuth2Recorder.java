@@ -2,14 +2,13 @@ package io.quarkiverse.satoken.oauth2.runtime;
 
 import java.util.function.Consumer;
 
-import javax.enterprise.inject.spi.CDI;
-
 import cn.dev33.satoken.oauth2.SaOAuth2Manager;
 import cn.dev33.satoken.oauth2.config.SaOAuth2Config;
 import cn.dev33.satoken.oauth2.logic.SaOAuth2Template;
 import cn.dev33.satoken.oauth2.logic.SaOAuth2Util;
 import io.quarkus.arc.Arc;
 import io.quarkus.runtime.annotations.Recorder;
+import jakarta.enterprise.inject.spi.CDI;
 
 /**
  * SaTokenRecorder
