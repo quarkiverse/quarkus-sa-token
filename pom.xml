@@ -16,7 +16,7 @@
     <module>quarkus-sa-token-plugins</module>
   </modules>
   <scm>
-    <connection>:git:git@github.com:quarkiverse/quarkus-sa-token.git</connection>
+    <connection>scm:git:git@github.com:quarkiverse/quarkus-sa-token.git</connection>
     <developerConnection>scm:git:git@github.com:quarkiverse/quarkus-sa-token.git</developerConnection>
     <url>https://github.com/quarkiverse/quarkus-sa-token</url>
   </scm>
