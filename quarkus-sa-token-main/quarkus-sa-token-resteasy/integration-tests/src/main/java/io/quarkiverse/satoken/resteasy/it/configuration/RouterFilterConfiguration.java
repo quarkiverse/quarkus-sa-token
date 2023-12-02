@@ -2,9 +2,6 @@ package io.quarkiverse.satoken.resteasy.it.configuration;
 
 import java.util.Arrays;
 
-import javax.enterprise.context.Dependent;
-import javax.enterprise.inject.Produces;
-
 import org.jboss.resteasy.reactive.server.core.CurrentRequestManager;
 import org.jboss.resteasy.reactive.server.core.ResteasyReactiveRequestContext;
 
@@ -14,9 +11,11 @@ import cn.dev33.satoken.router.SaRouter;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.dev33.satoken.util.SaResult;
 import io.quarkiverse.satoken.core.filter.SaRouteInterceptor;
-import io.quarkus.arc.Priority;
 import io.quarkus.arc.Unremovable;
 import io.quarkus.arc.profile.IfBuildProfile;
+import jakarta.annotation.Priority;
+import jakarta.enterprise.context.Dependent;
+import jakarta.enterprise.inject.Produces;
 
 /**
  * RouterFilterConfiguration

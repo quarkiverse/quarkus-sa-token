@@ -5,13 +5,6 @@ import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Observes;
-import javax.enterprise.inject.Produces;
-import javax.enterprise.inject.spi.CDI;
-import javax.inject.Singleton;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import cn.dev33.satoken.SaManager;
@@ -42,6 +35,11 @@ import io.quarkus.arc.Arc;
 import io.quarkus.arc.DefaultBean;
 import io.quarkus.arc.Unremovable;
 import io.quarkus.runtime.StartupEvent;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.event.Observes;
+import jakarta.enterprise.inject.Produces;
+import jakarta.enterprise.inject.spi.CDI;
+import jakarta.inject.Singleton;
 
 /**
  * SaTokenProvider
@@ -76,7 +74,6 @@ public class SaTokenProducer {
         return new SaJsonTemplateForJackson(objectMapper);
     }
 
-    @PostConstruct
     public void injectAllBean(@Observes StartupEvent startupEvent) {
         Arc.container().instance(SaTokenProducer.class).get();
         setConfig();

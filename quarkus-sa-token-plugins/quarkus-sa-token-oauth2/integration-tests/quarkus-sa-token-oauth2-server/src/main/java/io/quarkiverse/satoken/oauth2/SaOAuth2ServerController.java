@@ -3,15 +3,14 @@ package io.quarkiverse.satoken.oauth2;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-
 import cn.dev33.satoken.context.SaHolder;
 import cn.dev33.satoken.oauth2.logic.SaOAuth2Handle;
 import cn.dev33.satoken.oauth2.logic.SaOAuth2Util;
 import cn.dev33.satoken.util.SaResult;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
 
 /**
  * Sa-OAuth2 Server端 控制器

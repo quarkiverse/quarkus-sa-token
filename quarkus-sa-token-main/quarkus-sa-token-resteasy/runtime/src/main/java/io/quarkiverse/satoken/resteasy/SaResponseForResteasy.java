@@ -3,8 +3,6 @@ package io.quarkiverse.satoken.resteasy;
 import java.net.URI;
 import java.util.Objects;
 
-import javax.ws.rs.core.Response;
-
 import org.jboss.resteasy.reactive.RestResponse;
 import org.jboss.resteasy.reactive.server.core.CurrentRequestManager;
 import org.jboss.resteasy.reactive.server.core.ResteasyReactiveRequestContext;
@@ -13,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import cn.dev33.satoken.context.model.SaResponse;
+import jakarta.ws.rs.core.Response;
 
 /**
  * SaResponseForResteasy

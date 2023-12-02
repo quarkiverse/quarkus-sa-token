@@ -3,12 +3,11 @@ package io.quarkiverse.satoken.core.interceptor;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
-import javax.interceptor.InvocationContext;
-
 import cn.dev33.satoken.annotation.SaIgnore;
 import cn.dev33.satoken.exception.BackResultException;
 import cn.dev33.satoken.exception.StopMatchException;
 import cn.dev33.satoken.strategy.SaStrategy;
+import jakarta.interceptor.InvocationContext;
 
 /**
  * Sa-Token 综合拦截器，提供注解鉴权和路由拦截鉴权能力
